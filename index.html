@@ -20,7 +20,7 @@
           text-align: center;
         }
     
-        .main textarea {
+        .main input {
           width: 10%;
           font-size: 15pt;
           resize:none;
@@ -64,11 +64,11 @@
         <h1>2021台北馬拉松配速計算機</h1>
         <div>
             目標完賽時間 
-            <textarea name="" id="hh" rows="1" charswidth="2" placeholder="HH"></textarea>
+            <input type="number" name="" id="hh" rows="1" charswidth="2" placeholder="HH"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
-            <textarea name="" id="mm" rows="1" charswidth="2" placeholder="mm"></textarea>
+            <input type="number" name="" id="mm" rows="1" charswidth="2" placeholder="mm"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
-            <textarea name="" id="ss" rows="1" charswidth="2" placeholder="ss"></textarea>
+            <input type="number" name="" id="ss" rows="1" charswidth="2" placeholder="ss"></input>
         </div>
         <div>
             <button onclick="cal()">計算</button>

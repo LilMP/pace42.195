@@ -1,6 +1,8 @@
-# 台北馬拉松配速模擬器
+# 2021台北馬拉松配速模擬器
 
-網址: https://LilMP.github.io/pace42.195
+前往2021台北馬配速模擬器: https://LilMP.github.io/pace42.195
+
+## Preface
 
 > 「馬拉松在按下報名的那一刻已經開始，踏上馬場的那一刻則已經結束。」
 
@@ -22,7 +24,7 @@
 ## Contributors
 - 一場全馬都還沒跑過的[小M平 LilMP]()
 
-## Special Thanks
+## Special Thanks / Acknowledgement
 - 感謝[貓女姊姊]()發起項目，並提供excel版表單供我參考
 
 ## Inspirations

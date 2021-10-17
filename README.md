@@ -9,7 +9,7 @@
 那麼，祝各位**馬場武運昌隆**！！！
 
 ## Features
-- 針對台北馬賽道狀況(上下坡、擁擠程度)提供配速調整，降低為了`追前面的配速把自己搞爆`的機率！
+- 針對台北馬賽道狀況(上下坡、擁擠程度)提供配速調整，降低為了<p style="color:red;">`追前面的配速把自己搞爆`</p>的機率！
 - 台北馬每2.5K提供水站/補給站，本模擬器配合水站數量顯示累積時間，**進站補給順便確認**..........好貼心！
 - 針對不同完賽時間、不同程度的跑友，設定不同的配速調整參數..........好細緻！
 - **免費、無廣告**、No tracking code 連 Google Analytics 都沒裝..........好佛心！
@@ -27,7 +27,7 @@
 - [振興五倍券加碼券速查](https://github.com/onlinemad/5000-lottery)：最早的介面框架是從這個project改的，感謝原作者onlinemad
 - [Marathon Race Simulator](https://42.195km.net/e/racesim/)：查到網路上類似的工具(但目前還不想做得那麼複雜XD)
 
-[^1]: 運動筆記上的[配速時間計算器](https://running.biji.co/index.php?q=tools)
+[^1]: [常見的配速時間計算器](https://running.biji.co/index.php?q=tools)
 
 
 如有任何問題或回饋請不吝指教~THANKS

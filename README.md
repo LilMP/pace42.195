@@ -1,7 +1,8 @@
 # 2021台北馬拉松配速模擬
 
-前往2021台北馬配速模擬: https://LilMP.github.io/pace42.195
 ※ 注意: 非官方工具!
+
+前往2021台北馬配速模擬: https://LilMP.github.io/pace42.195
 
 ## Preface
 

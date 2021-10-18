@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,17 +17,23 @@
           -moz-appearance: textfield;
         }
 
+        h1 {
+          margin: 10pt auto;
+        }
+
         body {
           width: 30%;
           margin: auto;
         }
     
         button {
-          width: 100%;
+          width: 80%;
           height: 25pt;
+          margin: 5pt auto;
+          /* display: inline; */
         }
     
-        .main {
+        .main, .dynamic-btn, #my-tbl {
           text-align: center;
         }
     
@@ -48,12 +54,26 @@
         .footer {
           color: dimgrey;
           text-align: center;
-          margin: 20pt auto;
+          margin: 10pt auto;
         }
     
         #result {
-          margin-bottom: 20pt;
+          /* margin-bottom: 20pt; */
         }
+        /* #summary > tbody > tr > td */
+        #summary {
+          width: 80%;
+          margin: auto;
+          border-spacing:0px;
+          /* text-align: right; */
+        }
+        #my-tbl {
+          width: 80%;
+          margin: auto;
+          /* border-spacing:0px; */
+          /* text-align: right; */
+        }
+
     
         @media only screen and (max-device-width : 375px) {
           body {
@@ -72,7 +92,7 @@
 </head>
 <body onload="loadHome()">
     <div class="main">
-        <h1>2021台北馬拉松配速計算機</h1>
+        <h1>2021台北馬拉松配速模擬</h1>
         <div>
             目標完賽時間 
             <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH" onclick="this.select()"></input>
@@ -82,12 +102,11 @@
             <input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="ss" onclick="this.select()"></input>
         </div>
         <div>
-            <button onclick="cal()">計算</button>
+            <button onclick="cal()">產生結果</button>            
         </div>
     </div>
     <div>
         <div id="result"></div>
-
     </div>
     <div class="footer">
         <small>無廣告、無追蹤碼<br/>更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
@@ -107,8 +126,8 @@
     text = "<table id='my-tbl' border='1' cellpadding='6'>";
     text = text += "<tr><td>水站/補給站</td>";
     text = text += "<td>配速調整</td>";
-    text = text += "<td>分段配速</td>";
-    text = text += "<td title='(扣掉進水站時間)'>即時配速(不算進站時間)</td>";
+    text = text += "<td>分段配速(min/km)</td>";
+    // text = text += "<td title='(扣掉進水站時間)'>即時配速(min/km)</td>";
     text = text += "<td>分段時間</td>";
     text = text += "<td>累積時間</td></tr>";
 
@@ -180,14 +199,14 @@
         document.getElementById('ss').value = ss
     }
 
-    function render(rs) {
-        let result = document.getElementById('result')
-        result.innerHTML = ''
-        rs.map((r) => {
-            let h3 = document.createElement('h3')
-            h3.appendChild(document.createTextNode(r.id))
-            result.appendChild(h3)
-        })
+    function render() {
+        document.getElementById('result').style.display = null
+        // result.innerHTML = ''
+        // rs.map((r) => {
+        //     let h3 = document.createElement('h3')
+        //     h3.appendChild(document.createTextNode(r.id))
+        //     result.appendChild(h3)
+        // })
     }
 
     function cal() {
@@ -223,10 +242,10 @@
         time_compensate[lv].cp_each.forEach(function(item,i) {
             // (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000:sum = sum+2.2*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000
             (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000):sum = sum+2.2*(paceAdjust+item*1000)
-            timeAccumulated.push(moment.utc(sum).format("HH:mm:ss"))
-            paceTime.push(moment.utc((i<time_compensate[lv].cp_each.length-1)?2.5*(paceAdjust+item*1000):2.2*(paceAdjust+item*1000)).format("HH:mm:ss"))
-            paceAdjustSlope.push(moment.utc(paceAdjust+item*1000).format("HH:mm:ss"))
-            paceAdjustStop.push(moment.utc(paceAdjust+item*1000-time_compensate[lv].cp_stop*1000).format("HH:mm:ss"))
+            timeAccumulated.push(moment.utc(sum).format("H:mm:ss"))
+            paceTime.push(moment.utc((i<time_compensate[lv].cp_each.length-1)?2.5*(paceAdjust+item*1000):2.2*(paceAdjust+item*1000)).format("mm:ss"))
+            paceAdjustSlope.push(moment.utc(paceAdjust+item*1000).format("mm:ss"))
+            paceAdjustStop.push(moment.utc(paceAdjust+item*1000-time_compensate[lv].cp_stop*1000).format("mm:ss"))
         });
         // console.log(paceAdjustSlope)
         // console.log(paceAdjustStop)
@@ -234,6 +253,7 @@
         // console.log(text)
 
         document.getElementById("result").innerHTML = text
+        
         
         // create DIV element and append to the table cell
         function createCell(cell, text, style) {
@@ -248,20 +268,53 @@
         for (i = 1; i < table.rows.length; i++) {
             createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i-1], 'col');
             createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustSlope[i-1], 'col');
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustStop[i-1], 'col');
+            // createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustStop[i-1], 'col');
             createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceTime[i-1], 'col');            
             createCell(table.rows[i].insertCell(table.rows[i].cells.length), timeAccumulated[i-1], 'col');
         }
 
         textUpdate = document.getElementById("result").innerHTML;
-        summary = "<div>目標平均配速:<b>"+moment.utc(pace).format("mm:ss")+"/km</b> (不考慮地形、人潮擁擠)</div>"
-        summary = summary+"<div>調整後目標平均配速:<b>"+moment.utc(paceAdjust).format("mm:ss")+"/km</b> (考慮地形、人潮擁擠)</div>"
+
+        summary2 = "<div id='summary'><table border='0' cellpadding='0'>";
+        summary2 = summary2 + "<tr><td>調整前目標均速<small>(目標時間/距離)</small></td><td style='text-align:right;padding-left:5px;'><b>"+moment.utc(pace).format("mm:ss")+"/km</b></td></tr>";
+        summary2 = summary2 + "<tr><td>調整後目標均速<small>(上下坡、人潮擁擠)</small></td><td style='text-align:right;padding-left:5px;'><b>"+moment.utc(paceAdjust).format("mm:ss")+"/km</b></td></tr>";
+        // summary2 = summary2 += "<tr><td>進站時間調整參數</td><td style='text-align:right;padding-left:10px;'><b>-"+time_compensate[lv].cp_stop+"</b></td></tr>";
+        summary2 += "</table></div>";
+       
+        summary = "<div>目標平均配速:<small>(不考慮地形、人潮擁擠)</small><b>"+moment.utc(pace).format("mm:ss")+"/km</b></div>"
+        summary = summary+"<div>調整後目標平均配速:<small>(考慮地形、人潮擁擠)</small><b>"+moment.utc(paceAdjust).format("mm:ss")+"/km</b></div>"
         summary = summary+"<div>進站時間調整參數:<b>-"+time_compensate[lv].cp_stop+"</b></div>"
-        document.getElementById("result").innerHTML = summary+textUpdate;
+        document.getElementById("result").innerHTML = summary2+textUpdate;
+        
+        
+        clr = document.createElement("div");
+        clr.innerHTML = '<small><a href="" onclick="clean()">清除重來</a></small>';
+        clr.className = 'dynamic-btn';
+        document.getElementById("result").appendChild(clr)
+        
+        document.getElementById("result").style.display = "none"
 
         // rs = show(times)
-        // render(rs)
+        render()
         
+    }
+
+    function clean() {
+      // uid.value = ''
+      // uid.style.display = null
+      hh.value=''
+      mm.value=''
+      ss.value=''
+      hh.style.display = null
+      mm.style.display = null
+      ss.style.display = null
+      localStorage.removeItem('hh')
+      localStorage.removeItem('mm')
+      localStorage.removeItem('ss')
+      document.getElementById("result").innerHTML = ''
+      
+      render()
+      
     }
 
 </script>

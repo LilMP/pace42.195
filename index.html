@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,116 +10,125 @@
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
+            -webkit-appearance: none;
+            margin: 0;
         }
+
         /* Firefox */
         input[type=number] {
-          -moz-appearance: textfield;
+            -moz-appearance: textfield;
         }
 
         h1 {
-          margin: 10pt auto;
+            margin: 10pt auto;
         }
 
         body {
-          width: 30%;
-          margin: auto;
-        }
-    
-        button {
-          width: 80%;
-          height: 25pt;
-          margin: 5pt auto;
-          /* display: inline; */
-        }
-    
-        .main, .dynamic-btn, #my-tbl {
-          text-align: center;
-        }
-    
-        .main input {
-          width: 15%;
-          font-size: 15pt;
-          resize:none;
-          text-align:right;
-          display:inline-block;
-          vertical-align:middle;
-          height: 30px;
-        }
-    
-        .result-title {
-          text-align: center;
-        }
-    
-        .footer {
-          color: dimgrey;
-          text-align: center;
-          margin: 10pt auto;
-        }
-    
-        #result {
-          /* margin-bottom: 20pt; */
-        }
-        /* #summary > tbody > tr > td */
-        #summary {
-          width: 80%;
-          margin: auto;
-          border-spacing:0px;
-          /* text-align: right; */
-        }
-        #my-tbl {
-          width: 80%;
-          margin: auto;
-          /* border-spacing:0px; */
-          /* text-align: right; */
+            width: 30%;
+            margin: auto;
         }
 
-    
+        button {
+            width: 80%;
+            height: 25pt;
+            margin: 5pt auto;
+            /* display: inline; */
+        }
+
+        .main,
+        .dynamic-btn,
+        #my-tbl {
+            text-align: center;
+        }
+
+        .main input {
+            width: 15%;
+            font-size: 15pt;
+            resize: none;
+            text-align: right;
+            display: inline-block;
+            vertical-align: middle;
+            height: 30px;
+        }
+
+        .result-title {
+            text-align: center;
+        }
+
+        .footer {
+            color: dimgrey;
+            text-align: center;
+            margin: 10pt auto;
+        }
+
+        #result {
+            /* margin-bottom: 20pt; */
+        }
+
+        /* #summary > tbody > tr > td */
+        #summary {
+            width: 80%;
+            margin: auto;
+            border-spacing: 0px;
+            /* text-align: right; */
+        }
+
+        #my-tbl {
+            width: 80%;
+            margin: auto;
+            /* border-spacing:0px; */
+            /* text-align: right; */
+        }
+
+
         @media only screen and (max-device-width : 375px) {
-          body {
-            font-size: 80%;
-            width: 95%;
-          }
+            body {
+                font-size: 80%;
+                width: 95%;
+            }
         }
-    
+
         @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
-          body {
-            font-size: 80%;
-            width: 75%;
-          }
+            body {
+                font-size: 80%;
+                width: 75%;
+            }
         }
-      </style>
+    </style>
 </head>
+
 <body onload="loadHome()">
     <div class="main">
         <h1>2021台北馬拉松配速模擬</h1>
         <div>
-            目標完賽時間 
-            <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH" onclick="this.select()"></input>
+            目標完賽時間
+            <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH"
+                onclick="this.select()"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
-            <input type="number" name="" id="mm" rows="1" charswidth="3" placeholder="mm" onclick="this.select()"></input>
+            <input type="number" name="" id="mm" rows="1" charswidth="3" placeholder="mm"
+                onclick="this.select()"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
-            <input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="ss" onclick="this.select()"></input>
+            <input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="ss"
+                onclick="this.select()"></input>
         </div>
         <div>
-            <button onclick="cal()">產生結果</button>            
+            <button onclick="cal()">產生結果</button>
         </div>
     </div>
     <div>
         <div id="result"></div>
     </div>
     <div class="footer">
-        <small>無廣告、無追蹤碼<br/>更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
+        <small>無廣告、無追蹤碼<br />更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
     </div>
-    
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script>
 
-    arrStop =[]
-    for(i=0; i<16; i++) {
-        x=i*2.5+2.5
+    arrStop = []
+    for (i = 0; i < 16; i++) {
+        x = i * 2.5 + 2.5
         arrStop.push(x)
     }
     // console.log(arrStop)
@@ -139,33 +149,33 @@
 
     let time_compensate = [{
         name: 'lv0',
-        cp_each: [5,0,0,0,0,2,0,0,8,0,-5,0,0,0,0,0,0,],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
+        cp_each: [5, 0, 0, 0, 0, 2, 0, 0, 8, 0, -5, 0, 0, 0, 0, 0, 0,],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
         cp_total: 25, //地形影響時間調整(上面加總後*2.5)
         cp_stop: 2 // 進站時間差(ie.進站補給花多久時間)
 
     }, {
         name: 'lv1',
-        cp_each: [15,8,0,0,0,3,0,0,10,0,-5,0,0,0,0,0,0],
+        cp_each: [15, 8, 0, 0, 0, 3, 0, 0, 10, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 77.5,
         cp_stop: 2.4
     }, {
         name: 'lv2',
-        cp_each: [20,10,0,0,0,5,0,0,12,0,-5,0,0,0,0,0,0],
+        cp_each: [20, 10, 0, 0, 0, 5, 0, 0, 12, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 105,
         cp_stop: 3
     }, {
         name: 'lv3',
-        cp_each: [25,20,0,0,0,6,0,0,15,0,-5,0,0,0,0,0,0],
+        cp_each: [25, 20, 0, 0, 0, 6, 0, 0, 15, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 152.5,
         cp_stop: 3
     }, {
         name: 'lv4',
-        cp_each: [30,25,0,0,0,7,0,0,18,0,-5,0,0,0,0,0,0],
+        cp_each: [30, 25, 0, 0, 0, 7, 0, 0, 18, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 187.5,
         cp_stop: 3
     }, {
         name: 'lv5',
-        cp_each: [30,25,0,0,0,8,0,0,20,0,-5,0,0,0,0,0,0],
+        cp_each: [30, 25, 0, 0, 0, 8, 0, 0, 20, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 195,
         cp_stop: 4
     }]
@@ -181,16 +191,16 @@
         // })
         // console.log(rs)
         // return rs
-        
+
     }
 
-    function loadHome(){
+    function loadHome() {
         // 第一次會是空值
         // 如果有輸入過會記得
         // let finishTime = localStorage.getItem('time')
         // document.getElementById('time').value = finishTime
         // console.log(finishTime) 
-        
+
         let hh = localStorage.getItem('hh')
         document.getElementById('hh').value = hh
         let mm = localStorage.getItem('mm')
@@ -214,38 +224,38 @@
         let hhh = document.getElementById('hh').value
         let mmm = document.getElementById('mm').value
         let sss = document.getElementById('ss').value
-        localStorage.setItem('hh', hhh) 
-        localStorage.setItem('mm', mmm) 
-        localStorage.setItem('ss', sss) 
-        fTime = moment(hhh+':'+mmm+':'+sss,"HH:mm:ss")
+        localStorage.setItem('hh', hhh)
+        localStorage.setItem('mm', mmm)
+        localStorage.setItem('ss', sss)
+        fTime = moment(hhh + ':' + mmm + ':' + sss, "HH:mm:ss")
 
         var lv;
-        if(fTime.isBefore(moment("3:20:00","HH:mm:ss"))) lv = 0
-        if(fTime.isBetween(moment("3:20:00","HH:mm:ss"),moment("3:45:00","HH:mm:ss"),null,'[)')) lv = 1
-        if(fTime.isBetween(moment("3:45:00","HH:mm:ss"),moment("4:00:00","HH:mm:ss"),null,'[)')) lv = 2
-        if(fTime.isBetween(moment("4:00:00","HH:mm:ss"),moment("4:30:00","HH:mm:ss"),null,'[)')) lv = 3
-        if(fTime.isBetween(moment("4:30:00","HH:mm:ss"),moment("5:00:00","HH:mm:ss"),null,'[)')) lv = 4
-        if(fTime.isSameOrAfter(moment("5:00:00","HH:mm:ss"))) lv = 5
+        if (fTime.isBefore(moment("3:20:00", "HH:mm:ss"))) lv = 0
+        if (fTime.isBetween(moment("3:20:00", "HH:mm:ss"), moment("3:45:00", "HH:mm:ss"), null, '[)')) lv = 1
+        if (fTime.isBetween(moment("3:45:00", "HH:mm:ss"), moment("4:00:00", "HH:mm:ss"), null, '[)')) lv = 2
+        if (fTime.isBetween(moment("4:00:00", "HH:mm:ss"), moment("4:30:00", "HH:mm:ss"), null, '[)')) lv = 3
+        if (fTime.isBetween(moment("4:30:00", "HH:mm:ss"), moment("5:00:00", "HH:mm:ss"), null, '[)')) lv = 4
+        if (fTime.isSameOrAfter(moment("5:00:00", "HH:mm:ss"))) lv = 5
         // console.log("lv:"+lv);
-        
+
         // 平均配速(毫秒)
-        pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()/42.2
-        x=moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
-        paceAdjust=moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total*1000))).asMilliseconds()/42.2
-        
+        pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds() / 42.2
+        x = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
+        paceAdjust = moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total * 1000))).asMilliseconds() / 42.2
+
         paceAdjustSlope = [] // 坡度校正後配速
         paceAdjustStop = [] // 進站時間校正後配速
         paceTime = [] // 分段時間
         timeAccumulated = [] // 時間加總
-        
+
         sum = 0
-        time_compensate[lv].cp_each.forEach(function(item,i) {
+        time_compensate[lv].cp_each.forEach(function (item, i) {
             // (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000:sum = sum+2.2*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000
-            (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000):sum = sum+2.2*(paceAdjust+item*1000)
+            (i < time_compensate[lv].cp_each.length - 1) ? sum = sum + 2.5 * (paceAdjust + item * 1000) : sum = sum + 2.2 * (paceAdjust + item * 1000)
             timeAccumulated.push(moment.utc(sum).format("H:mm:ss"))
-            paceTime.push(moment.utc((i<time_compensate[lv].cp_each.length-1)?2.5*(paceAdjust+item*1000):2.2*(paceAdjust+item*1000)).format("mm:ss"))
-            paceAdjustSlope.push(moment.utc(paceAdjust+item*1000).format("mm:ss"))
-            paceAdjustStop.push(moment.utc(paceAdjust+item*1000-time_compensate[lv].cp_stop*1000).format("mm:ss"))
+            paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 2.2 * (paceAdjust + item * 1000)).format("mm:ss"))
+            paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("mm:ss"))
+            paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
         });
         // console.log(paceAdjustSlope)
         // console.log(paceAdjustStop)
@@ -253,69 +263,70 @@
         // console.log(text)
 
         document.getElementById("result").innerHTML = text
-        
-        
+
+
         // create DIV element and append to the table cell
         function createCell(cell, text, style) {
-            var div = document.createElement('div'), // create DIV element
-                txt = document.createTextNode(text); // create text node
-            div.appendChild(txt);                    // append text node to the DIV
-            div.setAttribute('class', style);        // set DIV class attribute
-            div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
-            cell.appendChild(div);                   // append DIV to the table cell
+            var div = document.createElement('div'), // create DIV element
+                txt = document.createTextNode(text); // create text node
+            div.appendChild(txt);                    // append text node to the DIV
+            div.setAttribute('class', style);        // set DIV class attribute
+            div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+            cell.appendChild(div);                   // append DIV to the table cell
         }
         let table = document.getElementById("my-tbl")
         for (i = 1; i < table.rows.length; i++) {
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i-1], 'col');
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustSlope[i-1], 'col');
+            createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i - 1], 'col');
+            createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustSlope[i - 1], 'col');
             // createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustStop[i-1], 'col');
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceTime[i-1], 'col');            
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), timeAccumulated[i-1], 'col');
+            createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceTime[i - 1], 'col');
+            createCell(table.rows[i].insertCell(table.rows[i].cells.length), timeAccumulated[i - 1], 'col');
         }
 
         textUpdate = document.getElementById("result").innerHTML;
 
         summary2 = "<div id='summary'><table border='0' cellpadding='0'>";
-        summary2 = summary2 + "<tr><td>調整前目標均速<small>(目標時間/距離)</small></td><td style='text-align:right;padding-left:5px;'><b>"+moment.utc(pace).format("mm:ss")+"/km</b></td></tr>";
-        summary2 = summary2 + "<tr><td>調整後目標均速<small>(上下坡、人潮擁擠)</small></td><td style='text-align:right;padding-left:5px;'><b>"+moment.utc(paceAdjust).format("mm:ss")+"/km</b></td></tr>";
+        summary2 = summary2 + "<tr><td>調整前目標均速<small>(目標時間/距離)</small></td><td style='text-align:right;padding-left:5px;'><b>" + moment.utc(pace).format("mm:ss") + "/km</b></td></tr>";
+        summary2 = summary2 + "<tr><td>調整後目標均速<small>(上下坡、人潮擁擠)</small></td><td style='text-align:right;padding-left:5px;'><b>" + moment.utc(paceAdjust).format("mm:ss") + "/km</b></td></tr>";
         // summary2 = summary2 += "<tr><td>進站時間調整參數</td><td style='text-align:right;padding-left:10px;'><b>-"+time_compensate[lv].cp_stop+"</b></td></tr>";
         summary2 += "</table></div>";
-       
-        summary = "<div>目標平均配速:<small>(不考慮地形、人潮擁擠)</small><b>"+moment.utc(pace).format("mm:ss")+"/km</b></div>"
-        summary = summary+"<div>調整後目標平均配速:<small>(考慮地形、人潮擁擠)</small><b>"+moment.utc(paceAdjust).format("mm:ss")+"/km</b></div>"
-        summary = summary+"<div>進站時間調整參數:<b>-"+time_compensate[lv].cp_stop+"</b></div>"
-        document.getElementById("result").innerHTML = summary2+textUpdate;
-        
-        
+
+        summary = "<div>目標平均配速:<small>(不考慮地形、人潮擁擠)</small><b>" + moment.utc(pace).format("mm:ss") + "/km</b></div>"
+        summary = summary + "<div>調整後目標平均配速:<small>(考慮地形、人潮擁擠)</small><b>" + moment.utc(paceAdjust).format("mm:ss") + "/km</b></div>"
+        summary = summary + "<div>進站時間調整參數:<b>-" + time_compensate[lv].cp_stop + "</b></div>"
+        document.getElementById("result").innerHTML = summary2 + textUpdate;
+
+
         clr = document.createElement("div");
         clr.innerHTML = '<small><a href="" onclick="clean()">清除重來</a></small>';
         clr.className = 'dynamic-btn';
         document.getElementById("result").appendChild(clr)
-        
+
         document.getElementById("result").style.display = "none"
 
         // rs = show(times)
         render()
-        
+
     }
 
     function clean() {
-      // uid.value = ''
-      // uid.style.display = null
-      hh.value=''
-      mm.value=''
-      ss.value=''
-      hh.style.display = null
-      mm.style.display = null
-      ss.style.display = null
-      localStorage.removeItem('hh')
-      localStorage.removeItem('mm')
-      localStorage.removeItem('ss')
-      document.getElementById("result").innerHTML = ''
-      
-      render()
-      
+        // uid.value = ''
+        // uid.style.display = null
+        hh.value = ''
+        mm.value = ''
+        ss.value = ''
+        hh.style.display = null
+        mm.style.display = null
+        ss.style.display = null
+        localStorage.removeItem('hh')
+        localStorage.removeItem('mm')
+        localStorage.removeItem('ss')
+        document.getElementById("result").innerHTML = ''
+
+        render()
+
     }
 
 </script>
+
 </html>

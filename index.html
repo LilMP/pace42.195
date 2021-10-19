@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,163 +10,323 @@
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
+            -webkit-appearance: none;
+            margin: 0;
         }
+
         /* Firefox */
         input[type=number] {
-          -moz-appearance: textfield;
+            -moz-appearance: textfield;
         }
 
         h1 {
-          margin: 10pt auto;
+            margin: 10pt auto;
         }
 
         body {
-          width: 30%;
-          margin: auto;
-        }
-    
-        button {
-          width: 80%;
-          height: 25pt;
-          margin: 5pt auto;
-          /* display: inline; */
-        }
-    
-        .main, .dynamic-btn, #my-tbl {
-          text-align: center;
-        }
-    
-        .main input {
-          width: 15%;
-          font-size: 15pt;
-          resize:none;
-          text-align:right;
-          display:inline-block;
-          vertical-align:middle;
-          height: 30px;
-        }
-    
-        .result-title {
-          text-align: center;
-        }
-    
-        .footer {
-          color: dimgrey;
-          text-align: center;
-          margin: 10pt auto;
-        }
-    
-        #result {
-          /* margin-bottom: 20pt; */
-        }
-        /* #summary > tbody > tr > td */
-        #summary {
-          width: 80%;
-          margin: auto;
-          border-spacing:0px;
-          /* text-align: right; */
-        }
-        #my-tbl {
-          width: 80%;
-          margin: auto;
-          /* border-spacing:0px; */
-          /* text-align: right; */
+            width: 40%;
+            margin: auto;
         }
 
-    
+        button {
+            width: 80%;
+            height: 25pt;
+            margin: 5pt auto;
+            /* display: inline; */
+        }
+
+        .main,
+        .dynamic-btn,
+        #my-tbl {
+            text-align: center;
+        }
+
+        .dynamic-btn {
+            width: 100%;
+            display: inline-block;
+
+        }
+
+        .main input {
+            width: 15%;
+            font-size: 15pt;
+            resize: none;
+            text-align: right;
+            display: inline-block;
+            vertical-align: middle;
+            height: 30px;
+        }
+
+        .result-title {
+            text-align: center;
+        }
+
+        .footer {
+            color: dimgrey;
+            text-align: center;
+            margin: 5pt auto;
+        }
+
+        #result {
+            /* margin-bottom: 20pt; */
+        }
+
+        /* #summary > tbody > tr > td */
+        #summary {
+            width: 80%;
+            margin: auto;
+            border-spacing: 0px;
+            /* text-align: right; */
+        }
+
+        #my-tbl {
+            background-color: white;
+            width: 80%;
+            margin: auto;
+            /* border-spacing:0px; */
+            /* text-align: right; */
+        }
+
+
         @media only screen and (max-device-width : 375px) {
-          body {
-            font-size: 80%;
-            width: 95%;
-          }
+            body {
+                font-size: 80%;
+                width: 95%;
+            }
         }
-    
+
         @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
-          body {
-            font-size: 80%;
-            width: 75%;
-          }
+            body {
+                font-size: 80%;
+                width: 75%;
+            }
         }
-      </style>
+    </style>
 </head>
+
 <body onload="loadHome()">
     <div class="main">
         <h1>2021台北馬拉松配速模擬</h1>
         <div>
-            目標完賽時間 
-            <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH" onclick="this.select()"></input>
+            目標完賽時間
+            <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH"
+                onclick="this.select()"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
-            <input type="number" name="" id="mm" rows="1" charswidth="3" placeholder="mm" onclick="this.select()"></input>
+            <input type="number" name="" id="mm" rows="1" charswidth="3" placeholder="mm"
+                onclick="this.select()"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
-            <input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="ss" onclick="this.select()"></input>
+            <input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="ss"
+                onclick="this.select()"></input>
         </div>
         <div>
-            <button onclick="cal()">產生結果</button>            
+            <button onclick="cal()">產生結果</button>
         </div>
+
     </div>
     <div>
         <div id="result"></div>
     </div>
     <div class="footer">
-        <small>無廣告、無追蹤碼<br/>更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
+        <small>無廣告、無追蹤碼<br />更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
     </div>
-    
+
 </body>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+<!-- <script type="text/javascript" src="https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
 <script>
 
-    arrStop =[]
-    for(i=0; i<16; i++) {
-        x=i*2.5+2.5
+    // append column to the HTML table
+    function appendColumn(table, columnName, arrData) {
+        var tbl = table, // table reference
+            i
+
+        newTable = document.createElement('table');
+        newTable.setAttribute('id', "tableToAppend")
+        newTable.innerHTML = tbl.innerHTML
+        // open loop for each row and append cell
+        for (i = 0; i < tbl.rows.length; i++) {
+            if (i == 0) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), columnName, 'col'); }
+            else { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), arrData[i - 1], 'col'); }
+        }
+        return newTable.innerHTML
+    }
+    // create DIV element and append to the table cell
+    function createCell(cell, text, style) {
+        var div = document.createElement('div'), // create DIV element
+            txt = document.createTextNode(text); // create text node
+        div.appendChild(txt);                    // append text node to the DIV
+        div.setAttribute('class', style);        // set DIV class attribute
+        div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+        cell.appendChild(div);                   // append DIV to the table cell
+    }
+    function deleteColumn(id, headerName, arrHeader) {
+
+        // newTable = document.createElement('table');
+        // newTable.setAttribute('id',"tableToPrint") 
+        // document.getElementById('tableToPrint').innerHTML = document.getElementById(id).innerHTML
+        var tbl = document.getElementById(id) // table reference
+        tblText = tbl.innerHTML
+
+
+        // cName = ["水站/補給站","配速調整","分段配速","分段時間","累積時間"]
+        // console.log(cName.indexOf('配速調整'));
+        // colToDelete = cName.indexOf('配速調整')
+
+        colToDelete = arrHeader.indexOf(headerName)
+
+
+        // lastCol = tbl.rows[0].cells.length - 1    // set the last column index
+        // console.log(lastCol);
+        i
+        newTable = document.createElement('table');
+        newTable.setAttribute('id', "tableToPrint")
+        newTable.innerHTML = tblText
+        console.log(newTable)
+
+        var j
+        // delete cells with index greater then 0 (for each row)
+        for (i = 0; i < tbl.rows.length; i++) {
+            // for (j = lastCol; j > 0; j--) {
+            //     tbl.rows[i].deleteCell(j);
+            // }
+            newTable.rows[i].deleteCell(colToDelete);
+        }
+        return newTable
+    }
+    if (1 < 0) {
+        // initinal table
+        table2 = document.createElement('table');
+        table2.setAttribute('id', "my-tbl3")
+        headingRow = document.createElement('tr')
+        header = document.createElement('thead')
+        headingRow = document.createElement('tr')
+        headingCell1 = document.createElement('td')
+        headingText1 = document.createTextNode('column_')
+        headingCell1.appendChild(headingText1)
+        headingRow.appendChild(headingCell1)
+        header.appendChild(headingRow)
+        table2.appendChild(header)
+        tblBody = document.createElement("tbody");
+        row = document.createElement("tr");
+        // Create a <td> element and a text node, make the text
+        // node the contents of the <td>, and put the <td> at
+        // the end of the table row
+        cell = document.createElement("td");
+        cellText = document.createTextNode('data1_');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+        table2.appendChild(tblBody);
+        console.log(table2.tHead.children[0])
+
+        function addRow(table, columnName, arrData) {
+
+            tbl = table
+            tr = tbl.tHead.children[0]
+            th = document.createElement('th');
+            th.innerHTML = columnName;
+            tr.appendChild(th);
+
+            tbodyRef = tbl.getElementsByTagName('tbody')[0];
+            // // Insert a row at the end of table
+            // var newRow = tbodyRef.insertRow();
+            // // Insert a cell at the end of the row
+            // var newCell = newRow.insertCell();
+            // // Append a text node to the cell
+            // var newText = document.createTextNode('new row');
+            // newCell.appendChild(newText);
+            // // console.log(table.rows.length)
+            // row = tbl.insertRow(tbl.rows.length)
+            data = arrData
+            // console.log(data.length)
+            // // creating all cells
+            for (var i = 0; i < data.length; i++) {
+                // var newRow = tbodyRef.insertRow();
+                // // Insert a cell at the end of the row
+                // var newCell = newRow.insertCell();
+                // // Append a text node to the cell
+                // var newText = document.createTextNode(data[i]);
+                // newCell.appendChild(newText);
+
+
+                //     row = document.createElement("tr");
+                //     cell = document.createElement("td");
+                //     cellText = document.createTextNode(data[i]);
+                //     cell.appendChild(cellText);
+                //     row.appendChild(cell);
+                //     tbl.body.appendChild(row);
+                //     table2.appendChild(tblBody);
+                // //     // creates a table row
+                //     createCell(tbl.getElementsByTagName('tbody')[i].insertCell(tbl.getElementsByTagName('tbody')[i].cells.length), data[i], 'row')
+                // createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i-1], 'col');
+            }
+            // // put the <tbody> in the <table>
+
+            console.log(tbl)
+            // return table
+        }
+    }
+
+    cName = ["水站/補給站", "配速調整", "分段配速", "分段時間", "累積時間"]
+
+    // 水站里程
+    arrStop = []
+    for (i = 0; i < 16; i++) {
+        x = i * 2.5 + 2.5
         arrStop.push(x)
     }
-    // console.log(arrStop)
+    // 關門時間 cutting time
+    arrCutTime = ["06:49", "07:09", "07:28", "07:48", "08:07", "08:28", "08:46", "09:06", "--:--", "--:--", "10:06", "10:25", "10:43", "11:03", "11:26", "11:42", "--:--"]
+    // 貼心提醒
+    arrRemind = ["起跑人多穩跑", "慢慢進入目標配速", "進入目標配速", "穩定呼吸不超速", "準備上中山橋", "上下坡注意安全", "穩配不超速！", "準備上高架", "上坡穩住步頻跟呼吸", "請勿超速", "下橋注意安全", "進河濱", "不要慢！！", "沒有牆！！", "小心腳步，安全為主", "準備開一個！", "開！"]
 
+
+    // 初始表格: 1 column and 17+1 row
     text = "<table id='my-tbl' border='1' cellpadding='6'>";
-    text = text += "<tr><td>水站/補給站</td>";
-    text = text += "<td>配速調整</td>";
-    text = text += "<td>分段配速(min/km)</td>";
-    // text = text += "<td title='(扣掉進水站時間)'>即時配速(min/km)</td>";
-    text = text += "<td>分段時間</td>";
-    text = text += "<td>累積時間</td></tr>";
-
+    text += "<tr><td>里程</td>";
+    // text += "<td>配速調整</td>";
+    // text += "<td>分段配速</td>";
+    // text += "<td title='(扣掉進水站時間)'>即時配速(min/km)</td>";
+    // text += "<td>分段時間</td>";
+    // text += "<td>累積時間</td></tr>";
     for (i = 0; i < arrStop.length; i++) {
         text += "<tr><td>" + arrStop[i] + "k</td></tr>";
     }
     text += "<tr><td>終點</td></tr></table>";
 
-
+    // 配速調整
     let time_compensate = [{
         name: 'lv0',
-        cp_each: [5,0,0,0,0,2,0,0,8,0,-5,0,0,0,0,0,0,],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
+        cp_each: [5, 0, 0, 0, 0, 2, 0, 0, 8, 0, -5, 0, 0, 0, 0, 0, 0,],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
         cp_total: 25, //地形影響時間調整(上面加總後*2.5)
         cp_stop: 2 // 進站時間差(ie.進站補給花多久時間)
 
     }, {
         name: 'lv1',
-        cp_each: [15,8,0,0,0,3,0,0,10,0,-5,0,0,0,0,0,0],
+        cp_each: [15, 8, 0, 0, 0, 3, 0, 0, 10, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 77.5,
         cp_stop: 2.4
     }, {
         name: 'lv2',
-        cp_each: [20,10,0,0,0,5,0,0,12,0,-5,0,0,0,0,0,0],
+        cp_each: [20, 10, 0, 0, 0, 5, 0, 0, 12, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 105,
         cp_stop: 3
     }, {
         name: 'lv3',
-        cp_each: [25,20,0,0,0,6,0,0,15,0,-5,0,0,0,0,0,0],
+        cp_each: [25, 20, 0, 0, 0, 6, 0, 0, 15, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 152.5,
         cp_stop: 3
     }, {
         name: 'lv4',
-        cp_each: [30,25,0,0,0,7,0,0,18,0,-5,0,0,0,0,0,0],
+        cp_each: [30, 25, 0, 0, 0, 7, 0, 0, 18, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 187.5,
         cp_stop: 3
     }, {
         name: 'lv5',
-        cp_each: [30,25,0,0,0,8,0,0,20,0,-5,0,0,0,0,0,0],
+        cp_each: [30, 25, 0, 0, 0, 8, 0, 0, 20, 0, -5, 0, 0, 0, 0, 0, 0],
         cp_total: 195,
         cp_stop: 4
     }]
@@ -181,16 +342,16 @@
         // })
         // console.log(rs)
         // return rs
-        
+
     }
 
-    function loadHome(){
+    function loadHome() {
         // 第一次會是空值
         // 如果有輸入過會記得
         // let finishTime = localStorage.getItem('time')
         // document.getElementById('time').value = finishTime
         // console.log(finishTime) 
-        
+
         let hh = localStorage.getItem('hh')
         document.getElementById('hh').value = hh
         let mm = localStorage.getItem('mm')
@@ -209,113 +370,316 @@
         // })
     }
 
+    //convert table to image         
+    //click event
+    //  var convertBtn = document.getElementById("convert");
+    //  convertBtn.addEventListener('click', convertToImage);
+
+    function convertToImage() {
+        console.log("enter")
+        // var resultDiv = document.getElementById("dllink");
+        // console.log(resultDiv)
+        html2canvas(document.getElementById("my-tbl"), {
+            onrendered: function (canvas) {
+                var img = canvas.toDataURL();
+                dllink.innerHTML = '<a download="test.jpeg" href="' + img + '">test</a>';
+            }
+        });
+    }
+    function downloadwithbrowser() {
+        // var prtContent = document.getElementById("my-tbl");
+        // var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+        // WinPrint.document.write(prtContent.innerHTML);
+        // WinPrint.document.close();
+        // WinPrint.focus();
+        // WinPrint.print();
+        // WinPrint.close();
+        // appendColumn('my-tbl',"關門時間",arrCutTime)
+        // tableToPrint = deleteColumn('my-tbl',"配速調整")
+
+        // copy result table
+        var tbl = document.getElementById('my-tbl') // table reference
+
+        tblText = tbl.innerHTML
+        console.log(tblText)
+
+
+        tableToPrint = document.createElement('table');
+        tableToPrint.setAttribute('id', "tableToPrint")
+        tableToPrint.innerHTML = tblText
+        console.log(tableToPrint.innerHTML)
+
+        // console.log(document.getElementById('tableToPrint'))
+
+        // tableToPrint.innerHTML = appendColumn(document.getElementById('tableToPrint'),"關門",arrCutTime)
+        // console.log(tableToPrint)
+        arrRemind_short = ["人多", "熱開", "目標配速", "不超速", "上橋", "上下坡", "不超速", "上高架", "上坡穩住", "勿超速", "下橋", "進河濱", "不要慢", "沒有牆", "快到了", "準備開", "開！"]
+        arrRemind_short = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+
+        var tableInfo = Array.prototype.map.call(document.querySelectorAll('#my-tbl tr'), function (tr) {
+            return Array.prototype.map.call(tr.querySelectorAll('td'), function (td) {
+                if (td.querySelectorAll('div') != null) return Array.prototype.map.call(td.querySelectorAll('div'), function (div) { return div.innerHTML; });
+                else { return td.innerHTML; }
+            });
+        });
+        arrHeader = tableInfo[0]
+        console.log(arrHeader)
+
+        // var sTable = deleteColumn('my-tbl',"配速調整",arrHeader)
+        var sTable = deleteColumn('my-tbl', "分段時間", arrHeader)
+        console.log(sTable)
+
+        sTable.innerHTML = sTable.innerHTML.replace("累積時間", "通過").replace("水站/補給站", "里程").replace("分段配速", "配速").replace("分段時間", "耗時")
+        sTable.innerHTML = appendColumn(sTable, "關門", arrCutTime)
+        sTable.innerHTML = appendColumn(sTable, "提醒", arrRemind_short)
+
+
+
+
+        // var sTable = document.getElementById('my-tbl');
+        sTable.className = 'page';
+        // console.log(sTable);
+        // var style = "<style>";
+        // style = style + "table, th, td {background-color: red; width: 80%; margin: auto; border: solid 1px #DDD; border-collapse: collapse;";
+        // style = style + "text-align: center;}";
+        // style = style + "</style>";
+
+        // CREATE A WINDOW OBJECT.
+        var win = window.open('', '', 'height=900,width=800');
+
+        var htmlToPrint = '' +
+            '<style type="text/css">' +
+            // '.page {width: 21cm;min-height: 29.7cm;padding: 2cm;margin: 1cm auto;border: 1px #D3D3D3 solid;border-radius: 5px;background: white;box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);}'+
+            // '@page {size: A4;margin: 0;}'+
+            // '@media print {  html, body {    width: 210mm;    height: 297mm;  }'+
+            'table th, table td {' +
+            'text-align: center;' +
+            'border:1px solid #000;' +
+            'width: auto;' +
+            'padding:0.5em;' +
+            "font-size: 0.8em;" +
+            '}' +
+            'table {margin-top: 200px;}' +
+            '</style>';
+        htmlToPrint += sTable.outerHTML;
+        // console.log(htmlToPrint);
+        win.document.write(htmlToPrint);
+        // win.document.write('<html><head>');
+        // win.document.write('<title>Profile</title>');   // <title> FOR PDF HEADER.
+        // win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+        // win.document.write('</head>');
+        // win.document.write('<body>');
+        // win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+        // win.document.write('</body></html>');
+
+
+        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+        win.print();    // PRINT THE CONTENTS.
+    }
+    function downloadPDFWithBrowserPrint() {
+        window.print();
+    }
+    function downloadPDFWithjsPDF() {
+        var doc = new jspdf.jsPDF();
+        doc.html(document.getElementById('my-tbl'), {
+            callback: function (doc) {
+                doc.save();
+            },
+            // margin: [60, 60, 60, 60],
+            x: 10,
+            y: 10
+        });
+    }
+    function download() {
+        var element = $("#my-tbl"); // 這個dom元素是要匯出pdf的div容器
+        var w = element.width(); // 獲得該容器的寬
+        var h = element.height(); // 獲得該容器的高
+        var offsetTop = element.offset().top; // 獲得該容器到文件頂部的距離
+        var offsetLeft = element.offset().left; // 獲得該容器到文件最左的距離
+        var canvas = document.createElement("canvas");
+        var abs = 0;
+        var win_i = $(window).width(); // 獲得當前可視視窗的寬度（不包含滾動條）
+        var win_o = window.innerWidth; // 獲得當前視窗的寬度（包含滾動條）
+        if (win_o > win_i) {
+            abs = (win_o - win_i) / 2; // 獲得滾動條長度的一半
+        }
+        canvas.width = w * 2; // 將畫布寬&&高放大兩倍
+        canvas.height = h * 2;
+        var context = canvas.getContext("2d");
+        context.scale(2, 2);
+        context.translate(-offsetLeft - abs, -offsetTop);
+        // 這裡預設橫向沒有滾動條的情況，因為offset.left(),有無滾動條的時候存在差值，因此  
+        // translate的時候，要把這個差值去掉
+        html2canvas(element).then(function (canvas) {
+            var contentWidth = canvas.width;
+            var contentHeight = canvas.height;
+            //一頁pdf顯示html頁面生成的canvas高度;
+            var pageHeight = contentWidth / 592.28 * 841.89;
+            //未生成pdf的html頁面高度
+            var leftHeight = contentHeight;
+            //頁面偏移
+            var position = 0;
+            //a4紙的尺寸[595.28,841.89]，html頁面生成的canvas在pdf中圖片的寬高
+            var imgWidth = 595.28;
+            var imgHeight = 592.28 / contentWidth * contentHeight;
+
+            var pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+            var pdf = new jspdf.jsPDF('', 'pt', 'a4');
+
+            //有兩個高度需要區分，一個是html頁面的實際高度，和生成pdf的頁面高度(841.89)
+            //當內容未超過pdf一頁顯示的範圍，無需分頁
+            if (leftHeight < pageHeight) {
+                pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
+            } else { // 分頁
+                while (leftHeight > 0) {
+                    pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                    leftHeight -= pageHeight;
+                    position -= 841.89;
+                    //避免新增空白頁
+                    if (leftHeight > 0) {
+                        pdf.addPage();
+                    }
+                }
+            }
+            pdf.save('我的簡歷.pdf');
+        })
+    }
+
+
+    function clean() {
+        // uid.value = ''
+        // uid.style.display = null
+        hh.value = ''
+        mm.value = ''
+        ss.value = ''
+        hh.style.display = null
+        mm.style.display = null
+        ss.style.display = null
+        localStorage.removeItem('hh')
+        localStorage.removeItem('mm')
+        localStorage.removeItem('ss')
+        document.getElementById("result").innerHTML = ''
+
+        render()
+
+    }
+
     function cal() {
 
         let hhh = document.getElementById('hh').value
         let mmm = document.getElementById('mm').value
         let sss = document.getElementById('ss').value
-        localStorage.setItem('hh', hhh) 
-        localStorage.setItem('mm', mmm) 
-        localStorage.setItem('ss', sss) 
-        fTime = moment(hhh+':'+mmm+':'+sss,"HH:mm:ss")
+        localStorage.setItem('hh', hhh)
+        localStorage.setItem('mm', mmm)
+        localStorage.setItem('ss', sss)
+        fTime = moment(hhh + ':' + mmm + ':' + sss, "HH:mm:ss")
 
         var lv;
-        if(fTime.isBefore(moment("3:20:00","HH:mm:ss"))) lv = 0
-        if(fTime.isBetween(moment("3:20:00","HH:mm:ss"),moment("3:45:00","HH:mm:ss"),null,'[)')) lv = 1
-        if(fTime.isBetween(moment("3:45:00","HH:mm:ss"),moment("4:00:00","HH:mm:ss"),null,'[)')) lv = 2
-        if(fTime.isBetween(moment("4:00:00","HH:mm:ss"),moment("4:30:00","HH:mm:ss"),null,'[)')) lv = 3
-        if(fTime.isBetween(moment("4:30:00","HH:mm:ss"),moment("5:00:00","HH:mm:ss"),null,'[)')) lv = 4
-        if(fTime.isSameOrAfter(moment("5:00:00","HH:mm:ss"))) lv = 5
+        if (fTime.isBefore(moment("3:20:00", "HH:mm:ss"))) lv = 0
+        if (fTime.isBetween(moment("3:20:00", "HH:mm:ss"), moment("3:45:00", "HH:mm:ss"), null, '[)')) lv = 1
+        if (fTime.isBetween(moment("3:45:00", "HH:mm:ss"), moment("4:00:00", "HH:mm:ss"), null, '[)')) lv = 2
+        if (fTime.isBetween(moment("4:00:00", "HH:mm:ss"), moment("4:30:00", "HH:mm:ss"), null, '[)')) lv = 3
+        if (fTime.isBetween(moment("4:30:00", "HH:mm:ss"), moment("5:00:00", "HH:mm:ss"), null, '[)')) lv = 4
+        if (fTime.isSameOrAfter(moment("5:00:00", "HH:mm:ss"))) lv = 5
         // console.log("lv:"+lv);
-        
+
         // 平均配速(毫秒)
-        pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()/42.2
-        x=moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
-        paceAdjust=moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total*1000))).asMilliseconds()/42.2
-        
+        pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds() / 42.2
+        x = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
+        paceAdjust = moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total * 1000))).asMilliseconds() / 42.2
+
         paceAdjustSlope = [] // 坡度校正後配速
         paceAdjustStop = [] // 進站時間校正後配速
         paceTime = [] // 分段時間
         timeAccumulated = [] // 時間加總
-        
         sum = 0
-        time_compensate[lv].cp_each.forEach(function(item,i) {
+        time_compensate[lv].cp_each.forEach(function (item, i) {
             // (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000:sum = sum+2.2*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000
-            (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000):sum = sum+2.2*(paceAdjust+item*1000)
+            (i < time_compensate[lv].cp_each.length - 1) ? sum = sum + 2.5 * (paceAdjust + item * 1000) : sum = sum + 2.2 * (paceAdjust + item * 1000)
             timeAccumulated.push(moment.utc(sum).format("H:mm:ss"))
-            paceTime.push(moment.utc((i<time_compensate[lv].cp_each.length-1)?2.5*(paceAdjust+item*1000):2.2*(paceAdjust+item*1000)).format("mm:ss"))
-            paceAdjustSlope.push(moment.utc(paceAdjust+item*1000).format("mm:ss"))
-            paceAdjustStop.push(moment.utc(paceAdjust+item*1000-time_compensate[lv].cp_stop*1000).format("mm:ss"))
+            paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 2.2 * (paceAdjust + item * 1000)).format("mm:ss"))
+            paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m:ss"))
+            paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
         });
-        // console.log(paceAdjustSlope)
-        // console.log(paceAdjustStop)
-        // console.log(timeAccumulated)
-        // console.log(text)
 
         document.getElementById("result").innerHTML = text
-        
-        
-        // create DIV element and append to the table cell
-        function createCell(cell, text, style) {
-            var div = document.createElement('div'), // create DIV element
-                txt = document.createTextNode(text); // create text node
-            div.appendChild(txt);                    // append text node to the DIV
-            div.setAttribute('class', style);        // set DIV class attribute
-            div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
-            cell.appendChild(div);                   // append DIV to the table cell
-        }
-        let table = document.getElementById("my-tbl")
-        for (i = 1; i < table.rows.length; i++) {
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i-1], 'col');
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustSlope[i-1], 'col');
-            // createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustStop[i-1], 'col');
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceTime[i-1], 'col');            
-            createCell(table.rows[i].insertCell(table.rows[i].cells.length), timeAccumulated[i-1], 'col');
-        }
 
+        // let table = document.getElementById("my-tbl")
+        // for (i = 1; i < table.rows.length; i++) {
+        //     //在第i row 的第 cell.length 位置插入cell資料
+        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i-1], 'col');
+        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustSlope[i-1], 'col');
+        //     // createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustStop[i-1], 'col');
+        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceTime[i-1], 'col');            
+        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), timeAccumulated[i-1], 'col');
+        // }
+
+        // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'),"配速調整",time_compensate[lv].cp_each)
+        document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "分段配速", paceAdjustSlope)
+        document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "分段時間", paceTime)
+        document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "累積時間", timeAccumulated)
+        document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "配速調整", arrRemind)
+
+
+
+
+
+        // summary 區塊
         textUpdate = document.getElementById("result").innerHTML;
+        summary = "<div id='summary'><table border='0' cellpadding='0'>";
+        summary += "<tr><td><small>調整前目標均速(目標時間/距離)</small></td><td style='text-align:right;padding-left:5px;'><b>" + moment.utc(pace).format("mm:ss") + "/km</b></td></tr>";
+        summary += "<tr><td><small>調整後目標均速(上下坡、人潮擁擠)</small></td><td style='text-align:right;padding-left:5px;'><b>" + moment.utc(paceAdjust).format("mm:ss") + "/km</b></td></tr>";
+        // summary += "<tr><td>進站時間調整參數</td><td style='text-align:right;padding-left:10px;'><b>-"+time_compensate[lv].cp_stop+"</b></td></tr>";
+        summary += "</table></div>";
+        document.getElementById("result").innerHTML = summary + textUpdate;
 
-        summary2 = "<div id='summary'><table border='0' cellpadding='0'>";
-        summary2 = summary2 + "<tr><td>調整前目標均速<small>(目標時間/距離)</small></td><td style='text-align:right;padding-left:5px;'><b>"+moment.utc(pace).format("mm:ss")+"/km</b></td></tr>";
-        summary2 = summary2 + "<tr><td>調整後目標均速<small>(上下坡、人潮擁擠)</small></td><td style='text-align:right;padding-left:5px;'><b>"+moment.utc(paceAdjust).format("mm:ss")+"/km</b></td></tr>";
-        // summary2 = summary2 += "<tr><td>進站時間調整參數</td><td style='text-align:right;padding-left:10px;'><b>-"+time_compensate[lv].cp_stop+"</b></td></tr>";
-        summary2 += "</table></div>";
-       
-        summary = "<div>目標平均配速:<small>(不考慮地形、人潮擁擠)</small><b>"+moment.utc(pace).format("mm:ss")+"/km</b></div>"
-        summary = summary+"<div>調整後目標平均配速:<small>(考慮地形、人潮擁擠)</small><b>"+moment.utc(paceAdjust).format("mm:ss")+"/km</b></div>"
-        summary = summary+"<div>進站時間調整參數:<b>-"+time_compensate[lv].cp_stop+"</b></div>"
-        document.getElementById("result").innerHTML = summary2+textUpdate;
-        
-        
+        // 清除按鈕
         clr = document.createElement("div");
-        clr.innerHTML = '<small><a href="" onclick="clean()">清除重來</a></small>';
+        clr.innerHTML = '<small style="color:#9C1AA9;cursor:pointer;"><a onclick="clean()"><u>清除重來</u></a></small>、<small style="color:#9C1AA9;cursor:pointer;"><a onclick="downloadwithbrowser()"><u>下載</u></a></small><div id="dllink"></div>';
         clr.className = 'dynamic-btn';
         document.getElementById("result").appendChild(clr)
-        
+
+        //下載按鈕
+        // dwnld = document.createElement("div"); 
+        // dwnld.setAttribute("id", "convert");    
+        // dwnld.className = 'dynamic-btn';
+        // dwnld.innerHTML ='<small style="color:#9C1AA9;cursor:pointer;"><a><u>下載</u></a></small><div id="dllink"></div>'
+        // document.getElementById("result").appendChild(dwnld)
+        // var convertBtn = document.getElementById("convert");
+        // convertBtn.addEventListener('click', downloadwithbrowser);  
+        /// download test
+        // convertBtn.addEventListener('click', convertToImage);  
+        // convertBtn.addEventListener('click', downloadPDFWithBrowserPrint); 
+        // convertBtn.addEventListener('click', downloadPDFWithjsPDF);  
+        // convertBtn.addEventListener('click', download);  
+
+
+
+
+
+
+        // document.querySelector('#browserPrint').addEventListener('click', downloadPDFWithBrowserPrint);
+
+        // dwnld.innerHTML = '<small><a href="" onclick="convertToImage()">下載</a></small>';
+        // console.log(dwnld)
+        // dwnld.className = 'dynamic-btn';
+
+
+        // res = document.getElementById('result').innerHTML
+        // console.log(res)
+        // document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<div id='dllink'></div>"
+
         document.getElementById("result").style.display = "none"
 
         // rs = show(times)
         render()
-        
+
     }
 
-    function clean() {
-      // uid.value = ''
-      // uid.style.display = null
-      hh.value=''
-      mm.value=''
-      ss.value=''
-      hh.style.display = null
-      mm.style.display = null
-      ss.style.display = null
-      localStorage.removeItem('hh')
-      localStorage.removeItem('mm')
-      localStorage.removeItem('ss')
-      document.getElementById("result").innerHTML = ''
-      
-      render()
-      
-    }
+
+
 
 </script>
+
 </html>

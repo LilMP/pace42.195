@@ -681,10 +681,14 @@
         paceBand_right.appendChild(sTable2)
         console.log(paceBand_right)
 
+        explain = document.createElement('div')
+        explain.setAttribute('class', 'explain')
+        explain.innerHTML = "<small>按下「列印配速手環」後，會跳出依據模擬結果產生的配速表供下載。使用者儲存本頁內容(A4)即可製作專屬於自己的配速手環!</br></br><b>使用說明:</b></br>提供兩種不同內容的手環給使用者參考，左邊為【里程、分段、通過】組合，右邊為【里程、關門、提醒】組合，使用者可以在提醒欄位寫上給自己的提醒事項!!</br></br><b>手環製作:</b></br>列印出來後，護貝或用膠帶黏貼正反兩面後，就有一個防水的配速手環囉~</small>"
+
         paceBand = document.createElement('div')
         paceBand.appendChild(paceBand_left)
         paceBand.appendChild(paceBand_right)
-
+        paceBand.appendChild(explain)
 
 
 
@@ -721,7 +725,8 @@
             // '@page {size: A4;margin: 0;}'+
             // '@media print {  html, body {    width: 210mm;    height: 297mm;  }'+
             '.customRemind {width:52px;}' +
-            '.halfBand { display:inline-block;}' +
+            '.explain {width:160px;}' +
+            '.halfBand, .explain { display:inline-block;}' +
             '.summary3 { margin:200px 50px 0px 50px;text-align:center;}' +
             'table th, table td {' +
             'text-align: center;' +

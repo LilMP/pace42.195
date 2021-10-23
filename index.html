@@ -755,7 +755,7 @@
             "table>tbody>tr:nth-child(1)>td>div {border-bottom: 2px solid gray;font-weight:bold;}" +
             "*{font-family: Microsoft JhengHei;font-size: 1em;}" +
             '@page { size: A4 landscape; margin: 0px; }' + // 加這行列印時轉橫向 (直向portrait) 
-            "@media print {body {-webkit-print-color-adjust: exact;font-size: 0.8em;  margin:4px;}}" + // 加這行列印時才會有顏色
+            "@media print {body {-webkit-print-color-adjust: exact;font-size: 0.8em;  margin:0}}" + // 加這行列印時才會有顏色
             '</style>';
         // htmlToPrint += sTable.outerHTML;
         htmlToPrint += paceBand.outerHTML;

@@ -285,7 +285,8 @@
         <table id="tblToPrint"></table>
     </div>
     <div class="footer">
-        <small>無廣告、無營利<br />更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
+        <small>輸入目標完賽時間、自製配速手環，就是這麼簡單！<br />無廣告、無營利<br>更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195"
+                target="_blank">這裡</a></small>
     </div>
 
 </body>
@@ -674,19 +675,19 @@
         paceBand_left.setAttribute('class', 'halfBand')
         paceBand_left.innerHTML += summary3
         paceBand_left.appendChild(sTable)
-        paceBand_left.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:195px;'>在終點 遇見更好的自己</div>"
+        paceBand_left.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:179px;'>2021.12.29</br>在終點 遇見更好的自己</div>"
         console.log(paceBand_left)
 
         paceBand_right = document.createElement('div')
         paceBand_right.setAttribute('class', 'halfBand')
         paceBand_right.innerHTML += summary3
         paceBand_right.appendChild(sTable2)
-        paceBand_right.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:195px;'>在終點 遇見更好的自己</div>"
+        paceBand_right.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:179px;'>2021.12.29</br>在終點 遇見更好的自己</div>"
         console.log(paceBand_right)
 
         explain = document.createElement('div')
         explain.setAttribute('class', 'explain')
-        explain.innerHTML = "<small>按下<span style='color:#9C1AA9'><u>製作配速手環</u></span>後，會跳出依據模擬結果產生的配速表供下載。</br>使用者列印本頁內容即可製作專屬於自己的配速手環!</br></br><b>手環內容說明:</b></br>考量不同等級的跑者需求，同時兼顧簡潔與實用性(不想讓手環太笨重)，提供兩款手環樣式：</br>A款顯示<span style='background-color:#A9CEEA'>【里程、分段(配速)、通過(時間)】</span></br>B款顯示<span style='background-color:#FFC6D0'>【里程、關門(時間)、自訂提醒】</span></br>使用者可以在提醒欄位寫上給自己的提醒事項!!</br>(ex: 進站、補膠、上橋、穩住...等自由發揮)</br></br><b>手環製作:</b></br>已貼心預設A4橫式列印<sup style='font-size:x-small;color:#2774B2'>[1]</sup>，列印出來後，沿虛線<sup style='font-size:x-small;color:#2774B2'>[2]</sup>剪下手環，經護貝或用膠帶黏貼正反兩面後，就有一個防水的配速手環囉~</br></br><sup style='font-size:x-small;color:#2774B2'>[1]:<span style='color:black;'>經實測發現，A4的寬度21cm 剛好約等於一般人手圍(是不是很神奇!!)</span></sup></br><sup style='font-size:x-small;color:#2774B2'>[2]:<span style='color:black;'>沒線對不準剪不直的手殘黨必備</span></sup></small>"
+        explain.innerHTML = "<small>按下<span style='color:#9C1AA9'><u>製作配速手環</u></span>後，會跳出依據模擬結果產生的配速表供下載。</br>列印本頁即可製作自己專屬的配速手環!</br></br><b>手環說明:</b></br>考量不同類型的跑者需求，同時兼顧簡潔與實用，提供兩款手環樣式：</br><span style='background-color:#A9CEEA'>A款顯示【里程、分段(配速)、通過(時間)】</span></br><span style='background-color:#FFC6D0'>B款顯示【里程、關門(時間)、自訂提醒】</span></br>在提醒欄位寫上給自己的提醒事項吧!!</br>(ex: 進站、補膠、上橋、穩住...自由發揮)</br></br><b>手環製作:</b></br>已貼心預設A4橫式列印<sup style='font-size:x-small;color:#2774B2'>[1]</sup>，列印出來後，沿虛線<sup style='font-size:x-small;color:#2774B2'>[2]</sup>剪下手環，經護貝或用膠帶黏貼正反兩面後，就有一個防水的配速手環囉~</br></br>最後<blockquote style='padding: 5px 20px 15px 8px;font-weight:bold;color:black;border-left:0.25em solid #8b949e;margin: 10px 50px 0px 0px;background-color:#eeeeee'>願過年與你/妳同在❤️</br><span style='display:block;font-size:x-small;float:right;'>--貓女姐姐</span></blockquote></br><hr><sup style='font-size:x-small;color:#2774B2'>[1]:<span style='color:black;'>&nbsp;經實測，A4的寬度21cm剛好約等於一般人手圍大小</br>&nbsp;&nbsp;&emsp;(是不是很神奇!!)</span></sup></br><sup style='font-size:x-small;color:#2774B2'>[2]:<span style='color:black;'>&nbsp;沒有輔助線剪不直的手殘黨(例如我)必備</br>&nbsp;&nbsp;&emsp;(是不是很貼心!!)</span></sup></br></br><span style='font-size:x-small;'>Contributor: 小M平</span></small>"
 
         paceBand = document.createElement('div')
         paceBand.appendChild(paceBand_left)
@@ -719,7 +720,7 @@
         // style = style + "</style>";
 
         // CREATE A WINDOW OBJECT.
-        var win = window.open('', '', 'height=870,width=1000');
+        var win = window.open('', '', 'height=880,width=780');
 
         var htmlToPrint = '' +
             '<style type="text/css">' +
@@ -727,6 +728,7 @@
             // '@page {size: A4;margin: 0;}'+
             // '@media print {  html, body {    width: 210mm;    height: 297mm;  }'+
             '.customRemind {width:52px;}' +
+            'blockquote::before{font-family:Arial; content: "\\201C";  color:#8b949e; font-size:2em;  left: 10px;  top:-10px;}' + //淡綠色#78C0A8 https://codepen.io/jimmycow/pen/LmjVaz
             '.explain {display:inline-block;width:310px;vertical-align:top;padding-top:170px;}' +
             // '.halfBand, .explain { display:inline-block;padding-top:100px; border-left:1px dashed gray;border-right:1px dashed gray;}' +
             '.halfBand { display:inline-block;padding-top:100px; border-left:1px dashed gray;border-right:1px dashed gray;}' +

@@ -51,7 +51,7 @@
         }
 
         .even {
-            border-bottom: 1px dashed gray;
+            border-bottom: 2px dashed gray;
         }
 
         #my-tbl>tbody>tr {
@@ -72,7 +72,7 @@
 
         #my-tbl>tbody>tr>td>div {
             /* height: 100%; */
-            /* padding: 6px; */
+            padding: 3px;
             /* border: 1px double black; */
         }
 
@@ -485,7 +485,7 @@
     // 關門時間 cutting time
     arrCutTime = ["06:49", "07:09", "07:28", "07:48", "08:07", "08:28", "08:46", "09:06", "--:--", "--:--", "10:06", "10:25", "10:43", "11:03", "11:26", "11:42", "--:--"]
     // 貼心提醒
-    arrRemind = ["起跑人多穩跑", "慢慢進入目標配速", "進入目標配速", "穩定呼吸不超速", "準備上中山橋", "上下坡注意安全", "穩配不超速！", "準備上高架", "上坡穩住步頻跟呼吸", "請勿超速", "下橋注意安全", "進河濱", "不要慢！！", "沒有牆！！", "小心腳步，安全為主", "準備開一個！", "開！"]
+    arrRemind = ["起跑人多、穩跑", "慢慢進入目標配速", "進入目標配速", "穩定呼吸不超速", "準備上中山橋", "上下坡注意安全", "穩配不超速！", "準備上高架", "上坡穩住步頻跟呼吸", "請勿超速", "下橋注意安全", "進河濱", "不要慢！！", "沒有牆！！", "小心腳步，安全為主", "準備開一個！", "開！"]
 
     function addTable(tableID) {
         var table = document.createElement("table");
@@ -652,10 +652,11 @@
         // });
 
         summary3 = ''
-        summary3 += "<div id='summary3' class='summary3'><div><b>2021台北馬拉松</b></div>"
+        summary3 += "<div id='summary3' class='summary3'><div><b>2021台北馬配速手環</b></div>"
         // summary3 += "<div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
         // summary3 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
-        summary3 += "<div style='margin-bottom:5px;'>目標配速：" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</div></div>"
+        summary3 += "<div>時間 " + fTime.format("H:mm:ss") + "</div>"
+        summary3 += "<div style='margin-bottom:5px;'>配速 " + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</div></div>"
 
 
 
@@ -673,23 +674,24 @@
         paceBand_left.setAttribute('class', 'halfBand')
         paceBand_left.innerHTML += summary3
         paceBand_left.appendChild(sTable)
+        paceBand_left.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:195px;'>在終點 遇見更好的自己</div>"
         console.log(paceBand_left)
 
         paceBand_right = document.createElement('div')
         paceBand_right.setAttribute('class', 'halfBand')
         paceBand_right.innerHTML += summary3
         paceBand_right.appendChild(sTable2)
+        paceBand_right.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:195px;'>在終點 遇見更好的自己</div>"
         console.log(paceBand_right)
 
         explain = document.createElement('div')
         explain.setAttribute('class', 'explain')
-        explain.innerHTML = "<small>按下「列印配速手環」後，會跳出依據模擬結果產生的配速表供下載。使用者儲存本頁內容(A4)即可製作專屬於自己的配速手環!</br></br><b>使用說明:</b></br>提供兩種不同內容的手環給使用者參考，左邊為【里程、分段、通過】組合，右邊為【里程、關門、提醒】組合，使用者可以在提醒欄位寫上給自己的提醒事項!!</br></br><b>手環製作:</b></br>列印出來後，護貝或用膠帶黏貼正反兩面後，就有一個防水的配速手環囉~</small>"
+        explain.innerHTML = "<small>按下<span style='color:#9C1AA9'><u>列印配速手環</u></span>後，會跳出依據模擬結果產生的配速表供下載。</br>使用者列印本頁內容即可製作專屬於自己的配速手環!</br></br><b>手環內容說明:</b></br>考量不同等級的跑者需求，同時兼顧簡潔與實用性(不想讓手環太笨重)，提供兩款手環樣式：</br>A款顯示<span style='background-color:#A9CEEA'>【里程、分段(配速)、通過(時間)】</span></br>B款顯示<span style='background-color:#FFC6D0'>【里程、關門(時間)、自訂提醒】</span></br>使用者可以在提醒欄位寫上給自己的提醒事項!!</br>(ex: 進站、補膠、上橋、穩住...等自由發揮)</br></br><b>手環製作:</b></br>已貼心預設A4橫式列印<sup style='font-size:x-small;color:#2774B2'>[1]</sup>，列印出來後，沿虛線<sup style='font-size:x-small;color:#2774B2'>[2]</sup>剪下手環，經護貝或用膠帶黏貼正反兩面後，就有一個防水的配速手環囉~</br></br><sup style='font-size:x-small;color:#2774B2'>[1]:<span style='color:black;'>經實測發現，A4的寬度21cm 剛好約等於一般人手圍(是不是很神奇!!)</span></sup></br><sup style='font-size:x-small;color:#2774B2'>[2]:<span style='color:black;'>沒線對不準剪不直的手殘黨必備</span></sup></small>"
 
         paceBand = document.createElement('div')
         paceBand.appendChild(paceBand_left)
         paceBand.appendChild(paceBand_right)
         paceBand.appendChild(explain)
-
 
 
 
@@ -717,7 +719,7 @@
         // style = style + "</style>";
 
         // CREATE A WINDOW OBJECT.
-        var win = window.open('', '', 'height=900,width=800');
+        var win = window.open('', '', 'height=870,width=1000');
 
         var htmlToPrint = '' +
             '<style type="text/css">' +
@@ -725,32 +727,35 @@
             // '@page {size: A4;margin: 0;}'+
             // '@media print {  html, body {    width: 210mm;    height: 297mm;  }'+
             '.customRemind {width:52px;}' +
-            '.explain {width:160px;}' +
-            '.halfBand, .explain { display:inline-block;}' +
-            '.summary3 { margin:200px 50px 0px 50px;text-align:center;}' +
+            '.explain {display:inline-block;width:310px;vertical-align:top;padding-top:170px;}' +
+            // '.halfBand, .explain { display:inline-block;padding-top:100px; border-left:1px dashed gray;border-right:1px dashed gray;}' +
+            '.halfBand { display:inline-block;padding-top:100px; border-left:1px dashed gray;border-right:1px dashed gray;}' +
+            '.summary3 { margin:0px 0px 0px 0px;text-align:center;}' +
+            'body > div > div:nth-child(2), .explain {margin-left:50px}' + // band2 margin-left
             'table th, table td {' +
             'text-align: center;' +
             // 'border:1px solid #000;' +
             'width: auto;' +
             // 'padding:0px 8px 0px 8px;' +
             'padding:0px 0px 0px 0px;' +
-            "font-size: 1em;" +
+            // "font-size: 1em;" +
             '}' +
-            "@media print {body {-webkit-print-color-adjust: exact;}}" + // 加這行列印時才會有顏色
-            "#tblToPrint > tbody > tr > td > .even {background-color:#A9CEEA; }" +
-            "#tblToPrint > tbody > tr > td > .odd {background-color:#3e92d1;color:white; }" +
-            "#tblToPrint > tbody > tr > td > .even {border-bottom:2px dashed gray; }" +
-            "#tableToPrint > tbody > tr > td > .even {background-color:#FFECEF; }" +
-            "#tableToPrint > tbody > tr > td > .odd {background-color:#ffc6d0;color:black; }" +
-            "#tableToPrint > tbody > tr > td > .even {border-bottom:2px dashed black; }" +
+            "#tblToPrint > tbody > tr > td > .even {background-color:white; }" +
+            "#tblToPrint > tbody > tr > td > .odd {background-color:#A9CEEA;color:black; padding: 2px 0px;}" + //#3e92d1 深藍色 A9CEEA 淺藍色
+            "#tblToPrint > tbody > tr > td > .even {border-bottom:2px solid gray; padding: 2px 0px;}" +
+            "#tableToPrint > tbody > tr > td > .even {background-color:white; }" + // FFECEF 深粉紅 ffc6d0 淺粉紅
+            "#tableToPrint > tbody > tr > td > .odd {background-color:#ffc6d0; padding: 2px 0px;}" +
+            "#tableToPrint > tbody > tr > td > .even {border-bottom:2px solid gray;  padding: 2px 0px;}" +
             ".gray {background-color: #E5E5E5}" +
             // 'table {padding:5px;display:inline-block;margin: 0px 50px 0px 50px;border-collapse: collapse;border-spacing: 0;border: 1px solid black;}' +
-            'table {padding:0px;display:inline-block;margin: 0px 50px 0px 50px;border-collapse: collapse;border-spacing: 0;border: 2px solid black;}' +
+            'table {padding:0px;display:inline-block;margin: 0px 0px 0px 0px;border-collapse: collapse;border-spacing: 0;border: 2px solid black;}' +
             'td {height: 100%; }' +
             '.tCell {border-bottom: 1px dashed gray;}' +
-            '.tHeader {background-color: orange;}' +
-            "table>tbody>tr:nth-child(1)>td>div {border-bottom: 2px double gray;font-weight:bold;}" +
-            "*{font-family: Microsoft JhengHei;}" +
+            '.tHeader {background-color: #FFC700;  padding: 3px 0px;}' +
+            "table>tbody>tr:nth-child(1)>td>div {border-bottom: 2px solid gray;font-weight:bold;}" +
+            "*{font-family: Microsoft JhengHei;font-size: 1em;}" +
+            '@page { size: A4 landscape; margin: 0px; }' + // 加這行列印時轉橫向 (直向portrait) 
+            "@media print {body {-webkit-print-color-adjust: exact;font-size: 0.8em;  margin:4px;}}" + // 加這行列印時才會有顏色
             '</style>';
         // htmlToPrint += sTable.outerHTML;
         htmlToPrint += paceBand.outerHTML;

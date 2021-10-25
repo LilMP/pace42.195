@@ -180,15 +180,27 @@
         }
 
         .share-btn {
-            padding-top: 1px;
-            padding-left: 5px;
+            color: white;
+            /* background: gray; */
+            padding-top: 2px;
+            padding-left: 6px;
             cursor: pointer;
             position: relative;
             border: none;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             z-index: 2;
+        }
+
+        .social-media-btn:nth-child(1) {
+            background: #1877F2;
+            /* color: #1877F2; */
+        }
+
+        .social-media-btn:nth-child(2) {
+            background: #FF7D7D;
+            /* color: #FF7D7D; */
         }
 
         /* .cellText {
@@ -204,7 +216,7 @@
         #result {
             /* margin-bottom: 20pt; */
             display: none;
-            padding: 0 0 5px 0;
+            /* padding: 0 0 5px 0; */
             text-align: center;
             /* box-shadow: 0 0 15px #4b4a46; */
         }
@@ -239,8 +251,8 @@
             margin-top: 5px;
         }
 
-        #tblFooterBtns>small>a>u {
-            color: #9C1AA9;
+        #tblFooterBtns>small>a {
+            /* color: #9C1AA9; */
             cursor: pointer;
             display: inline;
             font-size: 1.2em;
@@ -360,22 +372,23 @@
     </div>
     <hr>
     <div class="footer">
-        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a>&emsp;</small>
-        <div class="container" style="display:inline-block">
-            <button class="share-btn" id='shareweb'
+        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
+        </br>
+        <small>※ 注意：非官方工具 ※&emsp;</small>
+        <div class="container">
+            <button class="share-btn social-media-btn" id='shareweb'
                 onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://lilmp.github.io/pace42.195/','width=626,height=436');return false;">
                 <!-- <i class="fas fa-share-alt" -->
                 <i class="fab fa-facebook-f"></i>
             </button>
-            <button class="share-btn" onclick="share()"><i class="fas fa-share-alt"></i></button>
+            <button class="share-btn social-media-btn" onclick="share()"><i class="fas fa-share-alt"></i></button>
             <!-- <div class="share-options">
                 <p class='title'>share</p>
                 <img class='title'
                     src="https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg"
                     alt="map" width="500" height="600">
             </div> -->
-        </div></br>
-        <small>※ 注意：非官方工具</small>
+        </div>
         <!-- <div class="container">
             <button class="share-btn">
                 <i class="fas fa-share-alt"></i>
@@ -804,7 +817,7 @@
         tblFooterBtns.className = 'dynamic-btn'
 
         tblFooterBtns.innerHTML = ''
-        tblFooterBtns.innerHTML += '<small><a onclick="clean()"><u>清除重來</u></a></small>、<small><a onclick="downloadwithbrowser()"><u>❤️製作配速手環❤️</u></a></small>';
+        tblFooterBtns.innerHTML += '<small><a href="#" onclick="clean()">清除重來</a></small>、<small>❤️<a href="#" onclick="downloadwithbrowser()">製作配速手環</a>❤️</small>';
         document.getElementById("result").appendChild(tblFooterBtns)
 
         document.querySelector('.main').style.marginTop = 0
@@ -814,7 +827,7 @@
         // });
         document.querySelector('#inputFinishTime').style.margin = 0;
         // document.querySelector('#my-tbl').style.margin = 0;
-        document.querySelector('#calBtn').style.margin = "5px 0 15px 0";
+        document.querySelector('#calBtn').style.margin = "5px 0 10px 0";
         // document.querySelector('#summary2').style.margin = auto;
         // document.querySelector('#tblFooterBtns').style.margin = 0;
         // document.getElementById('result').style.display = "block"

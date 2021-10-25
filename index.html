@@ -29,7 +29,7 @@
         }
 
         h1 {
-            margin: 10pt auto;
+            margin: 10pt 0 0 0;
         }
 
         body {
@@ -38,9 +38,10 @@
         }
 
         button {
-            width: 80%;
-            height: 25pt;
-            margin: 5pt auto;
+            width: 40%;
+            padding: 15px;
+            /* height: 25pt; */
+            margin: 5px auto;
             /* display: inline; */
         }
 
@@ -48,6 +49,7 @@
         .dynamic-btn,
         #my-tbl {
             text-align: center;
+            margin-top: 30%;
         }
 
         .even {
@@ -72,6 +74,7 @@
 
         #my-tbl>tbody>tr>td>div {
             /* height: 100%; */
+            font-size: 0.8em;
             padding: 3px;
             /* border: 1px double black; */
         }
@@ -80,9 +83,23 @@
         #my-tbl,
         #calBtn,
         #summary2,
-        #tblFooterBtns,
-        #footer {
+        #tblFooterBtns {
             font-size: 1.2em;
+            /* margin: 30px 0px; */
+        }
+
+        #inputFinishTime {
+            margin-top: 50px;
+            margin-bottom: 10px;
+        }
+
+        #calBtn {
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .myClass {
+            margin: 0;
         }
 
         .tHeader {
@@ -205,6 +222,14 @@
 
 
         @media only screen and (max-device-width : 375px) {
+            .main {
+                margin-top: 10%
+            }
+
+            h1 {
+                font-size: 1.5em
+            }
+
             body {
                 width: 95%;
                 font-size: 80%;
@@ -230,6 +255,14 @@
         }
 
         @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+            .main {
+                margin-top: 10%
+            }
+
+            h1 {
+                font-size: 1.5em
+            }
+
             body {
                 font-size: 80%;
                 width: 95%;
@@ -263,7 +296,9 @@
 
 <body onload="loadHMS()">
     <div class="main">
-        <h1>2021台北馬拉松配速模擬</h1>
+        <h1>2021台北馬拉松</br>配速模擬+手環製作</h1>
+        <p class="footer">輸入目標完賽時間、自製配速手環，就是這麼簡單！</p>
+        <hr>
         <div id='inputFinishTime'>
             目標完賽時間
             <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH"
@@ -284,9 +319,10 @@
         <div id="result"></div>
         <table id="tblToPrint"></table>
     </div>
+    <hr>
     <div class="footer">
-        <small>輸入目標完賽時間、自製配速手環，就是這麼簡單！<br />無廣告、無營利<br>更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195"
-                target="_blank">這裡</a></small>
+        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></br>※
+            注意：非官方工具</small>
     </div>
 
 </body>
@@ -860,6 +896,13 @@
         localStorage.removeItem('ss')
         document.getElementById("result").innerHTML = ''
 
+        document.querySelector('.main').style.marginTop = "30%"
+        document.querySelector('#inputFinishTime').style.margin = "50px 0 10px 0"
+        // document.querySelector('#my-tbl').style.margin = "30px 0px";
+        document.querySelector('#calBtn').style.margin = "10px 0 50px 0";
+        // document.querySelector('#summary2').style.margin = "30px 0px";
+        // document.querySelector('#tblFooterBtns').style.margin = "30px 0px";
+
         render()
 
     }
@@ -878,6 +921,8 @@
         fTime = moment(hhh + ':' + mmm + ':' + sss, "HH:mm:ss")
         console.log(fTime)
         document.getElementById("result").innerHTML = ''
+
+
 
         // difine runners level
         var lv;
@@ -959,7 +1004,7 @@
         // summary += "<tr><td>進站時間調整參數</td><td style='text-align:right;padding-left:10px;'><b>-"+time_compensate[lv].cp_stop+"</b></td></tr>";
         summary += "</table></div>";
 
-        summary2 = ''
+        summary2 = '<hr style="border-top:1px dotted black;">'
         // summary2 += "<div>均速:" + moment.utc(pace).format("m'ss\"") + "(調整前)</div>"
         // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
         summary2 += "<div id='summary2' class='summary2'><div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
@@ -1022,6 +1067,21 @@
         // res = document.getElementById('result').innerHTML
         // console.log(res)
         // document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<div id='dllink'></div>"
+
+
+        document.querySelector('.main').style.marginTop = 0
+
+        // ['#inputFinishTime', '#my-tbl', '#calBtn', '#summary2', '#tblFooterBtns'].forEach(function (ids) {
+        //     document.querySelector(ids).style.margin = 0
+        // });
+        document.querySelector('#inputFinishTime').style.margin = 0;
+        // document.querySelector('#my-tbl').style.margin = 0;
+        document.querySelector('#calBtn').style.margin = "5px 0";
+        document.querySelector('#summary2').style.margin = 0;
+        document.querySelector('#tblFooterBtns').style.margin = 0;
+
+
+
 
         document.getElementById("result").style.display = "none"
 

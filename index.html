@@ -8,7 +8,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-3FN5CCLFRW');
     </script>
     <meta charset="UTF-8">
@@ -326,11 +325,10 @@
     </div>
 
 </body>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<!-- include necessary js library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-<!-- <script type="text/javascript" src="https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
 <script>
+    // 用js建造表格
     // function addTable() {
     //     var table = document.createElement("table");
     //     var tr = document.createElement("tr");
@@ -347,7 +345,7 @@
     // append column to the HTML table
 
     // create DIV element and append to the table cell
-    function createCell(cell, text, style) {
+    function createCell(cell, text, style) { //在cell處新增div並用class style控制樣式
         var div = document.createElement('div'), // create DIV element
             txt = document.createTextNode(text); // create text node
         div.appendChild(txt);                    // append text node to the DIV
@@ -364,25 +362,21 @@
         newTable.setAttribute('id', "tableToAppend")
         newTable.innerHTML = tbl.innerHTML
         // console.log(tbl.rows.length)
-        if (tbl.rows.length == 0) {
+        if (tbl.rows.length == 0) { // 當要在空表格新增欄位時
             newTable.insertRow(-1);
-
             createCell(newTable.rows[0].insertCell(0), "\u00A0" + columnName + "\u00A0", "tHeader ");
             for (i = 1; i < arrData.length + 1; i++) {
-
                 if (i % 2 == 0) { cellStyle = color + " even " } else { cellStyle = color + " odd " } // 分偶數列 奇數列
-
                 newTable.insertRow(i);
                 if (i == arrData.length) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle); }
                 else { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle); }
             }
             // newTable.insertRow(arrData.length);
             // createCell(newTable.rows[arrData.length].insertCell(0), "終點", "tFooter " + color);
-
         }
 
         // open loop for each row and append cell
-        for (i = 0; i < tbl.rows.length; i++) {
+        for (i = 0; i < tbl.rows.length; i++) { // 在現有表格新增欄位
             if (i % 2 == 0) { cellStyle = color + " even " } else { cellStyle = color + " odd " } // 分偶數列 奇數列
             if (i == 0) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + columnName + "\u00A0", "tHeader "); }
             else if (i == tbl.rows.length - 1) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle); }
@@ -390,124 +384,32 @@
         }
         return newTable.innerHTML
     }
-
     function deleteColumn(id, headerName) {
 
+        // 取出現有表格header 存成陣列
         var arrHeader = Array.prototype.map.call(document.querySelectorAll('#' + id + ' .tHeader'), function (div) {
             return div.innerHTML;
         });
 
-
-
-
-        // newTable = document.createElement('table');
-        // newTable.setAttribute('id',"tableToPrint")
-        // document.getElementById('tableToPrint').innerHTML = document.getElementById(id).innerHTML
         var tbl = document.getElementById(id) // table reference
         tblText = tbl.innerHTML
 
-
-        // cName = ["水站/補給站","配速調整","分段配速","分段時間","累積時間"]
-        // console.log(cName.indexOf('配速調整'));
-        // colToDelete = cName.indexOf('配速調整')
-        console.log('deleting:' + headerName)
-        console.log(arrHeader)
+        // console.log('deleting:' + headerName)
+        // console.log(arrHeader)
         colToDelete = arrHeader.indexOf(headerName)
-        console.log("arrHeader index:" + colToDelete)
+        // console.log("arrHeader index:" + colToDelete)
 
-        // lastCol = tbl.rows[0].cells.length - 1    // set the last column index
-        // console.log(lastCol);
         i
         newTable = document.createElement('table');
         newTable.setAttribute('id', "tableToPrint")
         newTable.innerHTML = tblText
-        console.log(newTable)
+        // console.log(newTable)
 
-        var j
         // delete cells with index greater then 0 (for each row)
         for (i = 0; i < tbl.rows.length; i++) {
-            // for (j = lastCol; j > 0; j--) {
-            //     tbl.rows[i].deleteCell(j);
-            // }
             newTable.rows[i].deleteCell(colToDelete);
         }
         return newTable
-    }
-
-
-    if (1 < 0) {
-        // initinal table
-        table2 = document.createElement('table');
-        table2.setAttribute('id', "my-tbl3")
-        headingRow = document.createElement('tr')
-        header = document.createElement('thead')
-        headingRow = document.createElement('tr')
-        headingCell1 = document.createElement('td')
-        headingText1 = document.createTextNode('column_')
-        headingCell1.appendChild(headingText1)
-        headingRow.appendChild(headingCell1)
-        header.appendChild(headingRow)
-        table2.appendChild(header)
-        tblBody = document.createElement("tbody");
-        row = document.createElement("tr");
-        // Create a <td> element and a text node, make the text
-        // node the contents of the <td>, and put the <td> at
-        // the end of the table row
-        cell = document.createElement("td");
-        cellText = document.createTextNode('data1_');
-        cell.appendChild(cellText);
-        row.appendChild(cell);
-        // add the row to the end of the table body
-        tblBody.appendChild(row);
-        table2.appendChild(tblBody);
-        console.log(table2.tHead.children[0])
-
-        function addRow(table, columnName, arrData) {
-
-            tbl = table
-            tr = tbl.tHead.children[0]
-            th = document.createElement('th');
-            th.innerHTML = columnName;
-            tr.appendChild(th);
-
-            tbodyRef = tbl.getElementsByTagName('tbody')[0];
-            // // Insert a row at the end of table
-            // var newRow = tbodyRef.insertRow();
-            // // Insert a cell at the end of the row
-            // var newCell = newRow.insertCell();
-            // // Append a text node to the cell
-            // var newText = document.createTextNode('new row');
-            // newCell.appendChild(newText);
-            // // console.log(table.rows.length)
-            // row = tbl.insertRow(tbl.rows.length)
-            data = arrData
-            // console.log(data.length)
-            // // creating all cells
-            for (var i = 0; i < data.length; i++) {
-                // var newRow = tbodyRef.insertRow();
-                // // Insert a cell at the end of the row
-                // var newCell = newRow.insertCell();
-                // // Append a text node to the cell
-                // var newText = document.createTextNode(data[i]);
-                // newCell.appendChild(newText);
-
-
-                //     row = document.createElement("tr");
-                //     cell = document.createElement("td");
-                //     cellText = document.createTextNode(data[i]);
-                //     cell.appendChild(cellText);
-                //     row.appendChild(cell);
-                //     tbl.body.appendChild(row);
-                //     table2.appendChild(tblBody);
-                // //     // creates a table row
-                //     createCell(tbl.getElementsByTagName('tbody')[i].insertCell(tbl.getElementsByTagName('tbody')[i].cells.length), data[i], 'row')
-                // createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i-1], 'col');
-            }
-            // // put the <tbody> in the <table>
-
-            console.log(tbl)
-            // return table
-        }
     }
 
     cName = ["水站/補給站", "配速調整", "分段配速", "分段時間", "累積時間"]
@@ -527,37 +429,9 @@
     function addTable(tableID) {
         var table = document.createElement("table");
         table.setAttribute('id', tableID)
-
-        // var out = document.getElementById(tableID);
-        // console.log(out)
         table.innerHTML = appendColumn(table, "里程", arrStop, " white ")
-        // console.log(table)
         return table
-        // var tr = document.createElement("tr");
-        // var th = document.createElement("th");
-        // var td = document.createElement("td");
-        // td.innerText = "im a td";
-        // th.innerText = "im a th";
-        // th.appendChild(tr);
-        // tr.appendChild(td);
-        // table.appendChild(th);
-        // var out = document.getElementById("tblToPrint");
-        // out.appendChild(table);
     }
-
-    // 初始表格: 1 column and 17+1 row
-    // text = "<table id='my-tbl' border='1' cellpadding='6'>";
-    // text = "<table id='my-tbl' cellpadding='0' cellspacing='0'>";
-    // text += "<tr><td>里程</td>";
-    // // text += "<td>配速調整</td>";
-    // // text += "<td>分段配速</td>";
-    // // text += "<td title='(扣掉進水站時間)'>即時配速(min/km)</td>";
-    // // text += "<td>分段時間</td>";
-    // // text += "<td>累積時間</td></tr>";
-    // for (i = 0; i < arrStop.length; i++) {
-    //     text += "<tr><td>" + arrStop[i] + "k</td></tr>";
-    // }
-    // text += "<tr><td>終點</td></tr></table>";
 
     // 配速調整
     let time_compensate = [{
@@ -593,27 +467,11 @@
         cp_stop: 4
     }]
 
-    let rs = []
-
-    let show = (times) => {
-        // let rs = []
-        // times.map((id) => {
-        //     rs.push({
-        //         id: id
-        //     })
-        // })
-        // console.log(rs)
-        // return rs
-
-    }
-
     function loadHMS() {
-        // 第一次會是空值
-        // 如果有輸入過會記得
+        // 程式起始點: 第一次會是空值 如果有輸入過從local storage取出值
         // let finishTime = localStorage.getItem('time')
         // document.getElementById('time').value = finishTime
         // console.log(finishTime)
-
         let hh = localStorage.getItem('hh')
         document.getElementById('hh').value = hh
         let mm = localStorage.getItem('mm')
@@ -624,61 +482,21 @@
 
     function render() {
         document.getElementById('result').style.display = null
-        // result.innerHTML = ''
-        // rs.map((r) => {
-        //     let h3 = document.createElement('h3')
-        //     h3.appendChild(document.createTextNode(r.id))
-        //     result.appendChild(h3)
-        // })
     }
 
-    //convert table to image
-    //click event
-    //  var convertBtn = document.getElementById("convert");
-    //  convertBtn.addEventListener('click', convertToImage);
-
-    function convertToImage() {
-        console.log("enter")
-        // var resultDiv = document.getElementById("dllink");
-        // console.log(resultDiv)
-        html2canvas(document.getElementById("my-tbl"), {
-            onrendered: function (canvas) {
-                var img = canvas.toDataURL();
-                dllink.innerHTML = '<a download="test.jpeg" href="' + img + '">test</a>';
-            }
-        });
-    }
     function downloadwithbrowser() {
-        // var prtContent = document.getElementById("my-tbl");
-        // var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-        // WinPrint.document.write(prtContent.innerHTML);
-        // WinPrint.document.close();
-        // WinPrint.focus();
-        // WinPrint.print();
-        // WinPrint.close();
-        // appendColumn('my-tbl',"關門時間",arrCutTime)
-        // tableToPrint = deleteColumn('my-tbl',"配速調整")
 
         // copy result table
         var tbl = document.getElementById('my-tbl') // table reference
 
         tblText = tbl.innerHTML
-        // console.log(tblText)
-
 
         tableToPrint = document.createElement('table');
         tableToPrint.setAttribute('id', "tableToPrint")
         tableToPrint.innerHTML = tblText
-        // console.log(tableToPrint.innerHTML)
 
-        // console.log(document.getElementById('tableToPrint'))
-
-        // tableToPrint.innerHTML = appendColumn(document.getElementById('tableToPrint'),"關門",arrCutTime)
-        // console.log(tableToPrint)
-        arrRemind_short = ["人多", "熱開", "目標配速", "不超速", "上橋", "上下坡", "不超速", "上高架", "上坡穩住", "勿超速", "下橋", "進河濱", "不要慢", "沒有牆", "快到了", "準備開", "開！"]
-        // sp = document.createTextNode('\u00A0')
-        // console.log(sp.innerHTML)
-        // arrRemind_short = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+        // arrRemind_short = ["人多", "熱開", "目標配速", "不超速", "上橋", "上下坡", "不超速", "上高架", "上坡穩住", "勿超速", "下橋", "進河濱", "不要慢", "沒有牆", "快到了", "準備開", "開！"]
+        // 提醒欄位改空白(\u00A0)
         arrRemind_short = ['\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0', '\u00A0']
 
         // var tableInfo = Array.prototype.map.call(document.querySelectorAll('#my-tbl tr'), function (tr) {
@@ -730,34 +548,13 @@
         paceBand.appendChild(paceBand_right)
         paceBand.appendChild(explain)
 
-
-
-
-        // var sTable = deleteColumn('my-tbl', "分段時間")
-        // // var sTable = document.getElementById('my-tbl')
-        // document.getElementById('tblToPrint').innerHTML = sTable.innerHTML
-        // sTable = deleteColumn('tblToPrint', "配速調整")
-        // // sTable = deleteColumn('tableToPrint', "分段時間", arrHeader)
-        // // sTable.innerHTML = sTable.innerHTML.replace("累積時間", "通過").replace("水站/補給站", "里程").replace("分段配速", "配速").replace("分段時間", "耗時")
-        // // sTable.innerHTML = appendColumn(sTable, "關門", arrCutTime, " gray ")
-        // sTable.innerHTML = appendColumn(sTable, "提醒", arrRemind_short, " white ")
-        // sTable.innerHTML = appendColumn(sTable, "里程", arrStop, " white ")
-
-
-
-
-        // var sTable = document.getElementById('my-tbl');
         sTable.className = 'page';
         sTable2.className = 'page';
-        // console.log(sTable);
-        // var style = "<style>";
-        // style = style + "table, th, td {background-color: red; width: 80%; margin: auto; border: solid 1px #DDD; border-collapse: collapse;";
-        // style = style + "text-align: center;}";
-        // style = style + "</style>";
 
         // CREATE A WINDOW OBJECT.
         var win = window.open('', '', 'height=880,width=780');
 
+        // 列印頁的css
         var htmlToPrint = '' +
             '<style type="text/css">' +
             // '.page {width: 21cm;min-height: 29.7cm;padding: 2cm;margin: 1cm auto;border: 1px #D3D3D3 solid;border-radius: 5px;background: white;box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);}'+
@@ -795,9 +592,7 @@
             '@page { size: A4 landscape; margin: 0px; }' + // 加這行列印時轉橫向 (直向portrait) 
             "@media print {body {-webkit-print-color-adjust: exact;font-size: 0.8em;  margin:0}}" + // 加這行列印時才會有顏色
             '</style>';
-        // htmlToPrint += sTable.outerHTML;
         htmlToPrint += paceBand.outerHTML;
-        // console.log(htmlToPrint);
         win.document.write(htmlToPrint);
         // win.document.write('<html><head>');
         // win.document.write('<title>Profile</title>');   // <title> FOR PDF HEADER.
@@ -807,80 +602,9 @@
         // win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
         // win.document.write('</body></html>');
 
-
         win.document.close(); 	// CLOSE THE CURRENT WINDOW.
         win.print();    // PRINT THE CONTENTS.
     }
-    function downloadPDFWithBrowserPrint() {
-        window.print();
-    }
-    function downloadPDFWithjsPDF() {
-        var doc = new jspdf.jsPDF();
-        doc.html(document.getElementById('my-tbl'), {
-            callback: function (doc) {
-                doc.save();
-            },
-            // margin: [60, 60, 60, 60],
-            x: 10,
-            y: 10
-        });
-    }
-    function download() {
-        var element = $("#my-tbl"); // 這個dom元素是要匯出pdf的div容器
-        var w = element.width(); // 獲得該容器的寬
-        var h = element.height(); // 獲得該容器的高
-        var offsetTop = element.offset().top; // 獲得該容器到文件頂部的距離
-        var offsetLeft = element.offset().left; // 獲得該容器到文件最左的距離
-        var canvas = document.createElement("canvas");
-        var abs = 0;
-        var win_i = $(window).width(); // 獲得當前可視視窗的寬度（不包含滾動條）
-        var win_o = window.innerWidth; // 獲得當前視窗的寬度（包含滾動條）
-        if (win_o > win_i) {
-            abs = (win_o - win_i) / 2; // 獲得滾動條長度的一半
-        }
-        canvas.width = w * 2; // 將畫布寬&&高放大兩倍
-        canvas.height = h * 2;
-        var context = canvas.getContext("2d");
-        context.scale(2, 2);
-        context.translate(-offsetLeft - abs, -offsetTop);
-        // 這裡預設橫向沒有滾動條的情況，因為offset.left(),有無滾動條的時候存在差值，因此
-        // translate的時候，要把這個差值去掉
-        html2canvas(element).then(function (canvas) {
-            var contentWidth = canvas.width;
-            var contentHeight = canvas.height;
-            //一頁pdf顯示html頁面生成的canvas高度;
-            var pageHeight = contentWidth / 592.28 * 841.89;
-            //未生成pdf的html頁面高度
-            var leftHeight = contentHeight;
-            //頁面偏移
-            var position = 0;
-            //a4紙的尺寸[595.28,841.89]，html頁面生成的canvas在pdf中圖片的寬高
-            var imgWidth = 595.28;
-            var imgHeight = 592.28 / contentWidth * contentHeight;
-
-            var pageData = canvas.toDataURL('image/jpeg', 1.0);
-
-            var pdf = new jspdf.jsPDF('', 'pt', 'a4');
-
-            //有兩個高度需要區分，一個是html頁面的實際高度，和生成pdf的頁面高度(841.89)
-            //當內容未超過pdf一頁顯示的範圍，無需分頁
-            if (leftHeight < pageHeight) {
-                pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
-            } else { // 分頁
-                while (leftHeight > 0) {
-                    pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
-                    leftHeight -= pageHeight;
-                    position -= 841.89;
-                    //避免新增空白頁
-                    if (leftHeight > 0) {
-                        pdf.addPage();
-                    }
-                }
-            }
-            pdf.save('我的簡歷.pdf');
-        })
-    }
-
 
     function clean() {
         // uid.value = ''
@@ -915,16 +639,12 @@
         localStorage.setItem('hh', hhh)
         localStorage.setItem('mm', mmm)
         localStorage.setItem('ss', sss)
-        // if (hhh == '') hhh = "00"
-        // if (mmm == '') mmm = "00"
-        // if (sss == '') sss = "00"
+
         fTime = moment(hhh + ':' + mmm + ':' + sss, "HH:mm:ss")
         console.log(fTime)
         document.getElementById("result").innerHTML = ''
 
-
-
-        // difine runners level
+        // define runners level
         var lv;
         if (fTime.isBefore(moment("3:20:00", "HH:mm:ss"))) lv = 0
         if (fTime.isBetween(moment("3:20:00", "HH:mm:ss"), moment("3:45:00", "HH:mm:ss"), null, '[)')) lv = 1
@@ -933,7 +653,6 @@
         if (fTime.isBetween(moment("4:30:00", "HH:mm:ss"), moment("5:00:00", "HH:mm:ss"), null, '[)')) lv = 4
         if (fTime.isSameOrAfter(moment("5:00:00", "HH:mm:ss"))) lv = 5
         // console.log("lv:"+lv);
-
 
         pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds() / 42.2 // 平均配速(毫秒)
         x = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
@@ -961,25 +680,6 @@
         secondHalfTime = moment(finishTime).diff(moment(firstHalfTime)) // 後半馬 in 毫秒
         secondHalfPace = secondHalfTime / 21.1 //後半馬配速in毫秒
 
-
-
-        // document.getElementById("result").innerHTML = text
-
-        // let table = document.getElementById("my-tbl")
-        // for (i = 1; i < table.rows.length; i++) {
-        //     //在第i row 的第 cell.length 位置插入cell資料
-        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), time_compensate[lv].cp_each[i-1], 'col');
-        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustSlope[i-1], 'col');
-        //     // createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceAdjustStop[i-1], 'col');
-        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), paceTime[i-1], 'col');
-        //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), timeAccumulated[i-1], 'col');
-        // }
-
-        // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'),"配速調整",time_compensate[lv].cp_each)
-        // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "分段配速", paceAdjustSlope, 'pink cell')
-        // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "分段時間", paceTime)
-        // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "累積時間", timeAccumulated)
-        // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "配速調整", arrRemind)
         document.getElementById("result").appendChild(addTable('my-tbl'))
         // console.log(document.getElementById('my-tbl'))
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "分段配速", paceAdjustSlope, ' gray ')
@@ -989,21 +689,8 @@
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "配速調整", arrRemind, ' gray ')
 
 
-
-
-
         // summary 區塊
         textUpdate = document.getElementById("result").innerHTML;
-        summary = "<div id='summary'><table border='0' cellpadding='0'>";
-        summary += "<tr><td><small>調整前目標均速(目標時間/距離)</small></td><td style='text-align:left;padding-left:5px;'><b>" + moment.utc(pace).format("m'ss\"") + "</b></td></tr>";
-        summary += "<tr><td><small>調整後目標均速(上下坡、人潮擁擠)</small></td><td style='text-align:left;padding-left:5px;'><b>" + moment.utc(paceAdjust).format("m'ss\"") + "</b></td></tr>";
-        summary += "<tr><td><small>前半馬</small></td><td style='text-align:left;padding-left:5px;'><b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b></td></tr>";
-        summary += "<tr><td><small>後半馬</small></td><td style='text-align:left;padding-left:5px;'><b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b></td></tr>";
-        summary += "<tr><td><small>前半馬配速</small></td><td style='text-align:left;padding-left:5px;'><b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></td></tr>";
-        summary += "<tr><td><small>後半馬配速</small></td><td style='text-align:left;padding-left:5px;'><b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></td></tr>";
-        // summary += "<tr><td>進站時間調整參數</td><td style='text-align:right;padding-left:10px;'><b>-"+time_compensate[lv].cp_stop+"</b></td></tr>";
-        summary += "</table></div>";
-
         summary2 = '<hr style="border-top:1px dotted black;">'
         // summary2 += "<div>均速:" + moment.utc(pace).format("m'ss\"") + "(調整前)</div>"
         // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
@@ -1040,35 +727,6 @@
         tblFooterBtns.innerHTML = '<small><a onclick="clean()"><u>清除重來</u></a></small>、<small><a onclick="downloadwithbrowser()"><u>❤️製作配速手環❤️</u></a></small>';
         document.getElementById("result").appendChild(tblFooterBtns)
 
-
-
-        //下載按鈕
-        // dwnld = document.createElement("div");
-        // dwnld.setAttribute("id", "convert");
-        // dwnld.className = 'dynamic-btn';
-        // dwnld.innerHTML ='<small style="color:#9C1AA9;cursor:pointer;"><a><u>下載</u></a></small><div id="dllink"></div>'
-        // document.getElementById("result").appendChild(dwnld)
-        // var convertBtn = document.getElementById("convert");
-        // convertBtn.addEventListener('click', downloadwithbrowser);
-        /// download test
-        // convertBtn.addEventListener('click', convertToImage);
-        // convertBtn.addEventListener('click', downloadPDFWithBrowserPrint);
-        // convertBtn.addEventListener('click', downloadPDFWithjsPDF);
-        // convertBtn.addEventListener('click', download);
-
-
-        // document.querySelector('#browserPrint').addEventListener('click', downloadPDFWithBrowserPrint);
-
-        // dwnld.innerHTML = '<small><a href="" onclick="convertToImage()">下載</a></small>';
-        // console.log(dwnld)
-        // dwnld.className = 'dynamic-btn';
-
-
-        // res = document.getElementById('result').innerHTML
-        // console.log(res)
-        // document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + "<div id='dllink'></div>"
-
-
         document.querySelector('.main').style.marginTop = 0
 
         // ['#inputFinishTime', '#my-tbl', '#calBtn', '#summary2', '#tblFooterBtns'].forEach(function (ids) {
@@ -1080,19 +738,11 @@
         document.querySelector('#summary2').style.margin = 0;
         document.querySelector('#tblFooterBtns').style.margin = 0;
 
-
-
-
         document.getElementById("result").style.display = "none"
 
-        // rs = show(times)
         render()
 
     }
-
-
-
-
 </script>
 
 </html>

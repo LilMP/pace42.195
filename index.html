@@ -70,7 +70,7 @@
             display: inline-block;
             color: #8080ff;
             cursor: pointer;
-            border-bottom: 1px double #8080ff;
+            /* border-bottom: 1px double #7d7d86; */
             /* border-radius: 40px; */
             /* background-color: #efefef; */
             /* height: 25pt; */
@@ -428,8 +428,8 @@
     </div>
     <hr id="toDisappear">
     <div class="footer">
-        <small>無廣告、無營利，更多細節與網站說明請看<span href="https://github.com/LilMP/pace42.195" target="_blank"
-                class="small-btn">這裡</span></small>
+        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
+            </a></small>
         </br>
 
 
@@ -917,7 +917,7 @@
         tblFooterBtns.innerHTML = ''
         // tblFooterBtns.innerHTML += '<small><a href="#" onclick="clean()">清除重來</a></small>、<small>❤️<a href="#" onclick="downloadwithbrowser()">製作配速手環</a>❤️</small>';
 
-        tblFooterBtns.innerHTML += '<div class="small-btn" onclick="clean()">清除重來</div>&emsp;<div class="small-btn" onclick="downloadwithbrowser()">❤️製作配速手環❤️</div>';
+        tblFooterBtns.innerHTML += '<a href="#" class="small-btn" onclick="clean()">清除重來</a>&emsp;<a href="#" class="small-btn" onclick="downloadwithbrowser()">❤️製作配速手環❤️</a>';
         document.getElementById("result").appendChild(tblFooterBtns)
 
         document.querySelector('.main').style.marginTop = 0

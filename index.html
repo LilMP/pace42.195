@@ -24,6 +24,9 @@
     <title>2021台北馬拉松配速模擬+自製手環</title>
     <!-- for share btn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">  -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- line  -->
     <!-- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js"></script> -->
     <style type="text/css">
@@ -220,33 +223,48 @@
             margin: 5pt auto;
         }
 
-        .share-btn {
+        /* .share-btn {
             color: white;
+            background: gray;
+        padding-top: 2px;
+        padding-left: 6px;
+        cursor: pointer;
+        position: relative;
+        border: none;
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        z-index: 2;
+        } */
+
+        .share-btn {
+            display: inline-block;
+            /* color: white; */
             /* background: gray; */
-            padding-top: 2px;
-            padding-left: 6px;
+            /* padding-top: 2px; */
+            /* padding-left: 6px; */
             cursor: pointer;
-            position: relative;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            z-index: 2;
+            /* position: relative; */
+            /* border: none; */
+            /* border-radius: 50%; */
+            /* width: 64px; */
+            /* height: 64px; */
+            /* z-index: 2; */
         }
 
         .social-media-btn:nth-child(1) {
-            background: #1877F2;
-            /* color: #1877F2; */
+            /* background: #1877F2; */
+            color: #1877F2;
         }
 
         .social-media-btn:nth-child(2) {
-            background: #06C755;
-            /* color: #1877F2; */
+            /* background: #06C755; */
+            color: #06C755;
         }
 
         .social-media-btn:nth-child(3) {
-            background: #FF7D7D;
-            /* color: #FF7D7D; */
+            /* background: #FF7D7D; */
+            color: #FF7D7D;
         }
 
         /* .cellText {
@@ -306,6 +324,7 @@
             font-size: 1.2em;
 
         }
+
 
 
         @media only screen and (max-device-width : 375px) {
@@ -428,10 +447,13 @@
 
         <small>※ 注意：非官方工具、如製作手環功能無反應,請嘗試其他瀏覽器 ※</small>
         <div class="container">
-            <button class="share-btn social-media-btn" id='fbBtn'
+            <!-- <button class="share-btn social-media-btn" id='fbBtn' -->
+            <div class="share-btn social-media-btn"
                 onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
-                <i class="fab fa-facebook-f"></i>
-            </button>
+                <!-- <i class="fab fa-facebook-f"></i> -->
+                <!-- <i class="lab la-facebook-f la-4x"></i> -->
+                <i class="lab la-facebook-square la-2x"></i>
+            </div>
             <!-- <button class="share-btn social-media-btn">
                 <div class="line-it-button" data-lang="zh_Hant" data-type="share-c" data-ver="3"
                     data-url="https://lilmp.github.io/pace42.195" data-color="default" data-size="small"
@@ -439,12 +461,18 @@
                 <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
                     defer="defer"></script>
             </button> -->
-            <button class="share-btn social-media-btn" id="lineBtn"
+            <!-- <button class="share-btn social-media-btn" id="lineBtn" -->
+            <div class="share-btn social-media-btn"
                 onclick="window.open('https://line.naver.jp/R/msg/text/?https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
                 <!-- <i class="fab fa-line"></i> -->
-                <i class="far fa-comment"></i>
-            </button>
-            <button class="share-btn social-media-btn" onclick="share()"><i class="fas fa-share-alt"></i></button>
+                <!-- <i class="far fa-comment"></i> -->
+                <i class="lab la-line la-2x"></i>
+            </div>
+            <!-- <button class="share-btn social-media-btn" onclick="share()"> -->
+            <div class="share-btn social-media-btn" onclick="share()">
+                <!-- <i class="fas fa-share-alt"></i> -->
+                <i class="las la-share-alt-square la-2x"></i>
+            </div>
             <!-- <div class="share-options">
                 <p class='title'>share</p>
                 <img class='title'
@@ -474,8 +502,8 @@
     function share() {
         if (navigator.share) {
             navigator.share({
-                title: '',
-                text: '2021台北馬配速模擬+自製手環:輸入目標完賽時間、自製配速手環，就是這麼簡單！',
+                title: '2021台北馬配速模擬+自製手環',
+                text: '輸入目標完賽時間、自製配速手環，就是這麼簡單！',
                 url: 'https://lilmp.github.io/pace42.195/',
             }).then(() => console.log('Successful share'))
                 .catch((error) => console.log('Error sharing', error));

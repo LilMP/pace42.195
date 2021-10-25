@@ -37,11 +37,20 @@
         }
 
         button {
+            border: 1px solid dimgrey;
+            border-radius: 40px;
+            background-color: #efefef;
             width: 40%;
-            padding: 15px;
+            padding: 10px;
             /* height: 25pt; */
             margin: 5px auto;
             /* display: inline; */
+        }
+
+        button:hover {
+            /* border: 1px solid dimgrey;
+            border-radius: 30px; */
+            background-color: #e5e5e5;
         }
 
         .main,
@@ -72,22 +81,29 @@
             /* border: 1px double black; */
         }
 
+        #summary2 {
+            padding: 5px 0;
+            background-color: #efefef;
+            width: 95%;
+            margin: auto;
+        }
+
         #inputFinishTime,
-        #my-tbl,
+        /* #my-tbl, */
         #calBtn,
-        #summary2,
+        /* #summary2, */
         #tblFooterBtns {
-            font-size: 1.2em;
+            font-size: 1em;
             /* margin: 30px 0px; */
         }
 
         #inputFinishTime {
             margin-top: 50px;
-            margin-bottom: 10px;
+            /* margin-bottom: 10px; */
         }
 
         #calBtn {
-            margin-top: 10px;
+            /* margin-top: 10px; */
             margin-bottom: 50px;
         }
 
@@ -162,7 +178,10 @@
 
         #result {
             /* margin-bottom: 20pt; */
+            display: none;
+            padding: 0 0 5px 0;
             text-align: center;
+            /* box-shadow: 0 0 15px #4b4a46; */
         }
 
         /* #summary > tbody > tr > td */
@@ -187,17 +206,19 @@
             border: 2px double black;
             border-collapse: collapse;
             border-spacing: 0;
+            font-size: 1.2em;
             /* text-align: right; */
         }
 
         #tblFooterBtns {
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         #tblFooterBtns>small>a>u {
             color: #9C1AA9;
             cursor: pointer;
             display: inline;
+            font-size: 1.2em;
 
         }
 
@@ -462,8 +483,8 @@
         document.getElementById('ss').value = ss
     }
 
-    function render() {
-        document.getElementById('result').style.display = null
+    function render(display) { // 顯示結果
+        document.getElementById('result').style.display = display
     }
 
     function downloadwithbrowser() {
@@ -602,14 +623,15 @@
         localStorage.removeItem('ss')
         document.getElementById("result").innerHTML = ''
 
-        document.querySelector('.main').style.marginTop = "30%"
-        document.querySelector('#inputFinishTime').style.margin = "50px 0 10px 0"
+        document.querySelector('.main').style.marginTop = null
+        document.querySelector('#inputFinishTime').style.margin = "50px 0 0 0"
         // document.querySelector('#my-tbl').style.margin = "30px 0px";
-        document.querySelector('#calBtn').style.margin = "10px 0 50px 0";
+        document.querySelector('#calBtn').style.margin = "5px 0 50px 0";
+        // document.getElementById("result").style.display = "none"
         // document.querySelector('#summary2').style.margin = "30px 0px";
         // document.querySelector('#tblFooterBtns').style.margin = "30px 0px";
 
-        render()
+        render("none") // 顯示結果
 
     }
 
@@ -673,14 +695,13 @@
 
         // summary 區塊
         textUpdate = document.getElementById("result").innerHTML;
-        summary2 = '<hr style="border-top:1px dotted black;">'
+        summary2 = ''
         // summary2 += "<div>均速:" + moment.utc(pace).format("m'ss\"") + "(調整前)</div>"
         // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
         summary2 += "<div id='summary2' class='summary2'><div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
         summary2 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
-        summary2 += "<div style='margin-bottom:5px;'>總時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div></div>"
+        summary2 += "<div>總時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div></div>"
         document.getElementById("result").innerHTML = summary2 + textUpdate;
-
 
         // tblFooterBtns = document.createElement('div')
         // tblFooterBtns.setAttribute('id', "tblFooterBtns")
@@ -716,13 +737,14 @@
         // });
         document.querySelector('#inputFinishTime').style.margin = 0;
         // document.querySelector('#my-tbl').style.margin = 0;
-        document.querySelector('#calBtn').style.margin = "5px 0";
-        document.querySelector('#summary2').style.margin = 0;
-        document.querySelector('#tblFooterBtns').style.margin = 0;
+        document.querySelector('#calBtn').style.margin = "5px 0 15px 0";
+        // document.querySelector('#summary2').style.margin = auto;
+        // document.querySelector('#tblFooterBtns').style.margin = 0;
+        // document.getElementById('result').style.display = "block"
 
-        document.getElementById("result").style.display = "none"
 
-        render()
+
+        render("block") // 顯示結果
 
     }
 </script>

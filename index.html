@@ -13,7 +13,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:url" content="https://lilmp.github.io/pace42.195/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="2021台北馬拉松配速模擬+自製手環" />
+    <meta property="og:description" content="A marathon pace simulator for 2021 Taipei Marathon" />
+    <!-- <meta property="og:image"
+        content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" /> -->
+
     <title>Marathon Pace Simulator</title>
+    <!-- for share btn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style type="text/css">
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -37,6 +47,7 @@
         }
 
         button {
+            cursor: pointer;
             border: 1px solid dimgrey;
             border-radius: 40px;
             background-color: #efefef;
@@ -52,6 +63,8 @@
             border-radius: 30px; */
             background-color: #e5e5e5;
         }
+
+
 
         .main,
         .dynamic-btn,
@@ -132,7 +145,7 @@
 
         .gray {
             /* background-color: #E5E5E5 */
-            background-color: #EDEDED
+            background-color: #EFEFEF
         }
 
         td {
@@ -164,6 +177,18 @@
             color: dimgrey;
             text-align: center;
             margin: 5pt auto;
+        }
+
+        .share-btn {
+            padding-top: 1px;
+            padding-left: 5px;
+            cursor: pointer;
+            position: relative;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            z-index: 2;
         }
 
         /* .cellText {
@@ -254,6 +279,12 @@
             #footer {
                 font-size: 1em;
             }
+
+            img {
+                width: 80vw;
+                height: auto;
+                /*to preserve the aspect ratio of the image*/
+            }
         }
 
         @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
@@ -286,6 +317,12 @@
             #tblFooterBtns,
             #footer {
                 font-size: 1em;
+            }
+
+            img {
+                width: 80vw;
+                height: auto;
+                /*to preserve the aspect ratio of the image*/
             }
         }
 
@@ -323,14 +360,52 @@
     </div>
     <hr>
     <div class="footer">
-        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></br>※
-            注意：非官方工具</small>
+        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a>&emsp;</small>
+        <div class="container" style="display:inline-block">
+            <button class="share-btn" id='shareweb'
+                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://lilmp.github.io/pace42.195/','width=626,height=436');return false;">
+                <!-- <i class="fas fa-share-alt" -->
+                <i class="fab fa-facebook-f"></i>
+            </button>
+            <button class="share-btn" onclick="share()"><i class="fas fa-share-alt"></i></button>
+            <!-- <div class="share-options">
+                <p class='title'>share</p>
+                <img class='title'
+                    src="https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg"
+                    alt="map" width="500" height="600">
+            </div> -->
+        </div></br>
+        <small>※ 注意：非官方工具</small>
+        <!-- <div class="container">
+            <button class="share-btn">
+                <i class="fas fa-share-alt"></i>
+            </button>
+            <div class="share-options">
+                <p class='title'>share</p>
+                <img class='title'
+                    src="https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg"
+                    alt="map" width="500" height="600">
+            </div>
+        </div> -->
+
     </div>
 
 </body>
 <!-- include necessary js library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+
 <script>
+    function share() {
+        if (navigator.share) {
+            navigator.share({
+                title: '',
+                text: '2021台北馬配速模擬+自製手環',
+                url: 'https://lilmp.github.io/pace42.195/',
+            }).then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
+        }
+    }
+
     // 用js建造表格
     // function addTable() {
     //     var table = document.createElement("table");
@@ -645,7 +720,7 @@
         localStorage.setItem('ss', sss)
 
         fTime = moment(hhh + ':' + mmm + ':' + sss, "HH:mm:ss")
-        console.log(fTime)
+        // console.log(fTime)
         document.getElementById("result").innerHTML = ''
 
         // define runners level
@@ -727,7 +802,9 @@
         tblFooterBtns = document.createElement("div");
         tblFooterBtns.setAttribute('id', "tblFooterBtns")
         tblFooterBtns.className = 'dynamic-btn'
-        tblFooterBtns.innerHTML = '<small><a onclick="clean()"><u>清除重來</u></a></small>、<small><a onclick="downloadwithbrowser()"><u>❤️製作配速手環❤️</u></a></small>';
+
+        tblFooterBtns.innerHTML = ''
+        tblFooterBtns.innerHTML += '<small><a onclick="clean()"><u>清除重來</u></a></small>、<small><a onclick="downloadwithbrowser()"><u>❤️製作配速手環❤️</u></a></small>';
         document.getElementById("result").appendChild(tblFooterBtns)
 
         document.querySelector('.main').style.marginTop = 0
@@ -741,6 +818,10 @@
         // document.querySelector('#summary2').style.margin = auto;
         // document.querySelector('#tblFooterBtns').style.margin = 0;
         // document.getElementById('result').style.display = "block"
+
+
+
+
 
 
 

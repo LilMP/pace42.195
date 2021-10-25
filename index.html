@@ -24,6 +24,8 @@
     <title>2021台北馬拉松配速模擬+自製手環</title>
     <!-- for share btn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- line  -->
+    <!-- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js"></script> -->
     <style type="text/css">
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -64,6 +66,28 @@
             background-color: #e5e5e5;
         }
 
+        .small-btn {
+            display: inline-block;
+            color: blue;
+            cursor: pointer;
+            border-bottom: 1px double blue;
+            /* border-radius: 40px; */
+            /* background-color: #efefef; */
+            /* height: 25pt; */
+            /* margin: 5px auto; */
+            /* display: inline; */
+            width: auto;
+            padding: 0px;
+        }
+
+        .small-btn:hover {
+            /* border: 1px solid dimgrey;
+            border-radius: 30px; */
+            /* background-color: #e5e5e5; */
+            /* color: black; */
+            font-weight: bold;
+        }
+
 
 
         .main,
@@ -96,7 +120,7 @@
 
         #summary2 {
             padding: 5px 0;
-            background-color: #efefef;
+            /* background-color: #efefef; */
             width: 95%;
             margin: auto;
         }
@@ -199,6 +223,11 @@
         }
 
         .social-media-btn:nth-child(2) {
+            background: #06C755;
+            /* color: #1877F2; */
+        }
+
+        .social-media-btn:nth-child(3) {
             background: #FF7D7D;
             /* color: #FF7D7D; */
         }
@@ -216,8 +245,10 @@
         #result {
             /* margin-bottom: 20pt; */
             display: none;
-            /* padding: 0 0 5px 0; */
+            padding: 0 0 10px 0;
             text-align: center;
+            background-color: #efefef;
+            border-radius: 20px;
             /* box-shadow: 0 0 15px #4b4a46; */
         }
 
@@ -292,6 +323,10 @@
                 font-size: 1em;
             }
 
+            .small-btn {
+                font-size: 0.8em;
+            }
+
             img {
                 width: 80vw;
                 height: auto;
@@ -331,6 +366,10 @@
                 font-size: 1em;
             }
 
+            .small-btn {
+                font-size: 0.8em;
+            }
+
             img {
                 width: 80vw;
                 height: auto;
@@ -361,25 +400,38 @@
             <input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="SS"
                 onclick="this.select()"></input>
         </div>
-        <div>
-            <button id='calBtn' onclick="cal()">產生模擬結果</button>
-        </div>
+
+        <button id='calBtn' onclick="cal()">產生模擬結果</button>
+
 
     </div>
     <div>
         <div id="result"></div>
         <table id="tblToPrint"></table>
     </div>
-    <hr>
+    <hr id="toDisappear">
     <div class="footer">
         <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
         </br>
-        <small>※ 注意：非官方工具、在LINE裡面點選製作手環功能會無效,請點 右上角>以其他應用程式開啟 ※&emsp;</small>
+
+
+
+        <small>※ 注意：非官方工具、如製作手環功能無反應,請嘗試其他瀏覽器 ※</small>
         <div class="container">
-            <button class="share-btn social-media-btn" id='shareweb'
+            <button class="share-btn social-media-btn" id='fbBtn'
                 onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
-                <!-- <i class="fas fa-share-alt" -->
                 <i class="fab fa-facebook-f"></i>
+            </button>
+            <!-- <button class="share-btn social-media-btn">
+                <div class="line-it-button" data-lang="zh_Hant" data-type="share-c" data-ver="3"
+                    data-url="https://lilmp.github.io/pace42.195" data-color="default" data-size="small"
+                    data-count="false" style="display: none;"></div>
+                <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
+                    defer="defer"></script>
+            </button> -->
+            <button class="share-btn social-media-btn" id="lineBtn"
+                onclick="window.open('https://line.naver.jp/R/msg/text/?https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
+                <i class="far fa-comment"></i>
             </button>
             <button class="share-btn social-media-btn" onclick="share()"><i class="fas fa-share-alt"></i></button>
             <!-- <div class="share-options">
@@ -419,6 +471,8 @@
         }
     }
 
+    // var lineBtn = '<div class="line-it-button" data-lang="zh_Hant" data-type="share-c" data-ver="3" data-url="https://lilmp.github.io/pace42.195" data-color="default" data-size="small" data-count="false" style="display: none;"></div>'
+    // document.getElementById('lineBtn').innerHTML = lineBtn;
     // 用js建造表格
     // function addTable() {
     //     var table = document.createElement("table");
@@ -715,6 +769,7 @@
         document.querySelector('#inputFinishTime').style.margin = "50px 0 0 0"
         // document.querySelector('#my-tbl').style.margin = "30px 0px";
         document.querySelector('#calBtn').style.margin = "5px 0 50px 0";
+        document.querySelector('#toDisappear').style.display = null
         // document.getElementById("result").style.display = "none"
         // document.querySelector('#summary2').style.margin = "30px 0px";
         // document.querySelector('#tblFooterBtns').style.margin = "30px 0px";
@@ -747,6 +802,7 @@
         // console.log("lv:"+lv);
 
         pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds() / 42.2 // 平均配速(毫秒)
+        // console.log(moment.utc(pace).format("mm:ss"))
         x = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
         paceAdjust = moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total * 1000))).asMilliseconds() / 42.2
 
@@ -817,10 +873,13 @@
         tblFooterBtns.className = 'dynamic-btn'
 
         tblFooterBtns.innerHTML = ''
-        tblFooterBtns.innerHTML += '<small><a href="#" onclick="clean()">清除重來</a></small>、<small>❤️<a href="#" onclick="downloadwithbrowser()">製作配速手環</a>❤️</small>';
+        // tblFooterBtns.innerHTML += '<small><a href="#" onclick="clean()">清除重來</a></small>、<small>❤️<a href="#" onclick="downloadwithbrowser()">製作配速手環</a>❤️</small>';
+
+        tblFooterBtns.innerHTML += '<div class="small-btn" onclick="clean()">清除重來</div>&emsp;<div class="small-btn" onclick="downloadwithbrowser()">❤️製作配速手環❤️</div>';
         document.getElementById("result").appendChild(tblFooterBtns)
 
         document.querySelector('.main').style.marginTop = 0
+        document.querySelector('#toDisappear').style.display = "none"
 
         // ['#inputFinishTime', '#my-tbl', '#calBtn', '#summary2', '#tblFooterBtns'].forEach(function (ids) {
         //     document.querySelector(ids).style.margin = 0

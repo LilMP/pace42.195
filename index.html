@@ -68,9 +68,9 @@
 
         .small-btn {
             display: inline-block;
-            color: blue;
+            color: #8080ff;
             cursor: pointer;
-            border-bottom: 1px double blue;
+            border-bottom: 1px double #8080ff;
             /* border-radius: 40px; */
             /* background-color: #efefef; */
             /* height: 25pt; */
@@ -163,6 +163,8 @@
             background-color: pink
         }
 
+
+
         .white {
             background-color: white
         }
@@ -170,6 +172,21 @@
         .gray {
             /* background-color: #E5E5E5 */
             background-color: #EFEFEF
+        }
+
+        .tCellGreen,
+        .tCellRed {
+            font-weight: bold;
+            color: white;
+        }
+
+        .tCellGreen {
+            background-color: #49AD91;
+        }
+
+        .tCellRed {
+            background-color: #ff8080;
+            /* #F29D00 */
         }
 
         td {
@@ -411,7 +428,8 @@
     </div>
     <hr id="toDisappear">
     <div class="footer">
-        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank">這裡</a></small>
+        <small>無廣告、無營利，更多細節與網站說明請看<span href="https://github.com/LilMP/pace42.195" target="_blank"
+                class="small-btn">這裡</span></small>
         </br>
 
 
@@ -524,8 +542,31 @@
         for (i = 0; i < tbl.rows.length; i++) { // 在現有表格新增欄位
             if (i % 2 == 0) { cellStyle = color + " even " } else { cellStyle = color + " odd " } // 分偶數列 奇數列
             if (i == 0) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + columnName + "\u00A0", "tHeader "); }
-            else if (i == tbl.rows.length - 1) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle); }
-            else { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle); }
+            else if (i == tbl.rows.length - 1) {
+                if (columnName == "分段配速" || columnName == "分段") {
+                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter " + cellStyle);
+
+                } else {
+                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle);
+                }
+            }
+            // else { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle); }
+            else {
+                if (columnName == "分段配速" || columnName == "分段") {
+                    console.log(arrData[i - 1] - pace)
+                    if (arrData[i - 1] - pace > 4621) {
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell tCellGreen" + cellStyle)
+                    } else if (arrData[i - 1] - pace < -4621) {
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell tCellRed" + cellStyle)
+                    } else {
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell" + cellStyle)
+                    }
+                }
+                else {
+                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle);
+                }
+            }
+
         }
         return newTable.innerHTML
     }
@@ -816,7 +857,8 @@
             (i < time_compensate[lv].cp_each.length - 1) ? sum = sum + 2.5 * (paceAdjust + item * 1000) : sum = sum + 2.2 * (paceAdjust + item * 1000)
             timeAccumulated.push(moment.utc(sum).format("H:mm:ss"))
             paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 2.2 * (paceAdjust + item * 1000)).format("mm:ss"))
-            paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m'ss\""))
+            // paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m'ss\""))
+            paceAdjustSlope.push(paceAdjust + item * 1000)
             paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
         });
 

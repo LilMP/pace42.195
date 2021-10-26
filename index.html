@@ -883,7 +883,12 @@
             paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
         });
 
-        halfPaceTime = 1.1 * moment.duration(moment(paceAdjustSlope[8], "m'ss\"").format("HH:mm:ss")) // 20k配速*1.1km 預設已是毫秒
+        // halfPaceTime = 1.1 * moment.duration(moment(paceAdjustSlope[8], "m'ss\"").format("HH:mm:ss")) // 20k配速*1.1km 預設已是毫秒
+        // console.log(moment.utc(paceAdjustSlope[8]).format("HH:mm:ss"))
+        // console.log(1.1 * paceAdjustSlope[8]) // 前半馬最後1.1k 時間 in 毫秒
+        halfPaceTime = 1.1 * paceAdjustSlope[8] // 前半馬最後1.1k 時間 in 毫秒
+        // console.log(moment.utc(1.1 * paceAdjustSlope[8]).format("HH:mm:ss"))
+        // console.log(halfPaceTime)
         time20km = moment.duration(moment(timeAccumulated[7], "HH:mm:ss").format("HH:mm:ss")).asMilliseconds() // 20k 累積時間轉成毫秒
         firstHalfTime = halfPaceTime + time20km // 前半馬 in 毫秒
         firstHalfPace = firstHalfTime / 21.1 //前半馬配速in毫秒

@@ -13,7 +13,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta property="og:url" content="https://lilmp.github.io/pace42.195/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="2021台北馬拉松配速模擬+自製手環" />
@@ -22,8 +21,10 @@
         content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" /> -->
 
     <title>2021台北馬拉松配速模擬+自製手環</title>
+    <link rel=icon href=icons8-running-32.png sizes="32x32" type="image/png">
+    <!-- <link rel=icon href=favicon.ico sizes="32x32 48x48" type="image/vnd.microsoft.icon"> -->
     <!-- for share btn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
     <!-- <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">  -->
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -43,6 +44,7 @@
         }
 
         h1 {
+            /* font-size: 1.5em; */
             margin: 10pt 0 0 0;
         }
 
@@ -179,16 +181,19 @@
 
         .tCellGreen,
         .tCellRed {
-            font-weight: bold;
+            /* font-weight: bold; */
             color: white;
         }
 
         .tCellGreen {
             background-color: #49AD91;
+            /* color: white; */
         }
 
         .tCellRed {
-            background-color: #ff8080;
+            background-color: #ff9999;
+            color: black;
+            /* #ff8080 */
             /* #F29D00 */
         }
 
@@ -204,13 +209,26 @@
         }
 
         .main input {
-            width: 15%;
+            width: 10%;
             font-size: 15pt;
             resize: none;
-            text-align: right;
+            text-align: center;
             display: inline-block;
             vertical-align: middle;
             height: 30px;
+        }
+
+        .main .radio,
+        .main div #fullm,
+        .main div #halfm {
+            width: auto;
+            font-size: 15pt;
+            /* margin: 0px; */
+            /* resize: none; */
+            /* text-align: left; */
+            /* display: inline-block; */
+            /* vertical-align: middle; */
+            height: auto;
         }
 
         .result-title {
@@ -223,19 +241,60 @@
             margin: 5pt auto;
         }
 
-        /* .share-btn {
-            color: white;
+        .info-page {
+            position: absolute;
+            top: 15%;
+            left: calc(30%-10px);
+            /* 因為body的width是40%, 表示左右兩邊各30% */
+            width: 40%;
+            height: 60%;
+            overflow: auto;
+            /* height: auto; */
+            transform-origin: top left;
+            transform: scale(0);
+            /* border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px; */
+            border-radius: 20px;
+
+            background: rgba(80, 78, 78, 0.95);
+            color: #fff;
+            padding: 10px;
+            font-family: 'roboto';
+            transition: .5s;
+            transition-delay: .5s;
+        }
+
+        .info-page>div>ul>li>u,
+        .info-page>div>h3>u {
+            text-decoration: underline double white;
+        }
+
+        .info-page.active {
+            transform: scale(1);
+            transition-delay: 0s;
+        }
+
+        .info-page.active .title,
+        .info-page.active .social-media,
+        .info-page.active .link-container {
+            opacity: 1;
+            transition: .5s;
+            transition-delay: .5s;
+        }
+
+        #info {
+            /* color: white;
             background: gray;
-        padding-top: 2px;
-        padding-left: 6px;
-        cursor: pointer;
-        position: relative;
-        border: none;
-        border-radius: 50%;
-        width: 64px;
-        height: 64px;
-        z-index: 2;
-        } */
+            padding-top: 2px;
+            padding-left: 6px;
+            cursor: pointer;
+            position: relative;
+            border: none;
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+            z-index: 2; */
+        }
 
         .share-btn {
             display: inline-block;
@@ -252,19 +311,89 @@
             /* z-index: 2; */
         }
 
-        .social-media-btn:nth-child(1) {
+        .close {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            width: 16px;
+            height: 16px;
+            opacity: 0.3;
+        }
+
+        .close:hover {
+            opacity: 1;
+        }
+
+        .close:before,
+        .close:after {
+            position: absolute;
+            left: 8px;
+            content: ' ';
+            height: 16px;
+            width: 2px;
+            background-color: white;
+        }
+
+        .close:before {
+            transform: rotate(45deg);
+        }
+
+        .close:after {
+            transform: rotate(-45deg);
+        }
+
+
+        body>div.main>div:nth-child(4)>ul>li:nth-child(2) {
+            /* .social-media-btn:nth-child(1) { */
             /* background: #1877F2; */
             color: #1877F2;
         }
 
-        .social-media-btn:nth-child(2) {
+        body>div.main>div:nth-child(4)>ul>li:nth-child(3) {
+            /* .social-media-btn:nth-child(2) { */
             /* background: #06C755; */
             color: #06C755;
         }
 
-        .social-media-btn:nth-child(3) {
+        /* .social-media-btn:nth-child(3) {
+            background: #FF7D7D;
+            color: #A129B7;
+        } */
+
+        #info {
+            color: #ffa500;
+        }
+
+        #insta {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            /* Also define standard property for compatibility */
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            /* font-size: 200px; change this to change the size */
+
+        }
+
+        body>div.main>div:nth-child(4)>ul>li:nth-child(4) {
+            /* .social-media-btn:nth-child(3) { */
             /* background: #FF7D7D; */
             color: #FF7D7D;
+        }
+
+
+
+
+        .share-inline {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .features {
+            text-align: left;
         }
 
         /* .cellText {
@@ -332,6 +461,16 @@
                 margin-top: 10%
             }
 
+            .main input {
+                width: 15%;
+            }
+
+            .main .radio,
+            .main div #fullm,
+            .main div #halfm {
+                font-size: 1.2em;
+            }
+
             h1 {
                 font-size: 1.5em
             }
@@ -340,6 +479,21 @@
                 width: 95%;
                 font-size: 80%;
             }
+
+            .info-page {
+                top: 2.5%;
+                left: calc(5%-10px);
+                /* 因為body的width是40%, 表示左右兩邊各30% */
+                width: 90%;
+                height: 90%;
+                overflow: scroll;
+            }
+
+            .info-page>div>ul {
+                margin-left: 0;
+                padding-left: 20px;
+            }
+
 
             #my-tbl,
             #summary2 {
@@ -371,6 +525,16 @@
                 margin-top: 10%
             }
 
+            .main input {
+                width: 15%;
+            }
+
+            .main .radio,
+            .main div #fullm,
+            .main div #halfm {
+                font-size: 1.2em;
+            }
+
             h1 {
                 font-size: 1.5em
             }
@@ -378,6 +542,20 @@
             body {
                 font-size: 80%;
                 width: 95%;
+            }
+
+            .info-page {
+                top: 2.5%;
+                left: calc(5%-10px);
+                /* 因為body的width是40%, 表示左右兩邊各30% */
+                width: 90%;
+                height: 90%;
+                overflow: scroll;
+            }
+
+            .info-page>div>ul {
+                margin-left: 0;
+                padding-left: 20px;
             }
 
             #my-tbl,
@@ -414,11 +592,122 @@
 
 <body onload="loadHMS()">
     <div class="main">
-        <h1>2021台北馬拉松</br>配速模擬+手環製作</h1>
-        <p class="footer">輸入目標完賽時間、自製配速手環，就是這麼簡單！</p>
+        <h1>2021台北馬配速模擬計算機
+            <!-- </br>配速模擬+手環製作 -->
+        </h1>
+        <div>
+            <ul class="footer share-inline">
+                <li>輸入目標完賽時間、自製配速手環，就是這麼簡單！</li>
+                <li>
+                    <div id='info' class="share-btn social-media-btn">
+                        <i class="las la-info-circle la-2x"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <div class="info-page">
+            <h3 class="title">使用說明</h3>
+            <hr>
+            <a href="#" class="close"></a>
+            <div>
+                <p>這個小工具根據台北馬賽道狀況，做配速調整，還可以自製配速手環!!!<br />如果你是喜歡事先做足功課的跑者，這個工具可以幫你減輕一些負擔😊</p>
+                <!-- <p>大家來模擬自己的台北馬配速，制定屬於個人的完賽配速計畫吧~🎉</p> -->
+
+                <h3>重點功能</h3>
+                <ul class="features">
+                    <li>
+                        <p style="color: orange;display: inline;">【好實用】</p>考慮賽道狀況(上下坡、擁擠程度)調整配速，避免<u>為了追配速把自己搞爆</u>
+                    </li>
+                    <li>
+                        <p style="color: orange;display: inline;">【好貼心】</p>配合台北馬每2.5K提供水站/補給站，顯示配速跟時間，進站時順便確認，不用反覆低頭
+                    </li>
+                    <li>
+                        <p style="color: orange;display: inline;">【好細緻】</p>針對不同完賽時間、不同程度的跑友，設定不同的<u>配速調整參數</u>
+                    </li>
+                    <li>
+                        <p style="color: orange;display: inline;">【好漂釀】</p>依照模擬結果，自製精美❤️<u>配速手環</u>❤️
+                    </li>
+                    <li>
+                        <p style="color: orange;display: inline;">【好佛心】</p>免費工具、<u>無廣告</u>
+                    </li>
+                    <li>
+                        <p style="color: orange;display: inline;">【好懶人】</p>輸入的時間資料<u>僅</u>儲存在手機/電腦端，使用者<u>不用重複輸入時間</u>
+                    </li>
+                </ul>
+
+
+                <hr>
+                <small>
+                    無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank"
+                        class="small-btn">這裡
+                    </a>
+                    </br>
+                    ※ 注意：非官方工具、如製作手環功能無反應,請嘗試其他瀏覽器 ※
+                    </br>
+                    <a target="_blank" href="https://icons8.com/icon/35835/running" class="small-btn">Running</a>
+                    icon by <a target="_blank" href="https://icons8.com" class="small-btn">Icons8</a>
+                </small>
+
+            </div>
+        </div>
+        <div>
+            <ul class="container footer share-inline">
+                <li>分享：</li>
+                <li>
+                    <!-- <button class="share-btn social-media-btn" id='fbBtn' -->
+                    <div class="share-btn social-media-btn"
+                        onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
+                        <!-- <i class="fab fa-facebook-f"></i> -->
+                        <!-- <i class="lab la-facebook-f la-4x"></i> -->
+                        <i class="lab la-facebook-square la-2x"></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="share-btn social-media-btn"
+                        onclick="window.open('https://line.naver.jp/R/msg/text/?https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
+                        <!-- <i class="fab fa-line"></i> -->
+                        <!-- <i class="far fa-comment"></i> -->
+                        <i class="lab la-line la-2x"></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="share-btn social-media-btn" onclick="share()">
+                        <!-- <i class="fas fa-share-alt"></i> -->
+                        <i class="las la-share-alt-square la-2x"></i>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- <button class="share-btn social-media-btn">
+                <div class="line-it-button" data-lang="zh_Hant" data-type="share-c" data-ver="3"
+                    data-url="https://lilmp.github.io/pace42.195" data-color="default" data-size="small"
+                    data-count="false" style="display: none;"></div>
+                <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
+                    defer="defer"></script>
+            </button> -->
+        <!-- <button class="share-btn social-media-btn" id="lineBtn" -->
+
+        <!-- <div class="share-btn social-media-btn"
+                onclick="window.open('http://instagram.com/sharer.php?u=https://www.minwt.com&media=https://www.miwnt.con/logo.jpg&description=梅問題教學網','','width=626,height=436');return false;">
+                <i id="insta" class="lab la-instagram la-2x"></i>
+            </div> -->
+        <!-- <button class="share-btn social-media-btn" onclick="share()"> -->
+
+
+
         <hr>
         <div id='inputFinishTime'>
-            目標完賽時間
+            <div class="radio">
+                <input type="radio" id="fullm" name="mtype" value="fullm" checked><label for="fullm">全馬</label>
+                <input type="radio" id="halfm" name="mtype" value="halfm"><label for="halfm">半馬</label><br>
+            </div>目標時間
             <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH"
                 onclick="this.select()"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
@@ -429,7 +718,7 @@
                 onclick="this.select()"></input>
         </div>
 
-        <button id='calBtn' onclick="cal()">產生模擬結果</button>
+        <button id='calBtn' onclick="cal()">GO!</button>
 
 
     </div>
@@ -439,52 +728,26 @@
     </div>
     <hr id="toDisappear">
     <div class="footer">
-        <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
+        <!-- <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
             </a></small>
         </br>
-
-
-
         <small>※ 注意：非官方工具、如製作手環功能無反應,請嘗試其他瀏覽器 ※</small>
-        <div class="container">
-            <!-- <button class="share-btn social-media-btn" id='fbBtn' -->
-            <div class="share-btn social-media-btn"
-                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
-                <!-- <i class="fab fa-facebook-f"></i> -->
-                <!-- <i class="lab la-facebook-f la-4x"></i> -->
-                <i class="lab la-facebook-square la-2x"></i>
-            </div>
-            <!-- <button class="share-btn social-media-btn">
-                <div class="line-it-button" data-lang="zh_Hant" data-type="share-c" data-ver="3"
-                    data-url="https://lilmp.github.io/pace42.195" data-color="default" data-size="small"
-                    data-count="false" style="display: none;"></div>
-                <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async"
-                    defer="defer"></script>
-            </button> -->
-            <!-- <button class="share-btn social-media-btn" id="lineBtn" -->
-            <div class="share-btn social-media-btn"
-                onclick="window.open('https://line.naver.jp/R/msg/text/?https://lilmp.github.io/pace42.195/','','width=626,height=436');return false;">
-                <!-- <i class="fab fa-line"></i> -->
-                <!-- <i class="far fa-comment"></i> -->
-                <i class="lab la-line la-2x"></i>
-            </div>
-            <!-- <button class="share-btn social-media-btn" onclick="share()"> -->
-            <div class="share-btn social-media-btn" onclick="share()">
-                <!-- <i class="fas fa-share-alt"></i> -->
-                <i class="las la-share-alt-square la-2x"></i>
-            </div>
-            <!-- <div class="share-options">
+        <small><a target="_blank" href="https://icons8.com/icon/35835/running" class="small-btn">Running</a> icon by <a
+                target="_blank" href="https://icons8.com" class="small-btn">Icons8</a></small> -->
+
+
+        <!-- <div class="info-page">
                 <p class='title'>share</p>
                 <img class='title'
                     src="https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg"
                     alt="map" width="500" height="600">
             </div> -->
-        </div>
-        <!-- <div class="container">
+    </div>
+    <!-- <div class="container">
             <button class="share-btn">
                 <i class="fas fa-share-alt"></i>
             </button>
-            <div class="share-options">
+            <div class="info-page">
                 <p class='title'>share</p>
                 <img class='title'
                     src="https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg"
@@ -499,6 +762,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 
 <script>
+    const shareBtn = document.querySelector('#info');
+    const closeBtn = document.querySelector('.close');
+    const shareOptions = document.querySelector('.info-page');
+
+    shareBtn.addEventListener('click', () => {
+        shareOptions.classList.toggle('active');
+    })
+    closeBtn.addEventListener('click', () => {
+        shareOptions.classList.toggle('active');
+    })
+
     function share() {
         if (navigator.share) {
             navigator.share({
@@ -540,7 +814,9 @@
     function appendColumn(table, columnName, arrData, color) {
         var tbl = table, // table reference
             i,
-            cellStyle
+            cellStyle,
+            timeForHighlight // 配速著色提示
+        (checked == 'halfm') ? timeForHighlight = 6621 : timeForHighlight = 4421
 
         newTable = document.createElement('table');
         newTable.setAttribute('id', "tableToAppend")
@@ -565,7 +841,13 @@
             if (i == 0) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + columnName + "\u00A0", "tHeader "); }
             else if (i == tbl.rows.length - 1) {
                 if (columnName == "分段配速" || columnName == "分段") {
-                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter " + cellStyle);
+                    if (arrData[i - 1] - pace > timeForHighlight) {
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter tCellGreen" + cellStyle);
+                    } else if (arrData[i - 1] - pace < -timeForHighlight) {
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter tCellRed" + cellStyle)
+                    } else {
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter" + cellStyle)
+                    }
 
                 } else {
                     createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle);
@@ -575,9 +857,9 @@
             else {
                 if (columnName == "分段配速" || columnName == "分段") {
                     // console.log(arrData[i - 1] - pace)
-                    if (arrData[i - 1] - pace > 4621) {
+                    if (arrData[i - 1] - pace > timeForHighlight) {
                         createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell tCellGreen" + cellStyle)
-                    } else if (arrData[i - 1] - pace < -4621) {
+                    } else if (arrData[i - 1] - pace < -timeForHighlight) {
                         createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell tCellRed" + cellStyle)
                     } else {
                         createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell" + cellStyle)
@@ -618,62 +900,12 @@
         }
         return newTable
     }
-
-    cName = ["水站/補給站", "配速調整", "分段配速", "分段時間", "累積時間"]
-
-    // 水站里程
-    arrStop = []
-    for (i = 0; i < 16; i++) {
-        x = i * 2.5 + 2.5
-        arrStop.push(x + "k")
-    }
-    arrStop.push("終點")
-    // 關門時間 cutting time
-    arrCutTime = ["06:49", "07:09", "07:28", "07:48", "08:07", "08:28", "08:46", "09:06", "--:--", "--:--", "10:06", "10:25", "10:43", "11:03", "11:26", "11:42", "--:--"]
-    // 貼心提醒
-    arrRemind = ["起跑人多、穩跑", "慢慢進入目標配速", "進入目標配速", "穩定呼吸不超速", "準備上中山橋", "上下坡注意安全", "穩配不超速！", "準備上高架", "上坡穩住步頻跟呼吸", "請勿超速", "下橋注意安全", "進河濱", "不要慢！！", "沒有牆！！", "小心腳步，安全為主", "準備開一個！", "開！"]
-
     function addTable(tableID) {
         var table = document.createElement("table");
         table.setAttribute('id', tableID)
         table.innerHTML = appendColumn(table, "里程", arrStop, " white ")
         return table
     }
-
-    // 配速調整
-    let time_compensate = [{
-        name: 'lv0',
-        cp_each: [5, 0, 0, 0, 0, 2, 0, 0, 8, 0, -5, 0, 0, 0, 0, 0, 0,],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
-        cp_total: 25, //地形影響時間調整(上面加總後*2.5)
-        cp_stop: 2 // 進站時間差(ie.進站補給花多久時間)
-
-    }, {
-        name: 'lv1',
-        cp_each: [15, 8, 0, 0, 0, 3, 0, 0, 10, 0, -5, 0, 0, 0, 0, 0, 0],
-        cp_total: 77.5,
-        cp_stop: 2.4
-    }, {
-        name: 'lv2',
-        cp_each: [20, 10, 0, 0, 0, 5, 0, 0, 12, 0, -5, 0, 0, 0, 0, 0, 0],
-        cp_total: 105,
-        cp_stop: 3
-    }, {
-        name: 'lv3',
-        cp_each: [25, 20, 0, 0, 0, 6, 0, 0, 15, 0, -5, 0, 0, 0, 0, 0, 0],
-        cp_total: 152.5,
-        cp_stop: 3
-    }, {
-        name: 'lv4',
-        cp_each: [30, 25, 0, 0, 0, 7, 0, 0, 18, 0, -5, 0, 0, 0, 0, 0, 0],
-        cp_total: 187.5,
-        cp_stop: 3
-    }, {
-        name: 'lv5',
-        cp_each: [30, 25, 0, 0, 0, 8, 0, 0, 20, 0, -5, 0, 0, 0, 0, 0, 0],
-        cp_total: 195,
-        cp_stop: 4
-    }]
-
     function loadHMS() {
         // 程式起始點: 第一次會是空值 如果有輸入過從local storage取出值
         // let finishTime = localStorage.getItem('time')
@@ -686,11 +918,9 @@
         let ss = localStorage.getItem('ss')
         document.getElementById('ss').value = ss
     }
-
     function render(display) { // 顯示結果
         document.getElementById('result').style.display = display
     }
-
     function downloadwithbrowser() {
 
         // copy result table
@@ -712,13 +942,15 @@
         //         else { return td.innerHTML; }
         //     });
         // });
+        var finishPace;
+        (checked == 'fullm') ? finishPace = finishTime / 42.2 : finishPace = finishTime / 21.1
 
         summary3 = ''
         summary3 += "<div id='summary3' class='summary3'><div><b>2021台北馬配速手環</b></div>"
         // summary3 += "<div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
         // summary3 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
         summary3 += "<div>時間 " + fTime.format("H:mm:ss") + "</div>"
-        summary3 += "<div style='margin-bottom:5px;'>配速 " + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</div></div>"
+        summary3 += "<div style='margin-bottom:5px;'>配速 " + moment.utc(moment(finishPace)).format("m'ss\"") + "</div></div>"
 
 
 
@@ -842,6 +1074,9 @@
 
     function cal() {
 
+        console.log(document.querySelector('input[name="mtype"]:checked').value);
+        checked = document.querySelector('input[name="mtype"]:checked').value;
+
         let hhh = document.getElementById('hh').value
         let mmm = document.getElementById('mm').value
         let sss = document.getElementById('ss').value
@@ -853,48 +1088,188 @@
         // console.log(fTime)
         document.getElementById("result").innerHTML = ''
 
-        // define runners level
-        var lv;
-        if (fTime.isBefore(moment("3:20:00", "HH:mm:ss"))) lv = 0
-        if (fTime.isBetween(moment("3:20:00", "HH:mm:ss"), moment("3:45:00", "HH:mm:ss"), null, '[)')) lv = 1
-        if (fTime.isBetween(moment("3:45:00", "HH:mm:ss"), moment("4:00:00", "HH:mm:ss"), null, '[)')) lv = 2
-        if (fTime.isBetween(moment("4:00:00", "HH:mm:ss"), moment("4:30:00", "HH:mm:ss"), null, '[)')) lv = 3
-        if (fTime.isBetween(moment("4:30:00", "HH:mm:ss"), moment("5:00:00", "HH:mm:ss"), null, '[)')) lv = 4
-        if (fTime.isSameOrAfter(moment("5:00:00", "HH:mm:ss"))) lv = 5
-        // console.log("lv:"+lv);
 
-        pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds() / 42.2 // 平均配速(毫秒)
-        // console.log(moment.utc(pace).format("mm:ss"))
-        x = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
-        paceAdjust = moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total * 1000))).asMilliseconds() / 42.2
-
+        cName = ["水站/補給站", "配速調整", "分段配速", "分段時間", "累積時間"]
+        // 水站里程
+        arrStop = []
         paceAdjustSlope = [] // 坡度校正後配速
         paceAdjustStop = [] // 進站時間校正後配速
         paceTime = [] // 分段時間
         timeAccumulated = [] // 時間加總
         sum = 0
-        time_compensate[lv].cp_each.forEach(function (item, i) {
-            // (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000:sum = sum+2.2*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000
-            (i < time_compensate[lv].cp_each.length - 1) ? sum = sum + 2.5 * (paceAdjust + item * 1000) : sum = sum + 2.2 * (paceAdjust + item * 1000)
-            timeAccumulated.push(moment.utc(sum).format("H:mm:ss"))
-            paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 2.2 * (paceAdjust + item * 1000)).format("mm:ss"))
-            // paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m'ss\""))
-            paceAdjustSlope.push(paceAdjust + item * 1000)
-            paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
-        });
+        lv = ""
 
-        // halfPaceTime = 1.1 * moment.duration(moment(paceAdjustSlope[8], "m'ss\"").format("HH:mm:ss")) // 20k配速*1.1km 預設已是毫秒
-        // console.log(moment.utc(paceAdjustSlope[8]).format("HH:mm:ss"))
-        // console.log(1.1 * paceAdjustSlope[8]) // 前半馬最後1.1k 時間 in 毫秒
-        halfPaceTime = 1.1 * paceAdjustSlope[8] // 前半馬最後1.1k 時間 in 毫秒
-        // console.log(moment.utc(1.1 * paceAdjustSlope[8]).format("HH:mm:ss"))
-        // console.log(halfPaceTime)
-        time20km = moment.duration(moment(timeAccumulated[7], "HH:mm:ss").format("HH:mm:ss")).asMilliseconds() // 20k 累積時間轉成毫秒
-        firstHalfTime = halfPaceTime + time20km // 前半馬 in 毫秒
-        firstHalfPace = firstHalfTime / 21.1 //前半馬配速in毫秒
-        finishTime = moment.duration(timeAccumulated[timeAccumulated.length - 1], "HH:MMmm:ss").asMilliseconds() // 全馬 in 毫秒
-        secondHalfTime = moment(finishTime).diff(moment(firstHalfTime)) // 後半馬 in 毫秒
-        secondHalfPace = secondHalfTime / 21.1 //後半馬配速in毫秒
+        if (checked == 'halfm') {
+            for (i = 0; i < 8; i++) {
+                x = i * 2.5 + 2.5
+                arrStop.push(x + "k")
+            }
+            arrStop.push("終點")
+            // 關門時間 cutting time
+            arrCutTime = ["07:21", "07:42", "08:04", "07:48", "08:25", "08:47", "09:07", "09:28", "09:50", "--:--"]
+            // 貼心提醒
+            arrRemind = ["人多、穩跑不推擠", "慢慢進入配速", "穩定配速", "調整呼吸順順跑", "準備上橋", "維持配速", "上下橋推進不急躁", "快結束了", "開!"]
+            // 配速調整
+            time_compensate = [{
+                name: 'lv0',
+                cp_each: [5, 0, 0, 0, 0, 0, 0, 0, -3],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
+                // cp_total: 5, //地形影響時間調整(上面加總後*2.5)
+                cp_total: 9.2, //地形影響時間調整(5*2.5-3*1.1)
+                cp_stop: 2 // 進站時間差(ie.進站補給花多久時間)
+
+            }, {
+                name: 'lv1',
+                cp_each: [8, 5, 0, 0, 5, 0, 5, 0, -3],
+                // cp_total: 50,
+                cp_total: 54.2,//23*2.5-3*1.1
+                cp_stop: 2.4
+            }, {
+                name: 'lv2',
+                cp_each: [10, 5, 0, 0, 5, 0, 5, 0, -3],
+                // cp_total: 55,
+                cp_total: 59.2,// 25*2.5-3.3
+                cp_stop: 3
+            }, {
+                name: 'lv3',
+                cp_each: [15, 10, 0, 0, 10, 0, 10, 0, -3],
+                // cp_total: 105,
+                cp_total: 109.2,// 45*2.5-3.3
+                cp_stop: 3
+            }, {
+                name: 'lv4',
+                cp_each: [20, 10, 0, 0, 10, 0, 10, 0, -3],
+                // cp_total: 117.5,
+                cp_total: 121.7,//50*2.5-3.3
+                cp_stop: 3
+            }, {
+                name: 'lv5',
+                cp_each: [30, 10, 0, 0, 10, 0, 10, 0, -3],
+                // cp_total: 142.5,
+                cp_total: 146.7,//60*2.5-3.3
+                cp_stop: 4
+            }]
+
+            // define runners level            
+            if (fTime.isBefore(moment("1:40:00", "HH:mm:ss"))) lv = 0
+            if (fTime.isBetween(moment("1:40:00", "HH:mm:ss"), moment("1:50:00", "HH:mm:ss"), null, '[)')) lv = 1
+            if (fTime.isBetween(moment("1:50:00", "HH:mm:ss"), moment("2:00:00", "HH:mm:ss"), null, '[)')) lv = 2
+            if (fTime.isBetween(moment("2:00:00", "HH:mm:ss"), moment("2:15:00", "HH:mm:ss"), null, '[)')) lv = 3
+            if (fTime.isBetween(moment("2:15:00", "HH:mm:ss"), moment("2:30:00", "HH:mm:ss"), null, '[)')) lv = 4
+            if (fTime.isSameOrAfter(moment("2:30:00", "HH:mm:ss"))) lv = 5
+            // console.log("lv:" + lv);
+
+            pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds() / 21.1 // 平均配速(毫秒)
+            // console.log(moment.utc(pace).format("mm:ss"))
+            x = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
+            // console.log(x)
+            paceAdjust = moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total * 1000))).asMilliseconds() / 21.1
+            // console.log(paceAdjust)
+
+            //每個區間跑2.5k 最後一個區間只跑1.1k
+            time_compensate[lv].cp_each.forEach(function (item, i) {
+                // (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000:sum = sum+2.2*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000
+                (i < time_compensate[lv].cp_each.length - 1) ? sum = sum + 2.5 * (paceAdjust + item * 1000) : sum = sum + 1.1 * (paceAdjust + item * 1000)
+                timeAccumulated.push(moment.utc(sum).format("H:mm:ss"))
+                paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 1.1 * (paceAdjust + item * 1000)).format("mm:ss"))
+                // paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m'ss\""))
+                paceAdjustSlope.push(paceAdjust + item * 1000)
+                paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
+            });
+
+            time10km = moment.duration(moment(timeAccumulated[3], "HH:mm:ss").format("HH:mm:ss")).asMilliseconds() // 10k 累積時間轉成毫秒
+            // firstHalfTime = halfPaceTime + time20km // 前半馬 in 毫秒
+            // firstHalfPace = firstHalfTime / 21.1 //前半馬配速in毫秒
+            pace10k = time10km / 10.0
+            finishTime = moment.duration(timeAccumulated[timeAccumulated.length - 1], "HH:MMmm:ss").asMilliseconds() // 全馬 in 毫秒
+            time11_1k = moment(finishTime).diff(moment(time10km)) // 後半馬 in 毫秒
+            pace11_1k = time11_1k / 11.1 //後半馬配速in毫秒
+        }
+        else if (checked == 'fullm') {
+            for (i = 0; i < 16; i++) {
+                x = i * 2.5 + 2.5
+                arrStop.push(x + "k")
+            }
+            arrStop.push("終點")
+            // 關門時間 cutting time
+            arrCutTime = ["06:49", "07:09", "07:28", "07:48", "08:07", "08:28", "08:46", "09:06", "--:--", "--:--", "10:06", "10:25", "10:43", "11:03", "11:26", "11:42", "--:--"]
+            // 貼心提醒
+            arrRemind = ["起跑人多、穩跑", "慢慢進入目標配速", "進入目標配速", "穩定呼吸不超速", "準備上中山橋", "上下坡注意安全", "穩配不超速！", "準備上高架", "上坡穩住步頻跟呼吸", "請勿超速", "下橋注意安全", "進河濱", "不要慢！！", "沒有牆！！", "小心腳步，安全為主", "準備開一個！", "開！"]
+            // 配速調整
+            time_compensate = [{
+                name: 'lv0',
+                cp_each: [5, 0, 0, 0, 0, 2, 0, 0, 8, 0, -5, 0, 0, 0, 0, 0, 0,],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
+                cp_total: 25, //地形影響時間調整(上面加總後*2.5)
+                cp_stop: 2 // 進站時間差(ie.進站補給花多久時間)
+
+            }, {
+                name: 'lv1',
+                cp_each: [15, 8, 0, 0, 0, 3, 0, 0, 10, 0, -5, 0, 0, 0, 0, 0, 0],
+                cp_total: 77.5,
+                cp_stop: 2.4
+            }, {
+                name: 'lv2',
+                cp_each: [20, 10, 0, 0, 0, 5, 0, 0, 12, 0, -5, 0, 0, 0, 0, 0, 0],
+                cp_total: 105,
+                cp_stop: 3
+            }, {
+                name: 'lv3',
+                cp_each: [25, 20, 0, 0, 0, 6, 0, 0, 15, 0, -5, 0, 0, 0, 0, 0, 0],
+                cp_total: 152.5,
+                cp_stop: 3
+            }, {
+                name: 'lv4',
+                cp_each: [30, 25, 0, 0, 0, 7, 0, 0, 18, 0, -5, 0, 0, 0, 0, 0, 0],
+                cp_total: 187.5,
+                cp_stop: 3
+            }, {
+                name: 'lv5',
+                cp_each: [30, 25, 0, 0, 0, 8, 0, 0, 20, 0, -5, 0, 0, 0, 0, 0, 0],
+                cp_total: 195,
+                cp_stop: 4
+            }]
+
+            // define runners level            
+            if (fTime.isBefore(moment("3:20:00", "HH:mm:ss"))) lv = 0
+            if (fTime.isBetween(moment("3:20:00", "HH:mm:ss"), moment("3:45:00", "HH:mm:ss"), null, '[)')) lv = 1
+            if (fTime.isBetween(moment("3:45:00", "HH:mm:ss"), moment("4:00:00", "HH:mm:ss"), null, '[)')) lv = 2
+            if (fTime.isBetween(moment("4:00:00", "HH:mm:ss"), moment("4:30:00", "HH:mm:ss"), null, '[)')) lv = 3
+            if (fTime.isBetween(moment("4:30:00", "HH:mm:ss"), moment("5:00:00", "HH:mm:ss"), null, '[)')) lv = 4
+            if (fTime.isSameOrAfter(moment("5:00:00", "HH:mm:ss"))) lv = 5
+            // console.log("lv:"+lv);
+
+            pace = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds() / 42.2 // 平均配速(毫秒)
+            // console.log(moment.utc(pace).format("mm:ss"))
+            x = moment.duration(fTime.format("HH:mm:ss")).asMilliseconds()
+            paceAdjust = moment.duration(moment(x).diff(moment(time_compensate[lv].cp_total * 1000))).asMilliseconds() / 42.2
+            time_compensate[lv].cp_each.forEach(function (item, i) {
+                // (i<time_compensate[lv].cp_each.length-1)?sum = sum+2.5*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000:sum = sum+2.2*(paceAdjust+item*1000)-time_compensate[lv].cp_stop*1000
+                (i < time_compensate[lv].cp_each.length - 1) ? sum = sum + 2.5 * (paceAdjust + item * 1000) : sum = sum + 2.2 * (paceAdjust + item * 1000)
+                timeAccumulated.push(moment.utc(sum).format("H:mm:ss"))
+                paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 2.2 * (paceAdjust + item * 1000)).format("mm:ss"))
+                // paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m'ss\""))
+                paceAdjustSlope.push(paceAdjust + item * 1000)
+                paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
+            });
+
+            // halfPaceTime = 1.1 * moment.duration(moment(paceAdjustSlope[8], "m'ss\"").format("HH:mm:ss")) // 20k配速*1.1km 預設已是毫秒
+            // console.log(moment.utc(paceAdjustSlope[8]).format("HH:mm:ss"))
+            // console.log(1.1 * paceAdjustSlope[8]) // 前半馬最後1.1k 時間 in 毫秒
+            halfPaceTime = 1.1 * paceAdjustSlope[8] // 前半馬最後1.1k 時間 in 毫秒
+            // console.log(moment.utc(1.1 * paceAdjustSlope[8]).format("HH:mm:ss"))
+            // console.log(halfPaceTime)
+            time20km = moment.duration(moment(timeAccumulated[7], "HH:mm:ss").format("HH:mm:ss")).asMilliseconds() // 20k 累積時間轉成毫秒
+            firstHalfTime = halfPaceTime + time20km // 前半馬 in 毫秒
+            firstHalfPace = firstHalfTime / 21.1 //前半馬配速in毫秒
+            finishTime = moment.duration(timeAccumulated[timeAccumulated.length - 1], "HH:MMmm:ss").asMilliseconds() // 全馬 in 毫秒
+            secondHalfTime = moment(finishTime).diff(moment(firstHalfTime)) // 後半馬 in 毫秒
+            secondHalfPace = secondHalfTime / 21.1 //後半馬配速in毫秒
+
+        } else {
+            console.log('something\'s wrong')
+        }
+
+
+
 
         document.getElementById("result").appendChild(addTable('my-tbl'))
         // console.log(document.getElementById('my-tbl'))
@@ -905,15 +1280,31 @@
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "配速調整", arrRemind, ' gray ')
 
 
-        // summary 區塊
-        textUpdate = document.getElementById("result").innerHTML;
-        summary2 = ''
-        // summary2 += "<div>均速:" + moment.utc(pace).format("m'ss\"") + "(調整前)</div>"
-        // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
-        summary2 += "<div id='summary2' class='summary2'><div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
-        summary2 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
-        summary2 += "<div>總時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div></div>"
-        document.getElementById("result").innerHTML = summary2 + textUpdate;
+        if (checked == 'halfm') {
+            // summary 區塊
+            textUpdate = document.getElementById("result").innerHTML;
+            summary2 = ''
+            // summary2 += "<div>均速:" + moment.utc(pace).format("m'ss\"") + "(調整前)</div>"
+            // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
+            summary2 += "<div id='summary2' class='summary2'><div>前10k：<b>" + moment.utc(moment(time10km)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(pace10k)).format("m'ss\"") + "</b></div>"
+            summary2 += "<div>後11.1k：<b>" + moment.utc(moment(time11_1k)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(pace11_1k)).format("m'ss\"") + "</b></div>"
+            summary2 += "<div>總時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(finishTime / 21.1)).format("m'ss\"") + "</b></div></div>"
+            document.getElementById("result").innerHTML = summary2 + textUpdate;
+        } else if (checked == 'fullm') {
+            // summary 區塊
+            textUpdate = document.getElementById("result").innerHTML;
+            summary2 = ''
+            // summary2 += "<div>均速:" + moment.utc(pace).format("m'ss\"") + "(調整前)</div>"
+            // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
+            summary2 += "<div id='summary2' class='summary2'><div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
+            summary2 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
+            summary2 += "<div>總時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div></div>"
+            document.getElementById("result").innerHTML = summary2 + textUpdate;
+
+        } else {
+            console.log('something\'s wrong')
+        }
+
 
         // tblFooterBtns = document.createElement('div')
         // tblFooterBtns.setAttribute('id', "tblFooterBtns")

@@ -30,6 +30,10 @@
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- line  -->
     <!-- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js"></script> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Aldrich&family=Orbitron&display=swap" rel="stylesheet">
     <style type="text/css">
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -145,12 +149,15 @@
         }
 
         #inputFinishTime {
-            margin-top: 30px;
-            /* margin-bottom: 10px; */
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
         #inputFinishTime > ul{
-            width: 80%;
+            width: 80%;            
         }
+        /* #hh, #mm, #ss, #calBtn, h1 {
+            font-family: 'VT323','Aldrich','Orbitron', Microsoft JhengHei;
+        } */
 
         #calBtn {
             /* margin-top: 10px; */
@@ -227,8 +234,10 @@
         }
 
         .main input {
-            width: 80%;
+            width: 70%;
             /* font-size: 15pt; */
+            font-size: 1em;
+            /* font-weight: 400; */
             resize: none;
             text-align: center;
             display: inline-block;
@@ -237,8 +246,15 @@
         }
         #inputFinishTime > ul > li:nth-child(1),
         #inputFinishTime > ul > li:nth-child(7){
-                width:20%;
-            }
+            width:50%;
+        }
+        #inputFinishTime > ul > li:nth-child(1)
+        {
+            text-align:right;
+        }
+        #inputFinishTime > ul > li:nth-child(7){
+            text-align:left;
+        }
 
         .main .radio {
             margin: 10px auto;
@@ -494,7 +510,7 @@
             }
             #inputFinishTime > ul > li:nth-child(1),
             #inputFinishTime > ul > li:nth-child(7){
-                width:50%;
+                width:60%;
             }
             #inputFinishTime > ul{
             width: 90%;
@@ -784,7 +800,7 @@
         <div id="result"></div>
         <table id="tblToPrint"></table>
     </div>
-    <!-- <hr id="toDisappear"> -->
+    <hr id="toDisappear">
     <div class="footer">
         <!-- <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
             </a></small>
@@ -1119,10 +1135,11 @@
         document.getElementById("result").innerHTML = ''
 
         document.querySelector('.main').style.marginTop = null
-        document.querySelector('#inputFinishTime').style.marginTop = "30px"
+        document.querySelector('#inputFinishTime').style.marginTop = "50px"
+        document.querySelector('#inputFinishTime').style.marginBottom = "50px"
         // document.querySelector('#my-tbl').style.margin = "30px 0px";
         // document.querySelector('#calBtn').style.margin = "5px 30px";
-        // document.querySelector('#toDisappear').style.display = "none"
+        document.querySelector('#toDisappear').style.display = "block"
         // document.getElementById("result").style.display = "none"
         // document.querySelector('#summary2').style.margin = "30px 0px";
         // document.querySelector('#tblFooterBtns').style.margin = "30px 0px";
@@ -1412,7 +1429,7 @@
         document.getElementById("result").appendChild(tblFooterBtns)
 
         document.querySelector('.main').style.marginTop = 0
-        // document.querySelector('#toDisappear').style.display = "none"
+        document.querySelector('#toDisappear').style.display = "none"
 
         // ['#inputFinishTime', '#my-tbl', '#calBtn', '#summary2', '#tblFooterBtns'].forEach(function (ids) {
         //     document.querySelector(ids).style.margin = 0

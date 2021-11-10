@@ -41,6 +41,8 @@
         /* Firefox */
         input[type=number] {
             -moz-appearance: textfield;
+            padding: 0px;
+            font-weight: bold;
         }
 
         h1 {
@@ -58,7 +60,7 @@
             border: 1px solid dimgrey;
             border-radius: 40px;
             background-color: #efefef;
-            width: 40%;
+            /* width: 40%; */
             padding: 10px;
             /* height: 25pt; */
             margin: 5px auto;
@@ -70,6 +72,9 @@
             border-radius: 30px; */
             background-color: #e5e5e5;
         }
+        .la-1_5x {
+             font-size: 1.5em;
+         }
 
         .small-btn {
             display: inline-block;
@@ -140,13 +145,26 @@
         }
 
         #inputFinishTime {
-            margin-top: 50px;
+            margin-top: 30px;
             /* margin-bottom: 10px; */
+        }
+        #inputFinishTime > ul{
+            width: 80%;
         }
 
         #calBtn {
             /* margin-top: 10px; */
-            margin-bottom: 50px;
+            /* margin-bottom: 50px; */
+            background: #ba849e;
+            color: white;
+            padding: 0px 10px;
+            font-weight: bold;
+            border: 2px solid #6c3d37;
+        }
+        #calBtn:hover {
+            /* border: 1px solid dimgrey;
+            border-radius: 30px; */
+            background-color: #d195b2;
         }
 
         .myClass {
@@ -209,20 +227,28 @@
         }
 
         .main input {
-            width: 10%;
-            font-size: 15pt;
+            width: 80%;
+            /* font-size: 15pt; */
             resize: none;
             text-align: center;
             display: inline-block;
             vertical-align: middle;
             height: 30px;
         }
+        #inputFinishTime > ul > li:nth-child(1),
+        #inputFinishTime > ul > li:nth-child(7){
+                width:20%;
+            }
 
-        .main .radio,
+        .main .radio {
+            margin: 10px auto;
+        }
+
         .main div #fullm,
         .main div #halfm {
+            margin: 0px 5px;
             width: auto;
-            font-size: 15pt;
+            font-size: 15pt;           
             /* margin: 0px; */
             /* resize: none; */
             /* text-align: left; */
@@ -266,7 +292,7 @@
 
         .info-page>div>ul>li>u,
         .info-page>div>h3>u {
-            text-decoration: underline double white;
+            text-decoration: underline dotted white;
         }
 
         .info-page.active {
@@ -390,6 +416,7 @@
             justify-content: center;
             padding-left: 0;
             list-style: none;
+            
         }
 
         .features {
@@ -458,17 +485,25 @@
 
         @media only screen and (max-device-width : 375px) {
             .main {
-                margin-top: 10%
+                margin-top: 30%
             }
 
             .main input {
-                width: 15%;
+                width: 70%;
+                height: 100%;
             }
+            #inputFinishTime > ul > li:nth-child(1),
+            #inputFinishTime > ul > li:nth-child(7){
+                width:50%;
+            }
+            #inputFinishTime > ul{
+            width: 90%;
+        }
 
             .main .radio,
             .main div #fullm,
             .main div #halfm {
-                font-size: 1.2em;
+                /* font-size: 1.2em; */
             }
 
             h1 {
@@ -522,17 +557,25 @@
 
         @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
             .main {
-                margin-top: 10%
+                margin-top: 30%
             }
 
             .main input {
-                width: 15%;
+                width: 70%;
             }
+            #inputFinishTime > ul > li:nth-child(1),
+            #inputFinishTime > ul > li:nth-child(7){
+                width:20%;
+            }
+        
+            #inputFinishTime > ul{
+            width: 90%;
+        }
 
             .main .radio,
             .main div #fullm,
             .main div #halfm {
-                font-size: 1.2em;
+                /* font-size: 1.2em; */
             }
 
             h1 {
@@ -600,7 +643,7 @@
                 <li>輸入目標完賽時間、自製配速手環，就是這麼簡單！</li>
                 <li>
                     <div id='info' class="share-btn social-media-btn">
-                        <i class="las la-info-circle la-2x"></i>
+                        <i class="las la-info-circle la-1_5x"></i>
                     </div>
                 </li>
             </ul>
@@ -704,10 +747,25 @@
 
         <hr>
         <div id='inputFinishTime'>
-            <div class="radio">
+            <div class="radio footer">
                 <input type="radio" id="fullm" name="mtype" value="fullm" checked><label for="fullm">全馬</label>
                 <input type="radio" id="halfm" name="mtype" value="halfm"><label for="halfm">半馬</label><br>
-            </div>目標時間
+                
+            </div>
+            <ul class="share-inline footer">
+                <li>目標時間</li>
+                <li><input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH"
+                        onclick="this.select()"></input></li>
+                <li style="font-weight: bold;">:</li>
+                <li><input type="number" name="" id="mm" rows="1" charswidth="3" placeholder="MM"
+                        onclick="this.select()"></input></li>
+                <li style="font-weight: bold;">:</li>
+                <li><input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="SS"
+                        onclick="this.select()"></input></li>
+                <li><button class="" id='calBtn' onclick="cal()">Enter</button></li>
+            </ul>
+            <!-- <button class="footer" id='calBtn' onclick="cal()">GO!</button> -->
+            <!-- 目標時間
             <input type="number" name="" id="hh" rows="1" charswidth="3" placeholder="HH"
                 onclick="this.select()"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
@@ -715,10 +773,10 @@
                 onclick="this.select()"></input>
             <div style="display:inline-block;vertical-align:middle;font-size:40px;">:</div>
             <input type="number" name="" id="ss" rows="1" charswidth="3" placeholder="SS"
-                onclick="this.select()"></input>
+                onclick="this.select()"></input> -->
         </div>
 
-        <button id='calBtn' onclick="cal()">GO!</button>
+        
 
 
     </div>
@@ -726,7 +784,7 @@
         <div id="result"></div>
         <table id="tblToPrint"></table>
     </div>
-    <hr id="toDisappear">
+    <!-- <hr id="toDisappear"> -->
     <div class="footer">
         <!-- <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
             </a></small>
@@ -806,7 +864,8 @@
     function createCell(cell, text, style) { //在cell處新增div並用class style控制樣式
         var div = document.createElement('div'), // create DIV element
             txt = document.createTextNode(text); // create text node
-        div.appendChild(txt);                    // append text node to the DIV
+        div.appendChild(txt);  
+        div.setAttribute('id', text);            // append text node to the DIV
         div.setAttribute('class', style);        // set DIV class attribute
         div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
         cell.appendChild(div);                   // append DIV to the table cell
@@ -919,7 +978,7 @@
         document.getElementById('ss').value = ss
     }
     function render(display) { // 顯示結果
-        document.getElementById('result').style.display = display
+        document.getElementById('result').style.display = display        
     }
     function downloadwithbrowser() {
 
@@ -1060,10 +1119,10 @@
         document.getElementById("result").innerHTML = ''
 
         document.querySelector('.main').style.marginTop = null
-        document.querySelector('#inputFinishTime').style.margin = "50px 0 0 0"
+        document.querySelector('#inputFinishTime').style.marginTop = "30px"
         // document.querySelector('#my-tbl').style.margin = "30px 0px";
-        document.querySelector('#calBtn').style.margin = "5px 0 50px 0";
-        document.querySelector('#toDisappear').style.display = null
+        // document.querySelector('#calBtn').style.margin = "5px 30px";
+        // document.querySelector('#toDisappear').style.display = "none"
         // document.getElementById("result").style.display = "none"
         // document.querySelector('#summary2').style.margin = "30px 0px";
         // document.querySelector('#tblFooterBtns').style.margin = "30px 0px";
@@ -1279,6 +1338,21 @@
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "關門時間", arrCutTime, ' white ')
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "配速調整", arrRemind, ' gray ')
 
+        
+        shutBtn = document.getElementById('\u00A0關門時間\u00A0')
+        shutBtn.insertAdjacentHTML('beforeend', '<div id = "closeT" class="share-btn social-media-btn"><i class="las la-question-circle"></i></>')
+        document.getElementById('closeT').addEventListener('click', () => {
+            // shareOptions.classList.toggle('active');
+            console.log('hit btn')
+        })
+        //     shareBtn.addEventListener('click', () => {
+        //     shareOptions.classList.toggle('active');
+        // })
+        // closeBtn.addEventListener('click', () => {
+        //     shareOptions.classList.toggle('active');
+        // })
+        // < i class="las la-info-circle la-1_5x" ></ >
+
 
         if (checked == 'halfm') {
             // summary 區塊
@@ -1338,14 +1412,14 @@
         document.getElementById("result").appendChild(tblFooterBtns)
 
         document.querySelector('.main').style.marginTop = 0
-        document.querySelector('#toDisappear').style.display = "none"
+        // document.querySelector('#toDisappear').style.display = "none"
 
         // ['#inputFinishTime', '#my-tbl', '#calBtn', '#summary2', '#tblFooterBtns'].forEach(function (ids) {
         //     document.querySelector(ids).style.margin = 0
         // });
         document.querySelector('#inputFinishTime').style.margin = 0;
         // document.querySelector('#my-tbl').style.margin = 0;
-        document.querySelector('#calBtn').style.margin = "5px 0 10px 0";
+        // document.querySelector('#calBtn').style.margin = "5px 0 10px 0";
         // document.querySelector('#summary2').style.margin = auto;
         // document.querySelector('#tblFooterBtns').style.margin = 0;
         // document.getElementById('result').style.display = "block"

@@ -146,6 +146,7 @@
             /* display: inline; */
             width: auto;
             padding: 0px;
+
         }
 
         .small-btn:hover {
@@ -153,7 +154,8 @@
             border-radius: 30px; */
             /* background-color: #e5e5e5; */
             /* color: black; */
-            font-weight: bold;
+            font-weight: bolder;
+            /* font-size: large; */
         }
 
         .info-page .small-btn {
@@ -757,6 +759,22 @@
         }
 
 
+        .tabcontent>div>ul>li>u {
+            text-decoration-style: dotted;
+            /* text-decoration-color: #49ad91; */
+            text-decoration-thickness: 2px;
+            /* text-decoration-line: none; */
+            /* color: #49ad91; */
+            /* font-weight: bold; */
+        }
+
+        #Prague>div>ul>li:nth-child(7)>span {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ff9999;
+        }
+
+
 
         @media only screen and (max-device-width : 375px) {
             .main {
@@ -860,6 +878,10 @@
                 height: auto; */
                 /*to preserve the aspect ratio of the image*/
             }
+
+            #Prague>div>ul>li:nth-child(7)>span {
+                font-size: medium;
+            }
         }
 
         @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
@@ -960,6 +982,10 @@
                 height: auto; */
                 /*to preserve the aspect ratio of the image*/
             }
+
+            #Prague>div>ul>li:nth-child(7)>span {
+                font-size: medium;
+            }
         }
 
         * {
@@ -982,13 +1008,18 @@
             <!-- </br>配速模擬+手環製作 -->
         </h1>
         <div>
-            <div class="footer" style="margin: 10pt 0 0 0;">給馬拉松新手的配速計算機。</div>
+            <div class="footer" style="margin: 10pt 0 0 0;">給馬拉松新手的配速計算機</div>
             <ul class="footer share-inline" style="margin: 0">
 
                 <li>輸入目標完賽時間、自製配速手環，就是這麼簡單！</li>
                 <li>
-                    <div id='info' class="share-btn social-media-btn"><i class="las la-info-circle la-1_5x"></i></div>
+                    <div id='info' onmouseover="showOrHidMoreInfo('#infoIcon')"
+                        onmouseout="showOrHidMoreInfo('#infoIcon')" class="share-btn social-media-btn"><i
+                            class="las la-info-circle la-1_5x"></i>
+                        <div id="infoIcon" class="small-dialog">說明</div>
+                    </div>
                 </li>
+
             </ul>
         </div>
 
@@ -1012,7 +1043,7 @@
 
                 <div class="location-center">
                     <p class="align-left">
-                        蒐集所有台北馬拉松的注意事項，要「做功課」看這裡就對啦!<br /><br />本工具根據台北馬賽道狀況，做配速調整，還可以自製配速手環!!!<br />如果你是馬拉松新手，這個工具可以幫你減輕一些負擔😊
+                        蒐集所有台北馬拉松的注意事項，要「做功課」看這裡就對啦！<br /><br />本工具根據台北馬賽道狀況，做配速調整，還可以自製配速手環！！！<br />如果你是馬拉松新手，這個工具可以幫你減輕一些負擔😊
                     </p>
                     <!-- <p>大家來模擬自己的台北馬配速，制定屬於個人的完賽配速計畫吧~🎉</p> -->
 
@@ -1031,7 +1062,7 @@
                     <ul class="align-left">
                         <!--style="list-style: none;text-indent:-1em;"-->
                         <li>
-                            <p class="feature-tag">好實用</p> 配速根據賽道狀況調整，不該<u>為了追配速把自己搞爆</u>
+                            <p class="feature-tag">好實用</p> 配速根據賽道狀況調整，避免為了追配速<u>把自己搞爆</u>
                         </li>
                         <li>
                             <p class="feature-tag">好貼心</p> 配合水站/補給，每2.5K顯示配速時間，進站時確認即可
@@ -1040,10 +1071,10 @@
                             <p class="feature-tag">好細緻</p> 根據不同完賽時間，設定不同的<u>配速調整參數</u>
                         </li>
                         <li>
-                            <p class="feature-tag">好漂釀</p> 依照模擬結果，自製精美❤️<u>配速手環</u>❤️
+                            <p class="feature-tag">好漂釀</p> 依照模擬結果，自製精美<u>配速手環</u>❤️
                         </li>
                         <li>
-                            <p class="feature-tag">好佛心</p> 免費工具、<u>無廣告</u>
+                            <p class="feature-tag">好佛心</p> <u>免費</u>工具、<u>無廣告</u>
                         </li>
                         <li>
                             <p class="feature-tag">好懶人</p> 保留前次輸入內容，無須重複輸入(<u>沒有傳送</u>任何資料!)
@@ -1089,19 +1120,24 @@
                 <div class="location-center">
                     <p class="align-left content-title">路線資訊</p>
                     <ul class="align-left">
-                        <li>路線說明(<a href='https://www.taipeicitymarathon.com/place-map.php' class='small-btn'
-                                target='_blank'>官網</a>)</li>
-                        <li>關門時間(<a href='https://www.taipeicitymarathon.com/TIME-LIMIT.php' class='small-btn'
-                                target='_blank'>官網</a>)</li>
+                        <li>路線說明 (<a href='https://www.taipeicitymarathon.com/place-map.php' class='small-btn'
+                                target='_blank'>台北馬拉松官方網站</a>)</li>
+                        <li>關門時間 (<a href='https://www.taipeicitymarathon.com/TIME-LIMIT.php' class='small-btn'
+                                target='_blank'>台北馬拉松官方網站</a>)</li>
+                    </ul>
+                    <p class="align-left content-title">注意事項</p>
+                    <ul class="align-left">
+                        <li>上坡頻率快一點、步伐小一點</li>
+                        <li>下坡身體稍微往後仰、步伐跨大一點</li>
                     </ul>
                     <p class="align-left content-title">路線預習</p>
                     <p class="align-left">
-                        跟著影片直接「跑」一次吧！(來源:<a href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw"
-                            class='small-btn' target="_blank">中華民國路跑協會</a>)
+                        🏃‍♂️🏃‍♀️跟著影片直接「跑」一次吧！(來源: <a href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw"
+                            class='small-btn' target="_blank"></i>中華民國路跑協會</a>)
                     </p>
 
                     <ul class="align-left">
-                        <li>半程馬拉松(今年新推出!)</li>
+                        <li>半程馬拉松 (剛推出🔥熱騰騰🔥)</li>
                     </ul>
                     <!-- <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/AVcT26sr0CY"
                         title="YouTube video player" frameborder="0"
@@ -1113,7 +1149,8 @@
                         </div>
                     </div>
                     <ul class="align-left">
-                        <li>全程馬拉松(雖然為去年的影片，不過今年路線相同!)</li>
+                        <li>全程馬拉松 (去年的影片，但今年<u>路線相同</u>！)<br>
+                            但千萬注意，今年關門時間跟影片中<u>不一樣</u>喔！<br>(上滑<span class="content-title">路線資訊</span>看詳細關門時間)</li>
                     </ul>
                     <div class="wrapper">
                         <div class="youtube" data-embed="uZlRyFa10tU">
@@ -1132,13 +1169,13 @@
                 <div class="location-center">
                     <p class="align-left content-title">注意事項</p>
                     <ul class="align-left">
-                        <li>身體需要時間反應，上中山橋前就要提前補給！(全馬14k處 半馬12k處)</li>
+                        <li>身體需要時間反應，上中山橋前就要提前補給！<br>(全馬14k處上橋；半馬12k處上橋)</li>
                         <li>等到身體渴了才喝水就來不及了</li>
                         <li>建議每站都補給，一站水、一站運動飲料交替喝</li>
                     </ul>
                     <p class="align-left content-title">影片</p>
                     <ul class="align-left">
-                        <li>如何邊跑邊喝水、台北馬補給備戰 (來源:<a href="https://www.youtube.com/channel/UCnfSzLU7EWbT2BU4zqoEamA"
+                        <li>如何邊跑邊喝水、台北馬補給備戰 (來源: <a href="https://www.youtube.com/channel/UCnfSzLU7EWbT2BU4zqoEamA"
                                 class='small-btn' target="_blank">佛系跑步Kobe麒</a>)</li>
                     </ul>
                     <!-- <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/ACSAmSicGvo"
@@ -1159,14 +1196,19 @@
                 <div class="location-center">
                     <p class="align-left content-title">特別感謝</p>
                     <ul class="align-left">
-                        <li>感謝貓女姊姊拋出這個超有趣的點子，並提供原版excel台北馬配速計算機供我參考</li>
-                        <li>感謝阿母，幫忙列印測試，並提供A4橫印這個超棒超方便的建議</li>
-                        <li>感謝萊拉，提供手環樣式、自製方法建議</li>
-                        <li>感謝Jay大讓我使用他書中金句「在終點 遇到更好的自己」</li>
-                        <li>感謝跑步教練-Kobe黃俊麒的補給影片</li>
-                        <li>感謝台北馬拉松官方的賽道預習影片</li>
-                        <li>感謝用心準備比賽的<span style="font-size: x-large; font-weight:bold;">你</span>和<span
-                                style="font-size: x-large; font-weight:bold;">妳</span>!!!</li>
+                        <li>感謝 <a class="small-btn" target="_blank" href="https://www.instagram.com/memoryflying/"> 貓女姊姊
+                            </a> 拋出這個超有趣的點子，並提供原版excel台北馬配速計算機供我參考
+                        </li>
+                        <li>感謝 <a class="small-btn" target="_blank" href="#">阿母</a> ，幫忙列印測試，並提供A4橫印這個超棒超方便的建議</li>
+                        <li>感謝 <a class="small-btn" target="_blank" href="#">萊拉</a> ，提供手環樣式、自製方法建議</li>
+                        <li>感謝 <a class="small-btn" target="_blank" href="#">Jay大</a> 讓我在配速手環中使用他書中金句「在終點 遇到更好的自己」</li>
+                        <li>感謝跑步教練 <a class="small-btn" target="_blank" href="#">Kobe黃俊麒</a> 的補給教學影片</li>
+                        <li>感謝 <a class="small-btn" target="_blank"
+                                href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw" class='small-btn'
+                                target="_blank">中華民國路跑協會</a> 的官方賽道預習影片 (ft.田鴻魁/梁哲睿)</li>
+                        <li>當然還必須感謝，用心準備比賽的 <span>你</span> 和
+                            <span>妳 </span>!!!
+                        </li>
                     </ul>
                 </div>
 
@@ -1293,7 +1335,7 @@
             網友自製分享、無廣告、無營利
             <!-- 更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡</a> -->
             </br>
-            ※ 注意：非官方工具、如製作手環功能無反應,請嘗試其他瀏覽器 ※
+            ※ 注意：非官方工具、如製作手環功能無反應，請嘗試其他瀏覽器 ※
             </br>
             <a target="_blank" href="https://icons8.com/icon/35835/running" class="small-btn"></a>
             網站圖示來源：<a target="_blank" href="https://icons8.com" class="small-btn">Icons8</a><br>
@@ -1336,6 +1378,8 @@
     const shareBtn = document.querySelector('#info');
     const closeBtn = document.querySelector('.close');
     const shareOptions = document.querySelector('.info-page');
+
+
 
     function openTab(evt, cityName) {
         // Declare all variables
@@ -1744,6 +1788,10 @@
         document.querySelector('#paceTime').classList.toggle('active');
     }
 
+    function showOrHidMoreInfo(id) {
+        document.querySelector(id).classList.toggle('active');
+    }
+
     // var input_f = document.getElementById("fullm");
     // input_f.addEventListener('click', clean);
     // var input_h = document.getElementById("halfm");
@@ -1814,7 +1862,7 @@
             // 關門時間 cutting time
             arrCutTime = ["07:36", "07:57", "08:18", "08:40", "09:01", "09:22", "09:45", "10:05", "10:13", "--:--"]
             // 貼心提醒
-            arrRemind = ["人多、穩跑不推擠", "6.5k處分流,半馬【右轉重慶南路】", "穩定配速", "11.7k準備上中山橋,調整跑姿", "調整呼吸順順跑", "維持配速", "18.5k處上麥帥二橋,推進不急躁", "右轉南京東路後發動最後衝刺", "開到底就對了!"]
+            arrRemind = ["人多、穩跑不推擠", "6.5k處分流，請 右轉重慶南路", "穩定配速", "11.7k上中山橋,補給,調整跑姿", "調整呼吸順順跑", "維持配速", "18.5k處上麥帥二橋,推進不急躁", "右轉南京東路後發動最後衝刺", "開到底就對了!"]
             // 配速調整
             time_compensate = [{
                 name: 'lv0',
@@ -1899,7 +1947,7 @@
             // 關門時間 cutting time
             arrCutTime = ["07:04", "07:24", "07:43", "08:03", "08:23", "08:42", "09:02", "09:18", "--:--", "--:--", "10:20", "10:37", "10:58", "11:17", "11:38", "11:57", "12:11"]
             // 貼心提醒
-            arrRemind = ["起跑人多、穩跑", "6.5k處分流,全馬【直行愛國東路】", "進入目標配速", "穩定呼吸不超速", "準備上中山橋", "上下坡注意安全", "穩配不超速！", "準備上高架", "上坡穩住步頻跟呼吸", "請勿超速", "下橋注意安全", "進河濱", "不要慢！！", "沒有牆！！", "小心腳步，安全為主", "準備開一個！", "開！"]
+            arrRemind = ["起跑人多、穩跑", "6.5k處分流，請 直行愛國東路", "進入目標配速", "穩定呼吸不超速", "14k上中山橋,補給,調整跑姿", "上下坡注意安全", "穩配不超速！", "21k準備上環東高架", "上坡穩住步頻跟呼吸", "26.9k處內湖機廠準備折返", "下橋注意安全", "進河濱", "不要慢！！", "沒有牆！！", "小心腳步，安全為主", "準備開一個！", "開！"]
             // 配速調整
             time_compensate = [{
                 name: 'lv0',
@@ -1988,11 +2036,15 @@
         // console.log(timeForHighlight)
         tHighlight = Math.ceil(timeForHighlight / 1000)
         // console.log(tHighlight)
+        // shutBtn = document.getElementById('\u00A0關門時間\u00A0')
+        // shutBtn.insertAdjacentHTML('beforeend', '<div id="closeT" onmouseover="shutTimeInfoOut()" onmouseout="shutTimeInfoOut()" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="shutTime" class="small-dialog">根據官網推算而來,僅供參考</br>詳情請點上方<i class="las la-info-circle"></i>圖示</div></div>')
+        // shutBtn = document.getElementById('\u00A0模擬配速\u00A0')
+        // shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="paceTimeInfo()" onmouseout="paceTimeInfoOut()" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog">醒目提示配速調整重點</br>比目標均速慢' + tHighlight + '秒以上：<span style="background:#49ad91;color:white;">以綠色顯示</span></br>比目標均速快' + tHighlight + '秒以上：<span style="background:#ff9999;color:black;">以紅色顯示</span></div></div>')
+
         shutBtn = document.getElementById('\u00A0關門時間\u00A0')
-        shutBtn.insertAdjacentHTML('beforeend', '<div id="closeT" onmouseover="shutTimeInfo()" onmouseout="shutTimeInfoOut()" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="shutTime" class="small-dialog">根據官網推算而來,僅供參考</br>詳情請點上方<i class="las la-info-circle"></i>圖示</div></div>')
+        shutBtn.insertAdjacentHTML('beforeend', '<div id="closeT" onmouseover="showOrHidMoreInfo(\'#shutTime\')" onmouseout="showOrHidMoreInfo(\'#shutTime\')" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="shutTime" class="small-dialog">根據官網推算而來,僅供參考</br>詳情請點上方<i class="las la-info-circle"></i>圖示</div></div>')
         shutBtn = document.getElementById('\u00A0模擬配速\u00A0')
-        // console.log(timeForHighlight)
-        shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="paceTimeInfo()" onmouseout="paceTimeInfoOut()" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog">醒目提示配速調整重點</br>比目標均速慢' + tHighlight + '秒以上：<span style="background:#49ad91;color:white;">以綠色顯示</span></br>比目標均速快' + tHighlight + '秒以上：<span style="background:#ff9999;color:black;">以紅色顯示</span></div></div>')
+        shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="showOrHidMoreInfo(\'#paceTime\')" onmouseout="showOrHidMoreInfo(\'#paceTime\')" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog">醒目提示配速調整重點</br>比目標均速慢' + tHighlight + '秒以上：<span style="background:#49ad91;color:white;">以綠色顯示</span></br>比目標均速快' + tHighlight + '秒以上：<span style="background:#ff9999;color:black;">以紅色顯示</span></div></div>')
 
 
         //     shareBtn.addEventListener('click', () => {

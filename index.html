@@ -31,9 +31,10 @@
     <!-- line  -->
     <!-- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js"></script> -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=VT323&family=Aldrich&family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Aldrich&family=Orbitron&display=swap"
+        rel="stylesheet">
     <style type="text/css">
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -47,6 +48,33 @@
             -moz-appearance: textfield;
             padding: 0px;
             font-weight: bold;
+        }
+
+        /* 讓按鈕往下移動 */
+        .fb-like {
+            position: relative;
+            top: 4px;
+        }
+
+        /* custom scrollbar */
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
 
         h1 {
@@ -78,30 +106,32 @@
         }
 
         img {
-                width: 95%;
-                height: auto;
-                margin:5px 5px 0px 5px;
-                /*to preserve the aspect ratio of the image*/
-            }
+            width: 95%;
+            height: auto;
+            margin: 5px 5px 0px 5px;
+            /*to preserve the aspect ratio of the image*/
+        }
 
         .la-1_5x {
-             font-size: 1.5em;
-             /* border: 1.5pㄜx solid #ffa500; */
-             
-         }
+            font-size: 1.5em;
+            /* border: 1.5pㄜx solid #ffa500; */
+
+        }
 
         .la-cheese {
-            background:#fce05e;
-            color:black;
+            background: #fce05e;
+            color: black;
         }
+
         .la-restroom {
-            background:#0a9c52;
-            color:white;
+            background: #0a9c52;
+            color: white;
             font-weight: bold;
         }
+
         .la-tint {
-            background:#02a2e5;
-            color:white;
+            background: #02a2e5;
+            color: white;
         }
 
         .small-btn {
@@ -125,11 +155,12 @@
             /* color: black; */
             font-weight: bold;
         }
-        .info-page .small-btn{
+
+        .info-page .small-btn {
             color: white;
         }
-        
-        .align-left{
+
+        .align-left {
             text-align: left;
         }
 
@@ -137,7 +168,8 @@
             text-indent: 1em;
             list-style: none;
         }
-        .content-title{
+
+        .content-title {
             margin: 5px 0;
             font-weight: bold;
             color: #ff9999
@@ -155,17 +187,18 @@
             border-bottom: 2px dashed gray;
         }
 
-        .location-center{
-            margin:0 auto;
-            width:65%;            
+        .location-center {
+            margin: 0 auto;
+            width: 65%;
         }
 
         .tab {
             border-bottom: 1px solid #ccc;
             overflow: hidden;
-            
-            
+
+
         }
+
         /* Style the buttons that are used to open the tab content */
         .tab button {
             border: none;
@@ -180,6 +213,7 @@
             color: white;
             font-weight: bold;
         }
+
         /* Change background color of buttons on hover */
         .tab button:hover {
             color: black;
@@ -197,18 +231,21 @@
             display: none;
             padding: 6px 12px;
             margin: 0px auto;
-            text-align: center; /*為了內容置中*/
+            text-align: center;
+            /*為了內容置中*/
             /* font-size: large; */
             /* border: 1px solid #ccc; */
             /* border-top: none; */
         }
+
         .tablinks {
             font-size: medium;
         }
-        .info-page .tabcontent > ul,
-        .info-page .tabcontent > ol,
-        .info-page .tabcontent > div > ol,
-        .info-page .tabcontent > div > ul{
+
+        .info-page .tabcontent>ul,
+        .info-page .tabcontent>ol,
+        .info-page .tabcontent>div>ol,
+        .info-page .tabcontent>div>ul {
             padding-left: 20px;
         }
 
@@ -250,9 +287,11 @@
             margin-top: 50px;
             margin-bottom: 50px;
         }
-        #inputFinishTime > ul{
-            width: 80%;            
+
+        #inputFinishTime>ul {
+            width: 80%;
         }
+
         /* #hh, #mm, #ss, #calBtn, h1 {
             font-family: 'VT323','Aldrich','Orbitron', Microsoft JhengHei;
         } */
@@ -266,6 +305,7 @@
             font-weight: bold;
             border: 2px solid #6c3d37;
         }
+
         #calBtn:hover {
             /* border: 1px solid dimgrey;
             border-radius: 30px; */
@@ -273,7 +313,7 @@
         }
 
         #toDisappear {
-            margin-top:15px;
+            margin-top: 15px;
         }
 
         .myClass {
@@ -346,16 +386,18 @@
             vertical-align: middle;
             height: 30px;
         }
-        #inputFinishTime > ul > li:nth-child(1),
-        #inputFinishTime > ul > li:nth-child(7){
-            width:50%;
+
+        #inputFinishTime>ul>li:nth-child(1),
+        #inputFinishTime>ul>li:nth-child(7) {
+            width: 50%;
         }
-        #inputFinishTime > ul > li:nth-child(1)
-        {
-            text-align:right;
+
+        #inputFinishTime>ul>li:nth-child(1) {
+            text-align: right;
         }
-        #inputFinishTime > ul > li:nth-child(7){
-            text-align:left;
+
+        #inputFinishTime>ul>li:nth-child(7) {
+            text-align: left;
         }
 
         .main .radio {
@@ -366,7 +408,7 @@
         .main div #halfm {
             margin: 0px 5px;
             width: auto;
-            font-size: 15pt;           
+            font-size: 15pt;
             /* margin: 0px; */
             /* resize: none; */
             /* text-align: left; */
@@ -382,13 +424,13 @@
         .footer {
             color: dimgrey;
             text-align: center;
-            margin: 10pt auto;
+            margin: 5pt auto;
         }
 
         .small-dialog {
             transform-origin: top;
             transform: scale(0);
-            position:absolute;  
+            position: absolute;
             /* z-index: 999; */
             /* display: none; */
             /* font-size: 0.8em;       */
@@ -396,32 +438,34 @@
             color: #fff;
             padding: 5px;
         }
+
         /* .small-dialog>a{
             color: white;
         } */
 
         .feature-tag {
-            
+
             padding: 0px 10px;
             display: inline;
             color: white;
-            background-color: #49ad91;   
-            border-radius: 10px;          
+            background-color: #49ad91;
+            border-radius: 10px;
             font-size: smaller;
         }
+
         .function-tag {
-            
+
             padding: 0px 5px;
             display: inline;
             color: white;
-            background-color: rgb(226, 112, 45);   
-            border-radius: 10px;        
-            font-size:   smaller;    
-            
+            background-color: rgb(226, 112, 45);
+            border-radius: 10px;
+            font-size: smaller;
+
         }
 
         .info-page {
-            position: absolute;            
+            position: absolute;
             top: 10%;
             /* left: calc(30%-10px); */
             /* left: 27.5%; */
@@ -433,21 +477,21 @@
             height: 75%;
             overflow: auto;
             /* height: auto; */
-            transform-origin: top left;
+            transform-origin: top right;
             transform: scale(0);
             /* border-top-left-radius: 20px;
             border-bottom-right-radius: 20px; */
             /* border-radius: 20px; */
-            
+            z-index: 999;
             background: rgba(80, 78, 78, 0.95);
             color: #fff;
             padding: 10px;
             font-family: 'roboto';
             transition: .5s;
-            transition-delay: .5s;
+            /* transition-delay: .5s; */
         }
-        
-        
+
+
 
         /* .small-dialog>a, */
         .info-page>div>ul>li>u,
@@ -455,10 +499,11 @@
             text-decoration: underline dotted white;
         }
 
-        .info-page.active{
+        .info-page.active {
             transform: scale(1);
             transition-delay: 0s;
         }
+
         .small-dialog.active {
             transform: scale(1);
             transition-delay: 0s;
@@ -583,7 +628,7 @@
             justify-content: center;
             padding-left: 0;
             list-style: none;
-            
+
         }
 
         /* .cellText {
@@ -648,18 +693,20 @@
 
         @media only screen and (max-device-width : 375px) {
             .main {
-                margin-top: 30%
+                margin-top: 20%
             }
 
             .main input {
                 width: 70%;
                 height: 100%;
             }
-            #inputFinishTime > ul > li:nth-child(1),
-            #inputFinishTime > ul > li:nth-child(7){
-                width:60%;
+
+            #inputFinishTime>ul>li:nth-child(1),
+            #inputFinishTime>ul>li:nth-child(7) {
+                width: 60%;
             }
-            #inputFinishTime > ul{
+
+            #inputFinishTime>ul {
                 width: 90%;
             }
 
@@ -682,8 +729,8 @@
                 font-size: 80%;
             }
 
-            .location-center{                
-                width:95%;            
+            .location-center {
+                width: 95%;
             }
 
             .info-page {
@@ -694,23 +741,32 @@
                 height: 90%;
                 overflow: scroll;
             }
+
             .tab button,
-            .tabcontent{
+            .tabcontent {
                 padding: 3px 6px;
             }
-            .tabcontent{
+
+            .tabcontent {
                 font-size: 75%;
             }
-            .info-page .tabcontent > ul,
-            .info-page .tabcontent > ol,
-            .info-page .tabcontent > div > ol,
-            .info-page .tabcontent > div > ul{
-            /* .info-page>div>ul { */
+
+            .info-page .tabcontent>ul,
+            .info-page .tabcontent>ol,
+            .info-page .tabcontent>div>ol,
+            .info-page .tabcontent>div>ul {
+                /* .info-page>div>ul { */
                 margin-left: 0;
                 padding-left: 10px;
             }
+
             .small-dialog {
-                font-size:0.5em;
+                font-size: 0.5em;
+            }
+
+            .close {
+                right: 10px;
+                top: 10px;
             }
 
 
@@ -741,18 +797,19 @@
 
         @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
             .main {
-                margin-top: 30%
+                margin-top: 20%
             }
 
             .main input {
                 width: 70%;
             }
-            #inputFinishTime > ul > li:nth-child(1),
-            #inputFinishTime > ul > li:nth-child(7){
-                width:20%;
+
+            #inputFinishTime>ul>li:nth-child(1),
+            #inputFinishTime>ul>li:nth-child(7) {
+                width: 20%;
             }
-        
-            #inputFinishTime > ul{
+
+            #inputFinishTime>ul {
                 width: 90%;
             }
 
@@ -770,12 +827,13 @@
                 font-size: 80%;
                 width: 95%;
             }
+
             .tablinks {
                 font-size: 80%;
             }
 
-            .location-center{                
-                width:95%;            
+            .location-center {
+                width: 95%;
             }
 
             .info-page {
@@ -786,21 +844,30 @@
                 height: 90%;
                 overflow: scroll;
             }
+
             .small-dialog {
-                font-size:0.5em;
+                font-size: 0.5em;
             }
+
             .tab button,
-            .tabcontent{
+            .tabcontent {
                 padding: 3px 6px;
             }
-            .tabcontent{
+
+            .tabcontent {
                 font-size: 75%;
             }
-            .info-page .tabcontent > ul,
-            .info-page .tabcontent > div > ul{
-            /* .info-page>div>ul { */
+
+            .info-page .tabcontent>ul,
+            .info-page .tabcontent>div>ul {
+                /* .info-page>div>ul { */
                 margin-left: 0;
                 padding-left: 10px;
+            }
+
+            .close {
+                right: 10px;
+                top: 10px;
             }
 
             #my-tbl,
@@ -836,14 +903,22 @@
 </head>
 
 <body onload="loadHMS()">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v12.0&appId=159442601583782&autoLogAppEvents=1"
+        nonce="HNthlMoS"></script>
     <div class="main">
         <h1>2021台北馬配速模擬計算機
             <!-- </br>配速模擬+手環製作 -->
         </h1>
         <div>
-            <ul class="footer share-inline">
+            <div class="footer" style="margin: 10pt 0 0 0;">給馬拉松新手的配速計算機。</div>
+            <ul class="footer share-inline" style="margin: 0">
+
                 <li>輸入目標完賽時間、自製配速手環，就是這麼簡單！</li>
-                <li><div id='info' class="share-btn social-media-btn"><i class="las la-info-circle la-1_5x"></i></div></li>
+                <li>
+                    <div id='info' class="share-btn social-media-btn"><i class="las la-info-circle la-1_5x"></i></div>
+                </li>
             </ul>
         </div>
 
@@ -852,55 +927,59 @@
 
         <div class="info-page">
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'London')" id="defaultOpen">說明</button><button class="tablinks" onclick="openTab(event, 'Paris')">路線介紹</button><button class="tablinks" onclick="openTab(event, 'Tokyo')">補給策略</button><button class="tablinks" onclick="openTab(event, 'Prague')">特別感謝</button>
+                <button class="tablinks" onclick="openTab(event, 'London')" id="defaultOpen">說明</button><button
+                    class="tablinks" onclick="openTab(event, 'Paris')">路線介紹</button><button class="tablinks"
+                    onclick="openTab(event, 'Tokyo')">補給策略</button><button class="tablinks"
+                    onclick="openTab(event, 'Prague')">特別感謝</button>
             </div>
-            
+
             <a href="#" class="close"></a>
-            
-            
+
+
             <div id='London' class="tabcontent">
-                <!-- <h3 class="title">使用說明</h3>                 -->               
-                
-                    <div class="location-center">
-                        <p class="align-left">
-                            蒐集所有台北馬拉松的注意事項，要「做功課」看這裡就對啦!<br /><br />本工具根據台北馬賽道狀況，做配速調整，還可以自製配速手環!!!<br />如果你是馬拉松新手，這個工具可以幫你減輕一些負擔😊</p>
-                        <!-- <p>大家來模擬自己的台北馬配速，制定屬於個人的完賽配速計畫吧~🎉</p> -->
-                        
-                        <p class="align-left content-title">三大重點功能</p>
-                        <ol class="align-left">
-                            <li><span class="function-tag">配速計算機</span> 輸入目標完賽時間，產生配速建議</li>
-                            <li><span class="function-tag">製作配速手環</span> 自動代入結果，可直接列印使用</li>
-                            <li><span class="function-tag">比賽資訊蒐集</span> 路線介紹、關門時間、補給策略整理</li>
-                        </ol>
-                        <!-- <div class="align-left">
+                <!-- <h3 class="title">使用說明</h3>                 -->
+
+                <div class="location-center">
+                    <p class="align-left">
+                        蒐集所有台北馬拉松的注意事項，要「做功課」看這裡就對啦!<br /><br />本工具根據台北馬賽道狀況，做配速調整，還可以自製配速手環!!!<br />如果你是馬拉松新手，這個工具可以幫你減輕一些負擔😊
+                    </p>
+                    <!-- <p>大家來模擬自己的台北馬配速，制定屬於個人的完賽配速計畫吧~🎉</p> -->
+
+                    <p class="align-left content-title">三大重點功能</p>
+                    <ol class="align-left">
+                        <li><span class="function-tag">配速計算機</span> 輸入目標完賽時間，產生配速建議</li>
+                        <li><span class="function-tag">製作配速手環</span> 自動代入結果，可直接列印使用</li>
+                        <li><span class="function-tag">比賽資訊蒐集</span> 路線介紹、關門時間、補給策略整理</li>
+                    </ol>
+                    <!-- <div class="align-left">
                                                 <p class="features">1.【配速計算機】</p> 
                                                 <p class="features">2.【製作配速手環】</p>
                                                 <p class="features">3.【比賽資訊蒐集】</p>                        
                                             </div> -->
-                        <p class="align-left content-title">特色</p>
-                        <ul class="align-left">
-                            <!--style="list-style: none;text-indent:-1em;"-->
-                            <li>
-                                <p class="feature-tag">好實用</p> 配速根據賽道狀況調整，不該<u>為了追配速把自己搞爆</u>
-                            </li>
-                            <li>
-                                <p class="feature-tag">好貼心</p> 配合水站/補給，每2.5K顯示配速時間，進站時確認即可
-                            </li>
-                            <li>
-                                <p class="feature-tag">好細緻</p> 根據不同完賽時間，設定不同的<u>配速調整參數</u>
-                            </li>
-                            <li>
-                                <p class="feature-tag">好漂釀</p> 依照模擬結果，自製精美❤️<u>配速手環</u>❤️
-                            </li>
-                            <li>
-                                <p class="feature-tag">好佛心</p> 免費工具、<u>無廣告</u>
-                            </li>
-                            <li>
-                                <p class="feature-tag">好懶人</p> 保留前次輸入內容，不用重複輸入(<u>沒有傳送</u>任何資料!)
-                            </li>
-                        </ul>
-                        
-                        <!-- <ol class="align-left">
+                    <p class="align-left content-title">特色</p>
+                    <ul class="align-left">
+                        <!--style="list-style: none;text-indent:-1em;"-->
+                        <li>
+                            <p class="feature-tag">好實用</p> 配速根據賽道狀況調整，不該<u>為了追配速把自己搞爆</u>
+                        </li>
+                        <li>
+                            <p class="feature-tag">好貼心</p> 配合水站/補給，每2.5K顯示配速時間，進站時確認即可
+                        </li>
+                        <li>
+                            <p class="feature-tag">好細緻</p> 根據不同完賽時間，設定不同的<u>配速調整參數</u>
+                        </li>
+                        <li>
+                            <p class="feature-tag">好漂釀</p> 依照模擬結果，自製精美❤️<u>配速手環</u>❤️
+                        </li>
+                        <li>
+                            <p class="feature-tag">好佛心</p> 免費工具、<u>無廣告</u>
+                        </li>
+                        <li>
+                            <p class="feature-tag">好懶人</p> 保留前次輸入內容，無須重複輸入(<u>沒有傳送</u>任何資料!)
+                        </li>
+                    </ul>
+
+                    <!-- <ol class="align-left">
                                                 <li style="color: orange;">【配速計算機】</li>                        
                                                 <small>考慮賽道狀況(上下坡、擁擠程度)調整配速，避免<u>為了追配速把自己搞爆</u></small><br>
                                                 <small>針對不同完賽時間、不同程度的跑友，設定不同的<u>配速調整參數</u></small>
@@ -910,7 +989,7 @@
                                                 <li style="color: orange;">【比賽資訊蒐集】</li>
                                                 <small>路線介紹、關門時間、補給策略整理</small>
                                             </ol> -->
-                        <!-- <ul class="align-left">
+                    <!-- <ul class="align-left">
                                                 <li>
                                                     <p style="color: orange;display: inline;">【好實用】</p>考慮賽道狀況(上下坡、擁擠程度)調整配速，避免<u>為了追配速把自己搞爆</u>
                                                 </li>
@@ -930,8 +1009,8 @@
                                                     <p style="color: orange;display: inline;">【好懶人】</p>輸入的時間資料<u>僅</u>儲存在手機/電腦端，使用者<u>不用重複輸入時間</u>
                                                 </li>
                                             </ul> -->
-                    </div>
-                
+                </div>
+
             </div>
             <div id="Paris" class="tabcontent">
                 <!-- <h3>Paris</h3>
@@ -939,24 +1018,26 @@
                 <div class="location-center">
                     <p class="align-left content-title">路線資訊</p>
                     <ul class="align-left">
-                        <li>路線說明(<a href='https://www.taipeicitymarathon.com/place-map.php' class='small-btn' target='_blank'>官網</a>)</li>
+                        <li>路線說明(<a href='https://www.taipeicitymarathon.com/place-map.php' class='small-btn'
+                                target='_blank'>官網</a>)</li>
                         <li>關門時間(<a href='https://www.taipeicitymarathon.com/TIME-LIMIT.php' class='small-btn'
                                 target='_blank'>官網</a>)</li>
                     </ul>
                     <p class="align-left content-title">影片</p>
                     <ul class="align-left">
-                        <li>半馬路線預習 (來源:<a href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw" class='small-btn'
-                            target="_blank">中華民國路跑協會</a>)</li>
+                        <li>半馬路線預習 (來源:<a href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw"
+                                class='small-btn' target="_blank">中華民國路跑協會</a>)</li>
+                        跟著影片直接「跑」一次吧!
                     </ul>
                     <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/AVcT26sr0CY"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
-                
-                
-                
-                
+
+
+
+
             </div>
             <div id="Tokyo" class="tabcontent">
                 <div class="location-center">
@@ -968,16 +1049,16 @@
                     </ul>
                     <p class="align-left content-title">影片</p>
                     <ul class="align-left">
-                        <li>如何邊跑邊喝水、台北馬補給備戰 (來源:<a href="https://www.youtube.com/channel/UCnfSzLU7EWbT2BU4zqoEamA" class='small-btn'
-                                target="_blank">佛系跑步Kobe麒</a>)</li>
+                        <li>如何邊跑邊喝水、台北馬補給備戰 (來源:<a href="https://www.youtube.com/channel/UCnfSzLU7EWbT2BU4zqoEamA"
+                                class='small-btn' target="_blank">佛系跑步Kobe麒</a>)</li>
                     </ul>
                     <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/ACSAmSicGvo"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
-                
-                
+
+
             </div>
             <div id="Prague" class="tabcontent align-left">
                 <!-- <p class="content-title">特別感謝</p>
@@ -989,10 +1070,12 @@
                     <li>感謝Kobe黃俊麒拍攝影片(追蹤起來!)</li>
                 </ul>
                 <p class="content-title">開發日誌</p> -->
+
+                <!-- <iframe width="100%" height="600" src="https://hackmd.io/@yenping/rknxtNLFY" frameborder="0"></iframe> -->
                 <iframe width="100%" height="400" src="https://hackmd.io/@yenping/Hyym_UEFt" frameborder="0"></iframe>
             </div>
             <hr style="margin: 0;border:none; border-top:1px solid #ccc;">
-            
+
             <!-- <small>
                 無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank"
                     class="small-btn">這裡
@@ -1006,9 +1089,13 @@
 
         </div>
 
-    
+        <!-- <div class="fb text-center">
+            <div class="fb-like" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true"
+                data-share="true"></div>
+        </div> -->
+
         <div>
-            <ul class="container footer share-inline">
+            <ul class="container footer share-inline" style="margin: 0 0 10pt 0">
                 <li></li>
                 <li>分享：</li>
                 <li>
@@ -1034,7 +1121,11 @@
                         <i class="las la-share-alt-square la-2x"></i>
                     </div>
                 </li>
+                <li>
+                    <div class="fb-like" data-href="https://lilmp.github.io/pace42.195" data-layout="button_count"
+                        data-action="like" data-size="small" data-share="false"></div>
 
+                </li>
             </ul>
         </div>
 
@@ -1061,7 +1152,7 @@
             <div class="radio footer">
                 <input type="radio" id="fullm" name="mtype" value="fullm" checked><label for="fullm">全馬</label>
                 <input type="radio" id="halfm" name="mtype" value="halfm"><label for="halfm">半馬</label><br>
-                
+
             </div>
             <ul class="share-inline footer">
                 <li>目標時間</li>
@@ -1087,7 +1178,7 @@
                 onclick="this.select()"></input> -->
         </div>
 
-        
+
 
 
     </div>
@@ -1096,15 +1187,15 @@
         <table id="tblToPrint"></table>
     </div>
     <hr id="toDisappear">
-    <div class="footer">        
+    <div class="footer">
         <small>
             網友自製分享、無廣告、無營利
             <!-- 更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡</a> -->
             </br>
             ※ 注意：非官方工具、如製作手環功能無反應,請嘗試其他瀏覽器 ※
             </br>
-            <a target="_blank" href="https://icons8.com/icon/35835/running" class="small-btn">網站圖示</a>
-            來源：<a target="_blank" href="https://icons8.com" class="small-btn">Icons8</a><br>
+            <a target="_blank" href="https://icons8.com/icon/35835/running" class="small-btn"></a>
+            網站圖示來源：<a target="_blank" href="https://icons8.com" class="small-btn">Icons8</a><br>
             Contributor: 小M平
         </small>
         <!-- <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
@@ -1146,31 +1237,31 @@
     const shareOptions = document.querySelector('.info-page');
 
     function openTab(evt, cityName) {
-            // Declare all variables
-            var i, tabcontent, tablinks;
+        // Declare all variables
+        var i, tabcontent, tablinks;
 
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
 
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
 
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
     }
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
 
-    fullStopIcon = ['----','<i class="las la-tint"></i>','<i class="las la-cheese"></i>', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-chees"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i>','----']
+    fullStopIcon = ['----', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i>', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-chees"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i>', '----']
     halfStopIcon = []
-    
+
     videoSrc = ["https://www.youtube.com/embed/AVcT26sr0CY", "https://www.youtube.com/embed/ACSAmSicGvo"]
     shareBtn.addEventListener('click', () => {
         shareOptions.classList.toggle('active');
@@ -1180,10 +1271,10 @@
             video[i].src = videoSrc[i];
         }
         document.getElementById("defaultOpen").click();
-        
+
     })
     closeBtn.addEventListener('click', () => {
-        
+
         shareOptions.classList.toggle('active');
         video = document.getElementsByClassName('video');
         for (i = 0; i < video.length; i++) {
@@ -1191,9 +1282,9 @@
             // console.log(video[i].src);
             video[i].src = "about:blank";
         }
-        
-        
-        
+
+
+
     })
 
     function share() {
@@ -1229,7 +1320,7 @@
     function createCell(cell, text, style) { //在cell處新增div並用class style控制樣式
         var div = document.createElement('div'), // create DIV element
             txt = document.createTextNode(text); // create text node
-        div.appendChild(txt);  
+        div.appendChild(txt);
         // div.innerHTML = text;
         div.setAttribute('id', text);            // append text node to the DIV
         div.setAttribute('class', style);        // set DIV class attribute
@@ -1241,7 +1332,7 @@
         var tbl = table, // table reference
             i,
             cellStyle
-            
+
         // (checked == 'halfm') ? timeForHighlight = 6621 : timeForHighlight = 4421
         (checked == 'halfm') ? timeForHighlight = 6000 : timeForHighlight = 4000
 
@@ -1347,10 +1438,10 @@
         document.getElementById('ss').value = ss
     }
     function render(display) { // 顯示結果
-        document.getElementById('result').style.display = display        
+        document.getElementById('result').style.display = display
     }
     function downloadwithbrowser() {
-
+        var link = ''
         // copy result table
         var tbl = document.getElementById('my-tbl') // table reference
 
@@ -1377,8 +1468,8 @@
         summary3 += "<div id='summary3' class='summary3'><div><b>2021台北馬配速手環</b></div>"
         // summary3 += "<div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
         // summary3 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
-        summary3 += "<div>時間 " + fTime.format("H:mm:ss") + "</div>"
-        summary3 += "<div style='margin-bottom:5px;'>配速 " + moment.utc(moment(finishPace)).format("m'ss\"") + "</div></div>"
+        summary3 += "<div style='float:left;margin-left:10px;'><i class='las la-clock'></i> " + fTime.format("H:mm:ss") + "</div>"
+        summary3 += "<div style='margin-bottom:5px;float:right;margin-right:10px;text-align:left;'><i class='las la-tachometer-alt'></i> " + moment.utc(moment(finishPace)).format("m'ss\"") + "</div></div>"
 
 
 
@@ -1386,29 +1477,29 @@
         var sTable = addTable('tblToPrint')
         sTable.innerHTML = appendColumn(sTable, "分段", paceAdjustSlope, "  ")
         sTable.innerHTML = appendColumn(sTable, "通過", timeAccumulated, "  ")
-        console.log(sTable)
+        // console.log(sTable)
         var sTable2 = addTable('tableToPrint')
         sTable2.innerHTML = appendColumn(sTable2, "關門", arrCutTime, "  ")
         sTable2.innerHTML = appendColumn(sTable2, "提醒", arrRemind_short, " customRemind ")
-        console.log(sTable2)
+        // console.log(sTable2)
 
         paceBand_left = document.createElement('div')
         paceBand_left.setAttribute('class', 'halfBand')
         paceBand_left.innerHTML += summary3
         paceBand_left.appendChild(sTable)
-        paceBand_left.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:179px;'>2021.12.19</br>在終點 遇見更好的自己</div>"
-        console.log(paceBand_left)
+        paceBand_left.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;'>2021.12.19</br>在終點 遇見更好的自己</div>"
+        // console.log(paceBand_left)
 
         paceBand_right = document.createElement('div')
         paceBand_right.setAttribute('class', 'halfBand')
         paceBand_right.innerHTML += summary3
         paceBand_right.appendChild(sTable2)
-        paceBand_right.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;padding-bottom:179px;'>2021.12.19</br>在終點 遇見更好的自己</div>"
-        console.log(paceBand_right)
+        paceBand_right.innerHTML += "<div style='margin-top:5px;font-size:x-small;color:gray;text-align:center;'>2021.12.19</br>在終點 遇見更好的自己</div>"
+        // console.log(paceBand_right)
 
         explain = document.createElement('div')
         explain.setAttribute('class', 'explain')
-        explain.innerHTML = "<small>按下<span style='color:#9C1AA9'><u>製作配速手環</u></span>後，會跳出依據模擬結果產生的配速表供下載。</br>列印本頁即可製作自己專屬的配速手環!</br></br><b>手環說明:</b></br>考量不同類型的跑者需求，同時兼顧簡潔與實用，提供兩款手環樣式：</br><span style='background-color:#A9CEEA'>A款顯示【里程、分段(配速)、通過(時間)】</span></br><span style='background-color:#FFC6D0'>B款顯示【里程、關門(時間)、自訂提醒】</span></br>在提醒欄位寫上給自己的提醒事項吧!!</br>(ex: 進站、補膠、上橋、穩住...自由發揮)</br></br><b>手環製作:</b></br>已貼心預設A4橫式列印<sup style='font-size:x-small;color:#2774B2'>[1]</sup>，列印出來後，沿虛線<sup style='font-size:x-small;color:#2774B2'>[2]</sup>剪下手環，經護貝或用膠帶黏貼正反兩面後，就有一個防水的配速手環囉~</br></br>最後<blockquote style='padding: 5px 20px 15px 8px;font-weight:bold;color:black;border-left:0.25em solid #8b949e;margin: 10px 50px 0px 0px;background-color:#eeeeee'>願過年與你/妳同在❤️</br><span style='display:block;font-size:x-small;float:right;'>--貓女姐姐</span></blockquote></br><hr><sup style='font-size:x-small;color:#2774B2'>[1]:<span style='color:black;'>&nbsp;經實測，A4的寬度21cm剛好約等於一般人手圍大小</br>&nbsp;&nbsp;&emsp;(是不是很神奇!!)</span></sup></br><sup style='font-size:x-small;color:#2774B2'>[2]:<span style='color:black;'>&nbsp;沒有輔助線剪不直的手殘黨(例如我)必備</br>&nbsp;&nbsp;&emsp;(是不是很貼心!!)</span></sup></br></br><span style='font-size:x-small;'>Contributor: 小M平</span></small>"
+        explain.innerHTML = "<small>按下<span style='color:#9C1AA9'><u>製作配速手環</u></span>後，會跳出依據模擬結果產生的配速表供下載。</br>列印本頁即可製作自己專屬的配速手環!</br></br><b>手環說明:</b></br>考量不同類型的跑者需求，同時兼顧簡潔與實用，提供兩款手環樣式：</br><span style='background-color:#A9CEEA'>A款顯示【里程、分段(配速)、通過(時間)】</span></br><span style='background-color:#FFC6D0'>B款顯示【里程、關門(時間)、自訂提醒】</span></br>在提醒欄位寫上給自己的提醒事項吧!!</br>(ex: 進站、補膠、上橋、穩住...自由發揮)</br></br><b>手環製作:</b></br>已貼心預設A4橫式列印<sup style='font-size:x-small;color:#2774B2'>[1]</sup>，列印出來後，沿虛線<sup style='font-size:x-small;color:#2774B2'>[2]</sup>剪下手環，經護貝或用膠帶黏貼正反兩面後，就有一個防水的配速手環囉~</br></br>最後我想要引用好友貓女姐姐的話<blockquote style='padding: 5px 20px 15px 8px;font-weight:bold;color:black;border-left:0.25em solid #8b949e;margin: 10px 50px 0px 0px;background-color:#eeeeee'>願過年與你/妳同在❤️</blockquote></br><hr><sup style='font-size:x-small;color:#2774B2'>[1]:<span style='color:black;'>&nbsp;經實測，A4的寬度21cm剛好約等於一般人手圍大小</br>&nbsp;&nbsp;&emsp;(是不是很神奇!!)</span></sup></br><sup style='font-size:x-small;color:#2774B2'>[2]:<span style='color:black;'>&nbsp;沒有輔助線剪不直的手殘黨(例如我)必備</br>&nbsp;&nbsp;&emsp;(是不是很貼心!!)</span></sup></br></br><span style='font-size:x-small;'>Contributor: 小M平</span></small>"
 
         paceBand = document.createElement('div')
         paceBand.appendChild(paceBand_left)
@@ -1419,19 +1510,25 @@
         sTable2.className = 'page';
 
         // CREATE A WINDOW OBJECT.
-        var win = window.open('', '', 'height=880,width=780');
+        var win = window.open('', '', 'height=780,width=780');
+
+        // win.document.head.append("<link rel='stylesheet' href='https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css'>");
+        // console.log(win.document.head);
 
         // 列印頁的css
         var htmlToPrint = '' +
+            // "<link rel='stylesheet' href='https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css'>" +
+
             '<style type="text/css">' +
             // '.page {width: 21cm;min-height: 29.7cm;padding: 2cm;margin: 1cm auto;border: 1px #D3D3D3 solid;border-radius: 5px;background: white;box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);}'+
             // '@page {size: A4;margin: 0;}'+
             // '@media print {  html, body {    width: 210mm;    height: 297mm;  }'+
-            '.customRemind {width:52px;}' +
+            // '.customRemind {width:52px;}' +
+            '.customRemind {width:60.82px;}' +
             'blockquote::before{font-family:Arial; content: "\\201C";  color:#8b949e; font-size:2em;  left: 10px;  top:-10px;}' + //淡綠色#78C0A8 https://codepen.io/jimmycow/pen/LmjVaz
             '.explain {display:inline-block;width:310px;vertical-align:top;padding-top:170px;}' +
             // '.halfBand, .explain { display:inline-block;padding-top:100px; border-left:1px dashed gray;border-right:1px dashed gray;}' +
-            '.halfBand { display:inline-block;padding-top:100px; border-left:1px dashed gray;border-right:1px dashed gray;}' +
+            '.halfBand { height:673px;display:inline-block;padding-top:100px; border-left:1px dashed gray;border-right:1px dashed gray;}' +
             '.summary3 { margin:0px 0px 0px 0px;text-align:center;}' +
             'body > div > div:nth-child(2), .explain {margin-left:50px}' + // band2 margin-left
             'table th, table td {' +
@@ -1459,21 +1556,36 @@
             '@page { size: A4 landscape; margin: 0px; }' + // 加這行列印時轉橫向 (直向portrait) 
             "@media print {body {-webkit-print-color-adjust: exact;font-size: 0.8em;  margin:0}}" + // 加這行列印時才會有顏色
             '</style>';
-        htmlToPrint += paceBand.outerHTML;
-        win.document.write(htmlToPrint);
-        // win.document.write('<html><head>');
+        // htmlToPrint += paceBand.outerHTML;
+
+        // link = "<link rel='stylesheet' href='https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css'>"
+        // win.document.head.append("<link rel='stylesheet' href='https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css'>")
+        // htmlToPrint = link + htmlToPrint
+        // win.document.write(htmlToPrint)
+
+        // win.document.write(htmlToPrint);
+
+        win.document.write('<html><head>');
         // win.document.write('<title>Profile</title>');   // <title> FOR PDF HEADER.
         // win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-        // win.document.write('</head>');
-        // win.document.write('<body>');
-        // win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
-        // win.document.write('</body></html>');
+        win.document.write("<link rel='stylesheet' href='https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css'>");
+        win.document.write('</head>');
 
-        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
-        win.print();    // PRINT THE CONTENTS.
+        win.document.write('<body >');
+        win.document.write(htmlToPrint);
+        win.document.write(paceBand.outerHTML);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+        win.document.write('<script type="text/javascript">addEventListener("load", () => { print(); })</');
+        win.document.write('script></body></html>');
+        // console.log(win.document.head);
+        win.document.close();
+        win.focus();
+
+        // win.print();
+        // win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+        // win.print();    // PRINT THE CONTENTS.
     }
-    
-    function shutTimeInfo(){
+
+    function shutTimeInfo() {
         // console.log(x)
         // x.classList.toggle('active');
         document.querySelector('#shutTime').classList.toggle('active');
@@ -1482,14 +1594,20 @@
         // alert("根據台北馬推算而來");
     }
     function shutTimeInfoOut() {
-            document.querySelector('#shutTime').classList.toggle('active');
+        document.querySelector('#shutTime').classList.toggle('active');
     }
     function paceTimeInfo() {
-            document.querySelector('#paceTime').classList.toggle('active');            
+        document.querySelector('#paceTime').classList.toggle('active');
     }
     function paceTimeInfoOut() {
-            document.querySelector('#paceTime').classList.toggle('active');
+        document.querySelector('#paceTime').classList.toggle('active');
     }
+
+    // var input_f = document.getElementById("fullm");
+    // input_f.addEventListener('click', clean);
+    // var input_h = document.getElementById("halfm");
+    // input_h.addEventListener('click', clean);
+
 
     function clean() {
         // uid.value = ''
@@ -1727,15 +1845,15 @@
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "注意事項", arrRemind, ' gray ')
         // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "水站/補給站", fullStopIcon, ' white ')
         // console.log(timeForHighlight)
-        tHighlight = Math.ceil(timeForHighlight/1000)
+        tHighlight = Math.ceil(timeForHighlight / 1000)
         // console.log(tHighlight)
         shutBtn = document.getElementById('\u00A0關門時間\u00A0')
         shutBtn.insertAdjacentHTML('beforeend', '<div id="closeT" onmouseover="shutTimeInfo()" onmouseout="shutTimeInfoOut()" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="shutTime" class="small-dialog">根據官網推算而來,僅供參考</br>詳情請點上方<i class="las la-info-circle"></i>圖示</div></div>')
         shutBtn = document.getElementById('\u00A0模擬配速\u00A0')
         // console.log(timeForHighlight)
-        shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="paceTimeInfo()" onmouseout="paceTimeInfoOut()" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog">醒目提示配速調整重點</br>比目標均速慢'+ tHighlight+'秒以上：<span style="background:#49ad91;color:white;">以綠色顯示</span></br>比目標均速快'+ tHighlight+'秒以上：<span style="background:#ff9999;color:black;">以紅色顯示</span></div></div>')
-        
-        
+        shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="paceTimeInfo()" onmouseout="paceTimeInfoOut()" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog">醒目提示配速調整重點</br>比目標均速慢' + tHighlight + '秒以上：<span style="background:#49ad91;color:white;">以綠色顯示</span></br>比目標均速快' + tHighlight + '秒以上：<span style="background:#ff9999;color:black;">以紅色顯示</span></div></div>')
+
+
         //     shareBtn.addEventListener('click', () => {
         //     shareOptions.classList.toggle('active');
         // })
@@ -1764,8 +1882,8 @@
             summary2 += "<div id='summary2' class='summary2'><div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>完賽時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;目標均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div></div>"
-            document.getElementById("result").innerHTML = summary2 + textUpdate + "<img src='https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg' alt='全馬路線圖(取自官網)' title='全馬路線圖(取自官網)'>" ;
-            
+            document.getElementById("result").innerHTML = summary2 + textUpdate + "<img src='https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg' alt='全馬路線圖(取自官網)' title='全馬路線圖(取自官網)'>";
+
 
         } else {
             console.log('something\'s wrong')

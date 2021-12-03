@@ -689,6 +689,66 @@
 
         }
 
+        /* for lazy load youtube */
+        .wrapper {
+            /* max-width: 680px; */
+            max-height: 315px;
+            /* margin: 60px auto; */
+            /* padding: 0 20px; */
+        }
+        
+        .youtube {
+            background-color: #000;
+            margin-bottom: 30px;
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .youtube img {
+            width: 100%;
+            top: -16.82%;
+            left: 0;
+            opacity: 0.7;
+        }
+        .youtube .play-button {
+            width: 90px;
+            height: 60px;
+            background-color: #333;
+            box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+            z-index: 1;
+            opacity: 0.8;
+            border-radius: 6px;
+        }
+        .youtube .play-button:before {
+            content: "";
+            border-style: solid;
+            border-width: 15px 0 15px 26.0px;
+            border-color: transparent transparent transparent #fff;
+        }
+        .youtube img,
+        .youtube .play-button {
+            cursor: pointer;
+        }
+        .youtube img,
+        .youtube iframe,
+        .youtube .play-button,
+        .youtube .play-button:before {
+            position: absolute;
+        }
+        .youtube .play-button,
+        .youtube .play-button:before {
+            top: 50%;
+            left: 50%;
+            transform: translate3d( -50%, -50%, 0 );
+        }
+        .youtube iframe {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
 
 
         @media only screen and (max-device-width : 375px) {
@@ -903,10 +963,13 @@
 </head>
 
 <body onload="loadHMS()">
-    <div id="fb-root"></div>
+    <div div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v12.0&appId=159442601583782&autoLogAppEvents=1"
         nonce="HNthlMoS"></script>
+
+    
+
     <div class="main">
         <h1>2021台北馬配速模擬計算機
             <!-- </br>配速模擬+手環製作 -->
@@ -922,6 +985,7 @@
             </ul>
         </div>
 
+        
 
 
 
@@ -1029,10 +1093,16 @@
                                 class='small-btn' target="_blank">中華民國路跑協會</a>)</li>
                         跟著影片直接「跑」一次吧!
                     </ul>
-                    <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/AVcT26sr0CY"
+                    <!-- <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/AVcT26sr0CY"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                        allowfullscreen></iframe> -->
+                    <div class="wrapper">
+                        <div class="youtube" data-embed="AVcT26sr0CY">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    
                 </div>
 
 
@@ -1052,29 +1122,40 @@
                         <li>如何邊跑邊喝水、台北馬補給備戰 (來源:<a href="https://www.youtube.com/channel/UCnfSzLU7EWbT2BU4zqoEamA"
                                 class='small-btn' target="_blank">佛系跑步Kobe麒</a>)</li>
                     </ul>
-                    <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/ACSAmSicGvo"
+                    <!-- <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/ACSAmSicGvo"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                        allowfullscreen></iframe> -->
+
+                    <div class="wrapper">
+                        <div class="youtube" data-embed="ACSAmSicGvo">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
                 </div>
 
 
             </div>
-            <div id="Prague" class="tabcontent align-left">
-                <!-- <p class="content-title">特別感謝</p>
-                <ul>
-                    <li>感謝貓女姊姊拋出這個超有趣的點子，並提供原版excel台北馬配速計算機供我參考</li>
-                    <li>感謝阿母，幫忙列印測試，並提供A4橫印這個超棒超方便的建議</li>
-                    <li>感謝萊拉，提供手環樣式、自製方法建議</li>
-                    <li>感謝哈哈王國全體國民內部幫忙測試</li>
-                    <li>感謝Kobe黃俊麒拍攝影片(追蹤起來!)</li>
-                </ul>
-                <p class="content-title">開發日誌</p> -->
+            <div id="Prague" class="tabcontent">
+                <div class="location-center">
+                    <p class="align-left content-title">特別感謝</p>
+                    <ul class="align-left">
+                        <li>感謝貓女姊姊拋出這個超有趣的點子，並提供原版excel台北馬配速計算機供我參考</li>
+                        <li>感謝阿母，幫忙列印測試，並提供A4橫印這個超棒超方便的建議</li>
+                        <li>感謝萊拉，提供手環樣式、自製方法建議</li>
+                        <li>感謝Jay大讓我使用他書中金句「在終點 遇到更好的自己」</li>
+                        <li>感謝跑步教練-Kobe黃俊麒的補給影片</li>
+                        <li>感謝台北馬拉松官方的賽道預習影片</li>
+                        <li>感謝用心準備比賽的<span style="font-size: x-large; font-weight:bold;">你</span>和<span style="font-size: x-large; font-weight:bold;">妳</span>!!!</li>
+                    </ul>
+                </div>
+                
+                <!-- <p class="content-title">開發日誌</p> -->
 
                 <!-- <iframe width="100%" height="600" src="https://hackmd.io/@yenping/rknxtNLFY" frameborder="0"></iframe> -->
-                <iframe width="100%" height="400" src="https://hackmd.io/@yenping/Hyym_UEFt" frameborder="0"></iframe>
+                <!-- <iframe width="100%" height="400" src="https://hackmd.io/@yenping/Hyym_UEFt" frameborder="0"></iframe> -->
             </div>
-            <hr style="margin: 0;border:none; border-top:1px solid #ccc;">
+            <!-- <hr style="margin: 0;border:none; border-top:1px solid #ccc;"> -->
 
             <!-- <small>
                 無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank"
@@ -1088,12 +1169,6 @@
             </small> -->
 
         </div>
-
-        <!-- <div class="fb text-center">
-            <div class="fb-like" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true"
-                data-share="true"></div>
-        </div> -->
-
         <div>
             <ul class="container footer share-inline" style="margin: 0 0 10pt 0">
                 <li></li>
@@ -1124,10 +1199,16 @@
                 <li>
                     <div class="fb-like" data-href="https://lilmp.github.io/pace42.195" data-layout="button_count"
                         data-action="like" data-size="small" data-share="false"></div>
-
+        
                 </li>
             </ul>
         </div>
+        <!-- <div class="fb text-center">
+            <div class="fb-like" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true"
+                data-share="true"></div>
+        </div> -->
+
+        
 
 
         <!-- <button class="share-btn social-media-btn">
@@ -1262,29 +1343,68 @@
     fullStopIcon = ['----', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i>', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-chees"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i><i class="las la-restroom"></i>', '<i class="las la-cheese"></i><i class="las la-restroom"></i>', '<i class="las la-tint"></i>', '----']
     halfStopIcon = []
 
-    videoSrc = ["https://www.youtube.com/embed/AVcT26sr0CY", "https://www.youtube.com/embed/ACSAmSicGvo"]
+    // videoSrc = ["https://www.youtube.com/embed/AVcT26sr0CY", "https://www.youtube.com/embed/ACSAmSicGvo"]
     shareBtn.addEventListener('click', () => {
         shareOptions.classList.toggle('active');
+        
+        // 原本作法:再把videoSrc加回來
         // console.log(shareOptions.classList);
-        video = document.getElementsByClassName('video');
-        for (i = 0; i < video.length; i++) {
-            video[i].src = videoSrc[i];
-        }
+        // video = document.getElementsByClassName('video');
+        // for (i = 0; i < video.length; i++) {
+        //     video[i].src = videoSrc[i];
+        // }
+        
+        // lazy load youtube: 
+        // 先以縮圖+playBtn呈現 點選按鈕後才會載入並自動撥放
+        var youtube = document.querySelectorAll(".youtube");
+        for (var i = 0; i < youtube.length; i++) {
+
+            var source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/0.jpg";
+
+            var image = new Image();
+            image.src = source;
+            image.addEventListener("load", function () {
+                youtube[i].appendChild(image);
+            }(i));
+
+            youtube[i].addEventListener("click", function () {
+
+                var iframe = document.createElement("iframe");
+                iframe.setAttribute("class", "video");
+                iframe.setAttribute("frameborder", "0");
+                iframe.setAttribute("allow", "autoplay"); //這行必須加才有用
+                iframe.setAttribute("allowfullscreen", "");
+                iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.dataset.embed + "?rel=0&showinfo=0&autoplay=1");
+                
+                this.innerHTML = "";
+                this.appendChild(iframe);
+                
+            });
+        };
+
         document.getElementById("defaultOpen").click();
 
     })
     closeBtn.addEventListener('click', () => {
 
         shareOptions.classList.toggle('active');
-        video = document.getElementsByClassName('video');
-        for (i = 0; i < video.length; i++) {
-            // video[i].style.display = "none";
-            // console.log(video[i].src);
-            video[i].src = "about:blank";
+        
+        //原本作法: 把video的source替換掉
+        // video = document.getElementsByClassName('video');
+        // for (i = 0; i < video.length; i++) {
+        //     // video[i].style.display = "none";
+        //     // console.log(video[i].src);
+        //     video[i].src = "about:blank"; 
+        // }
+
+        // 把youtube清掉 再加入 playbtn
+        var youtube = document.querySelectorAll(".youtube");
+        for (var i = 0; i < youtube.length; i++) {
+            youtube[i].innerHTML = '';
+            var playBtn = document.createElement("div");
+            playBtn.setAttribute("class", "play-button");
+            youtube[i].appendChild(playBtn);
         }
-
-
-
     })
 
     function share() {
@@ -1436,6 +1556,7 @@
         document.getElementById('mm').value = mm
         let ss = localStorage.getItem('ss')
         document.getElementById('ss').value = ss
+
     }
     function render(display) { // 顯示結果
         document.getElementById('result').style.display = display

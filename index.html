@@ -696,7 +696,7 @@
             /* margin: 60px auto; */
             /* padding: 0 20px; */
         }
-        
+
         .youtube {
             background-color: #000;
             margin-bottom: 30px;
@@ -705,43 +705,50 @@
             overflow: hidden;
             cursor: pointer;
         }
+
         .youtube img {
             width: 100%;
             top: -16.82%;
             left: 0;
             opacity: 0.7;
         }
+
         .youtube .play-button {
             width: 90px;
             height: 60px;
             background-color: #333;
-            box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
             z-index: 1;
             opacity: 0.8;
             border-radius: 6px;
         }
+
         .youtube .play-button:before {
             content: "";
             border-style: solid;
             border-width: 15px 0 15px 26.0px;
             border-color: transparent transparent transparent #fff;
         }
+
         .youtube img,
         .youtube .play-button {
             cursor: pointer;
         }
+
         .youtube img,
         .youtube iframe,
         .youtube .play-button,
         .youtube .play-button:before {
             position: absolute;
         }
+
         .youtube .play-button,
         .youtube .play-button:before {
             top: 50%;
             left: 50%;
-            transform: translate3d( -50%, -50%, 0 );
+            transform: translate3d(-50%, -50%, 0);
         }
+
         .youtube iframe {
             height: 100%;
             width: 100%;
@@ -968,7 +975,7 @@
         src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v12.0&appId=159442601583782&autoLogAppEvents=1"
         nonce="HNthlMoS"></script>
 
-    
+
 
     <div class="main">
         <h1>2021台北馬配速模擬計算機
@@ -985,7 +992,7 @@
             </ul>
         </div>
 
-        
+
 
 
 
@@ -1087,11 +1094,14 @@
                         <li>關門時間(<a href='https://www.taipeicitymarathon.com/TIME-LIMIT.php' class='small-btn'
                                 target='_blank'>官網</a>)</li>
                     </ul>
-                    <p class="align-left content-title">影片</p>
+                    <p class="align-left content-title">路線預習</p>
+                    <p class="align-left">
+                        跟著影片直接「跑」一次吧！(來源:<a href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw"
+                            class='small-btn' target="_blank">中華民國路跑協會</a>)
+                    </p>
+
                     <ul class="align-left">
-                        <li>半馬路線預習 (來源:<a href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw"
-                                class='small-btn' target="_blank">中華民國路跑協會</a>)</li>
-                        跟著影片直接「跑」一次吧!
+                        <li>半程馬拉松(今年新推出!)</li>
                     </ul>
                     <!-- <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/AVcT26sr0CY"
                         title="YouTube video player" frameborder="0"
@@ -1102,7 +1112,16 @@
                             <div class="play-button"></div>
                         </div>
                     </div>
-                    
+                    <ul class="align-left">
+                        <li>全程馬拉松(雖然為去年的影片，不過今年路線相同!)</li>
+                    </ul>
+                    <div class="wrapper">
+                        <div class="youtube" data-embed="uZlRyFa10tU">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+
+
                 </div>
 
 
@@ -1146,10 +1165,11 @@
                         <li>感謝Jay大讓我使用他書中金句「在終點 遇到更好的自己」</li>
                         <li>感謝跑步教練-Kobe黃俊麒的補給影片</li>
                         <li>感謝台北馬拉松官方的賽道預習影片</li>
-                        <li>感謝用心準備比賽的<span style="font-size: x-large; font-weight:bold;">你</span>和<span style="font-size: x-large; font-weight:bold;">妳</span>!!!</li>
+                        <li>感謝用心準備比賽的<span style="font-size: x-large; font-weight:bold;">你</span>和<span
+                                style="font-size: x-large; font-weight:bold;">妳</span>!!!</li>
                     </ul>
                 </div>
-                
+
                 <!-- <p class="content-title">開發日誌</p> -->
 
                 <!-- <iframe width="100%" height="600" src="https://hackmd.io/@yenping/rknxtNLFY" frameborder="0"></iframe> -->
@@ -1199,7 +1219,7 @@
                 <li>
                     <div class="fb-like" data-href="https://lilmp.github.io/pace42.195" data-layout="button_count"
                         data-action="like" data-size="small" data-share="false"></div>
-        
+
                 </li>
             </ul>
         </div>
@@ -1208,7 +1228,7 @@
                 data-share="true"></div>
         </div> -->
 
-        
+
 
 
         <!-- <button class="share-btn social-media-btn">
@@ -1346,14 +1366,14 @@
     // videoSrc = ["https://www.youtube.com/embed/AVcT26sr0CY", "https://www.youtube.com/embed/ACSAmSicGvo"]
     shareBtn.addEventListener('click', () => {
         shareOptions.classList.toggle('active');
-        
+
         // 原本作法:再把videoSrc加回來
         // console.log(shareOptions.classList);
         // video = document.getElementsByClassName('video');
         // for (i = 0; i < video.length; i++) {
         //     video[i].src = videoSrc[i];
         // }
-        
+
         // lazy load youtube: 
         // 先以縮圖+playBtn呈現 點選按鈕後才會載入並自動撥放
         var youtube = document.querySelectorAll(".youtube");
@@ -1375,10 +1395,10 @@
                 iframe.setAttribute("allow", "autoplay"); //這行必須加才有用
                 iframe.setAttribute("allowfullscreen", "");
                 iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.dataset.embed + "?rel=0&showinfo=0&autoplay=1");
-                
+
                 this.innerHTML = "";
                 this.appendChild(iframe);
-                
+
             });
         };
 
@@ -1388,7 +1408,7 @@
     closeBtn.addEventListener('click', () => {
 
         shareOptions.classList.toggle('active');
-        
+
         //原本作法: 把video的source替換掉
         // video = document.getElementsByClassName('video');
         // for (i = 0; i < video.length; i++) {

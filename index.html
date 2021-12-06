@@ -1064,8 +1064,8 @@
                     <p>常見的馬拉松配速計算機鮮少針對<span class="feature-tag">賽道地形</span>、<span
                             class="feature-tag">人潮擁擠</span>做調整，導致單純里程除以時間的結果只能淪為參考用，一昧追配速最後的結果就是跑爆!!!😵😵😵
                     </p>
-                    <p>希望有一個工具可以讓我</p>
-                    <blockquote>只要照著跑，就能順順地完賽</blockquote>
+                    <p>希望有一個工具可以針對賽道狀況，告訴我<br>「甚麼時候要上坡、甚麼時候可以快一點、甚麼時候慢一點沒關係」</p>
+                    <blockquote>只要照著跑，就能順順地在目標時間內完賽</blockquote>
                     <p>此為本專案最一開始的初衷。</p>
                     <!-- <p>不同完賽時間的跑者，遇到的賽道狀況會有所不同，為讓模擬結果更貼近現實，本工具設定不同的模擬參數，產生不同的配速建議。</p> -->
                     <div class="location-center">
@@ -1080,6 +1080,18 @@
                         <li>配速調整醒目提示：與目標均速相比太快或太慢的區段，給予醒目提示。</li>
                         <li>點選<u>❤️製作配速手環❤️</u>或是<u>清除重來</u></li>
                     </ol>
+                    <p class="content-title">開發邏輯</p>
+                    <ol>
+                        <li><span style="color: #49ad91;">剛好能在目標完賽時間完賽</span>為目標
+                        </li>
+                        <li>將<span style="color: #49ad91;">人潮擁擠、上下橋</span>的速度變化納入考量</li>
+                        <li>避免爆掉,<span style="color: #49ad91;">配速大致平均</span>
+                        </li>
+                        <li>設定的完賽策略是<span style="color: #49ad91;">前半馬稍慢後半馬稍快</span></li>
+                        <li><span style="color: #49ad91;">每站</span>皆有預留<span style="color: #49ad91;">進站喝水</span>的時間
+                        </li>
+                    </ol>
+
 
                 </div>
             </div>

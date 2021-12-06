@@ -447,7 +447,7 @@
 
         .feature-tag {
 
-            padding: 0px 10px;
+            padding: 0px 5px;
             display: inline;
             color: white;
             background-color: #49ad91;
@@ -709,7 +709,7 @@
         }
 
         .youtube img {
-            width: 100%;
+            width: 98%;
             top: -16.82%;
             left: 0;
             opacity: 0.7;
@@ -772,6 +772,25 @@
             font-size: 1.2em;
             font-weight: bold;
             color: #ff9999;
+        }
+
+        blockquote {
+            padding: 5px 20px 15px 8px;
+            font-weight: bold;
+            color: gray;
+            border-left: 0.5em solid #8b949e;
+            margin: 10px 0px 0px 0px;
+            background-color: #cccccc
+                /* background-color: #737d8c */
+        }
+
+        blockquote::before {
+            font-family: Arial;
+            content: "\201C";
+            color: #8b949e;
+            font-size: 2em;
+            left: 10px;
+            top: -10px;
         }
 
 
@@ -1030,20 +1049,45 @@
         <div class="info-page">
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'London')" id="defaultOpen">說明</button><button
-                    class="tablinks" onclick="openTab(event, 'Paris')">路線介紹</button><button class="tablinks"
+                    class="tablinks" onclick="openTab(event, 'Dutch')">配速模擬</button><button class="tablinks"
+                    onclick="openTab(event, 'Peru')">配速手環</button><button class="tablinks"
+                    onclick="openTab(event, 'Paris')">路線介紹</button><button class="tablinks"
                     onclick="openTab(event, 'Tokyo')">補給策略</button><button class="tablinks"
                     onclick="openTab(event, 'Prague')">特別感謝</button>
             </div>
 
             <a href="#" class="close"></a>
+            <div id='Dutch' class='tabcontent'>
+                <div class="location-center align-left">
+                    <p>常見的馬拉松配速計算機鮮少針對<span class="feature-tag">賽道地形</span>、<span
+                            class="feature-tag">人潮擁擠</span>做調整，導致單純里程除以時間的結果只能淪為參考用，一昧追配速最後的結果就是跑爆!!!😵😵😵
+                    </p>
+                    <p>希望有一個工具可以讓我</p>
+                    <blockquote>只要照著跑，就能順順地完賽</blockquote>
+                    <p>此為本專案最一開始的初衷。</p>
+                    <!-- <p>不同完賽時間的跑者，遇到的賽道狀況會有所不同，為讓模擬結果更貼近現實，本工具設定不同的模擬參數，產生不同的配速建議。</p> -->
+                    <div class="location-center">
+                        <img src="calculator_screenshot.png" alt="paceband" width="100%" style=" max-height: 100%;">
+                    </div>
+                    <p class="content-title">使用說明</p>
 
+                    <ol>
+                        <li>於計算機首頁選擇全馬/半馬</li>
+                        <li>輸入目標完賽時間，點擊enter按鈕</li>
+                        <li>產生配速模擬表格：搭配下方地圖對照查看，熟悉路線做好心理準備！</li>
+                        <li>配速調整醒目提示：與目標均速相比太快或太慢的區段，給予醒目提示。</li>
+                        <li>點選<u>❤️製作配速手環❤️</u>或是<u>清除重來</u></li>
+                    </ol>
+
+                </div>
+            </div>
 
             <div id='London' class="tabcontent">
                 <!-- <h3 class="title">使用說明</h3>                 -->
 
                 <div class="location-center">
                     <p class="align-left">
-                        蒐集所有台北馬拉松的注意事項，要「做功課」看這裡就對啦！<br /><br />本工具根據台北馬賽道狀況，做配速調整，還可以自製配速手環！！！<br />如果你是馬拉松新手，這個工具可以幫你減輕一些負擔😊
+                        蒐集所有台北馬拉松的注意事項，要「做功課」看這裡就對啦!<br /><br />本工具根據台北馬賽道狀況，做配速調整，還可以自製配速手環!!!<br />如果你是馬拉松新手，這個工具可以幫你減輕一些負擔😊
                     </p>
                     <!-- <p>大家來模擬自己的台北馬配速，制定屬於個人的完賽配速計畫吧~🎉</p> -->
 
@@ -1081,6 +1125,7 @@
                         </li>
                     </ul>
 
+
                     <!-- <ol class="align-left">
                                                 <li style="color: orange;">【配速計算機】</li>                        
                                                 <small>考慮賽道狀況(上下坡、擁擠程度)調整配速，避免<u>為了追配速把自己搞爆</u></small><br>
@@ -1114,6 +1159,32 @@
                 </div>
 
             </div>
+            <div id='Peru' class='tabcontent'>
+                <div class="location-center align-left">
+                    <p>賽前滿心期待地做功課、設定配速，卻擔心實際執行成效不彰嗎？想要輕鬆掌握
+                        <span class="feature-tag">配速</span>、
+                        <span class="feature-tag">進站時機</span>、<span class="feature-tag">吃膠提醒</span>、<span
+                            class="feature-tag">關門時間</span>，你需要的是配速手環!!💪
+                    </p>
+                    <div class="location-center">
+                        <img src="paceband.jpg" alt="paceband" width="100%" style=" max-height: 100%;">
+                    </div>
+                    <p class="content-title">操作說明</p>
+                    <ol>
+                        <li>於計算機首頁選擇全馬/半馬</li>
+                        <li>輸入目標完賽時間，點擊enter按鈕</li>
+                        <li>滑到最下面點選<u>❤️製作配速手環❤️</u></li>
+                        <li>自動產生pdf檔案供下載(如無反應請使用chrome瀏覽器喔~)</li>
+                        <li>寫下個人提醒、護貝或是用膠帶雙面黏貼</li>
+                    </ol>
+                    <p>就是這麼簡單!</p>
+                    <p class="align-left">對市民跑者而言，跑步除了享受比賽當下之外，賽前做功課、研究賽道、制訂計劃然後執行，都是過程中充滿樂趣的一部份。</p>
+
+                    <blockquote>戴上配速手環，比賽的時候會有種安心的感覺吧</blockquote>
+                    <br>
+                    這是我們的期許😊😊😊
+                </div>
+            </div>
             <div id="Paris" class="tabcontent">
                 <!-- <h3>Paris</h3>
                 <p>Paris is the capital of France.</p> -->
@@ -1137,7 +1208,7 @@
                     </p>
 
                     <ul class="align-left">
-                        <li>半程馬拉松 (剛推出🔥熱騰騰🔥)</li>
+                        <li>半馬</li>
                     </ul>
                     <!-- <iframe class="video" width="100%" height="315" src="https://www.youtube.com/embed/AVcT26sr0CY"
                         title="YouTube video player" frameborder="0"
@@ -1149,11 +1220,10 @@
                         </div>
                     </div>
                     <ul class="align-left">
-                        <li>全程馬拉松 (去年的影片，但今年<u>路線相同</u>！)<br>
-                            但千萬注意，今年關門時間跟影片中<u>不一樣</u>喔！<br>(上滑<span class="content-title">路線資訊</span>看詳細關門時間)</li>
+                        <li>全馬 (剛推出🔥熱騰騰🔥)</li>
                     </ul>
                     <div class="wrapper">
-                        <div class="youtube" data-embed="uZlRyFa10tU">
+                        <div class="youtube" data-embed="sRM7Hilso58">
                             <div class="play-button"></div>
                         </div>
                     </div>
@@ -1199,14 +1269,18 @@
                         <li>感謝 <a class="small-btn" target="_blank" href="https://www.instagram.com/memoryflying/"> 貓女姊姊
                             </a> 拋出這個超有趣的點子，並提供原版excel台北馬配速計算機供我參考
                         </li>
-                        <li>感謝 <a class="small-btn" target="_blank" href="#">阿母</a> ，幫忙列印測試，並提供A4橫印這個超棒超方便的建議</li>
-                        <li>感謝 <a class="small-btn" target="_blank" href="#">萊拉</a> ，提供手環樣式、自製方法建議</li>
-                        <li>感謝 <a class="small-btn" target="_blank" href="#">Jay大</a> 讓我在配速手環中使用他書中金句「在終點 遇到更好的自己」</li>
-                        <li>感謝跑步教練 <a class="small-btn" target="_blank" href="#">Kobe黃俊麒</a> 的補給教學影片</li>
+                        <li>感謝 <a class="small-btn" target="_blank" href="https://tripper.tw/">阿母Erica</a>
+                            ，幫忙列印測試，並提供A4橫印這個超棒超方便的建議</li>
+                        <li>感謝 <a class="small-btn" target="_blank"
+                                href="https://www.instagram.com/lyeraskylark/">萊拉</a> ，提供手環樣式、自製方法建議</li>
+                        <li>感謝 <a class="small-btn" target="_blank" href="https://www.instagram.com/sub3jay/">Jay大</a>
+                            讓我在配速手環中使用他書中金句「在終點 遇到更好的自己」</li>
+                        <li>感謝跑步教練 <a class="small-btn" target="_blank"
+                                href="https://www.facebook.com/KOBErunnercoach">黃俊麒</a> 的補給教學影片</li>
                         <li>感謝 <a class="small-btn" target="_blank"
                                 href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw" class='small-btn'
-                                target="_blank">中華民國路跑協會</a> 的官方賽道預習影片 (ft.田鴻魁/梁哲睿)</li>
-                        <li>當然還必須感謝，用心準備比賽的 <span>你</span> 和
+                                target="_blank">中華民國路跑協會</a> 的官方賽道預習影片 (ft.田鴻魁)</li>
+                        <li>當然還有，用心準備比賽的 <span>你</span> 和
                             <span>妳 </span>!!!
                         </li>
                     </ul>
@@ -1217,7 +1291,8 @@
                 <!-- <iframe width="100%" height="600" src="https://hackmd.io/@yenping/rknxtNLFY" frameborder="0"></iframe> -->
                 <!-- <iframe width="100%" height="400" src="https://hackmd.io/@yenping/Hyym_UEFt" frameborder="0"></iframe> -->
             </div>
-            <!-- <hr style="margin: 0;border:none; border-top:1px solid #ccc;"> -->
+            <hr style="margin: 5px 0;border:none; border-top:1px solid #ccc;">
+            <small>Copyright © 2021 小M平</small>
 
             <!-- <small>
                 無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank"
@@ -1332,14 +1407,15 @@
     <hr id="toDisappear">
     <div class="footer">
         <small>
-            網友自製分享、無廣告、無營利
+            ※ 注意：網友自製分享、非官方工具、無廣告、無營利 ※
+            <!-- 網友自製分享、無廣告、無營利 -->
             <!-- 更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡</a> -->
             </br>
-            ※ 注意：非官方工具、如製作手環功能無反應，請嘗試其他瀏覽器 ※
-            </br>
+            <!-- ※ 注意：非官方工具、如製作手環功能無反應，請嘗試其他瀏覽器 ※ -->
+            <!-- </br> -->
             <a target="_blank" href="https://icons8.com/icon/35835/running" class="small-btn"></a>
             網站圖示來源：<a target="_blank" href="https://icons8.com" class="small-btn">Icons8</a><br>
-            Contributor: 小M平
+            Copyright © 2021 小M平
         </small>
         <!-- <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
             </a></small>

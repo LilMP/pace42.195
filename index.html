@@ -1102,11 +1102,10 @@
                         <li><span style="color: #49ad91;">剛好能在目標完賽時間完賽</span>為目標
                         </li>
                         <li>將<span style="color: #49ad91;">人潮擁擠、上下橋</span>的速度變化納入考量</li>
-                        <li>避免爆掉,<span style="color: #49ad91;">配速大致平均</span>
-                        </li>
-                        <li>設定的完賽策略是<span style="color: #49ad91;">前半馬稍慢後半馬稍快</span></li>
-                        <li><span style="color: #49ad91;">每站</span>皆有預留<span style="color: #49ad91;">進站喝水</span>的時間
-                        </li>
+                        <li>設定的完賽策略是<span style="color: #49ad91;">除因人潮及地形特別調整外，全程基本均速</span></li>
+                        <li>模擬配速結果有預留<span style="color: #49ad91;">進站喝水</span>的時間,且可以<span
+                                style="color: #49ad91;">每站都進</span></li>
+
                     </ol>
 
 
@@ -1779,7 +1778,8 @@
 
         document.getElementById('tblToPrint').style.display = "none"
         var sTable = addTable('tblToPrint')
-        sTable.innerHTML = appendColumn(sTable, "分段", paceAdjustSlope, "  ")
+        // sTable.innerHTML = appendColumn(sTable, "分段", paceAdjustSlope, "  ")
+        sTable.innerHTML = appendColumn(sTable, "分段", paceAdjustStop, "  ")
         sTable.innerHTML = appendColumn(sTable, "累積", timeAccumulated, "  ")
         // console.log(sTable)
         var sTable2 = addTable('tableToPrint')
@@ -2186,7 +2186,7 @@
             summary2 += "<div id='summary2' class='summary2'><div>前10k：<b>" + moment.utc(moment(time10km)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(pace10k)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>後11.1k：<b>" + moment.utc(moment(time11_1k)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(pace11_1k)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>完賽時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;目標均速：<b>" + moment.utc(moment(finishTime / 21.1)).format("m'ss\"") + "</b></div>"
-            summary2 += "<div><small style='background-color:#49AD91;color:white'>&emsp;※ 預留進站停留時間：<b>" + time_compensate[lv].cp_stop * 2.5 + "</b>秒(每站都進) ※&emsp;</small></div></div>"
+            summary2 += "<div><small style='background-color:#49AD91;color:white'>&emsp;※ 預留每次進站停留時間：<b>" + time_compensate[lv].cp_stop * 2.5 + "</b>秒(每站都進) ※&emsp;</small></div></div>"
             document.getElementById("result").innerHTML = summary2 + textUpdate + "<img src='https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%8D%8A%E7%A8%8B.jpg' alt='半馬路線圖(取自官網)' title='半馬路線圖(取自官網)'>";
         } else if (checked == 'fullm') {
             // summary 區塊
@@ -2197,7 +2197,7 @@
             summary2 += "<div id='summary2' class='summary2'><div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>完賽時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;目標均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div>"
-            summary2 += "<div><small style='background-color:#49AD91;color:white;'>&emsp;※ 預留進站停留時間：<b>" + time_compensate[lv].cp_stop * 2.5 + "</b>秒(每站都進) ※&emsp;</small></div></div>"
+            summary2 += "<div><small style='background-color:#49AD91;color:white;'>&emsp;※ 預留每次進站停留時間：<b>" + time_compensate[lv].cp_stop * 2.5 + "</b>秒(每站都進) ※&emsp;</small></div></div>"
             document.getElementById("result").innerHTML = summary2 + textUpdate + "<img src='https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg' alt='全馬路線圖(取自官網)' title='全馬路線圖(取自官網)'>";
 
 

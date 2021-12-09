@@ -162,6 +162,11 @@
             color: white;
         }
 
+        body>div.footer>small>a:nth-child(3),
+        body>div.footer>small>a {
+            color: dimgrey;
+        }
+
         .align-left {
             text-align: left;
         }
@@ -445,7 +450,9 @@
             color: white;
         } */
 
-        .feature-tag {
+        .feature-tag,
+        .function-tag,
+        .ans-tag {
 
             padding: 0px 5px;
             display: inline;
@@ -455,15 +462,12 @@
             font-size: smaller;
         }
 
+        .ans-tag {
+            border-radius: 0px;
+        }
+
         .function-tag {
-
-            padding: 0px 5px;
-            display: inline;
-            color: white;
             background-color: rgb(226, 112, 45);
-            border-radius: 10px;
-            font-size: smaller;
-
         }
 
         .info-page {
@@ -1067,10 +1071,11 @@
         <div class="info-page">
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'London')" id="defaultOpen">說明</button><button
-                    class="tablinks" onclick="openTab(event, 'Dutch')">配速模擬</button><button class="tablinks"
+                    class="tablinks" onclick="openTab(event, 'Dutch')">計算機</button><button class="tablinks"
                     onclick="openTab(event, 'Peru')">配速手環</button><button class="tablinks"
-                    onclick="openTab(event, 'Paris')">路線介紹</button><button class="tablinks"
-                    onclick="openTab(event, 'Tokyo')">補給策略</button><button class="tablinks"
+                    onclick="openTab(event, 'Paris')">路線</button><button class="tablinks"
+                    onclick="openTab(event, 'Tokyo')">補給</button><button class="tablinks"
+                    onclick="openTab(event, 'Armsterdam')">Q&A<small>(持續更新)</small></button><button class="tablinks"
                     onclick="openTab(event, 'Prague')">特別感謝</button>
             </div>
 
@@ -1082,7 +1087,7 @@
                     </p>
                     <p>希望有一個工具可以針對賽道狀況，告訴我<br>「甚麼時候要上坡、甚麼時候可以快一點、甚麼時候慢一點沒關係」</p>
                     <blockquote>只要照著跑，就能順順地在目標時間內完賽</blockquote>
-                    <p>此為本專案最一開始的初衷。</p>
+                    <p>此為本專案最一開始的初衷。<small>(這裡所說的照著跑指的是針對賽道的策略部分,執行力/體能當然是要自己練的)</small></p>
                     <!-- <p>不同完賽時間的跑者，遇到的賽道狀況會有所不同，為讓模擬結果更貼近現實，本工具設定不同的模擬參數，產生不同的配速建議。</p> -->
                     <div class="location-center">
                         <img src="calculator_screenshot.png" alt="paceband" width="100%" style=" max-height: 100%;">
@@ -1098,12 +1103,11 @@
                     </ol>
                     <p class="content-title">開發邏輯</p>
                     <ol>
-                        <li><span style="color: #49ad91;">剛好能在目標完賽時間完賽</span>為目標
+                        <li><span class="ans-tag">剛好能在目標完賽時間完賽</span>為目標
                         </li>
-                        <li>將<span style="color: #49ad91;">人潮擁擠、上下橋</span>的速度變化納入考量</li>
-                        <li>設定的完賽策略是<span style="color: #49ad91;">除因人潮及地形特別調整外，全程基本均速</span></li>
-                        <li>模擬配速結果有預留<span style="color: #49ad91;">進站喝水</span>的時間,且可以<span
-                                style="color: #49ad91;">每站都進</span></li>
+                        <li>將<span class="ans-tag">人潮擁擠、上下橋</span>的速度變化納入考量</li>
+                        <li>設定的完賽策略是<span class="ans-tag">除人潮及地形有特別調整外，全程基本均速</span></li>
+                        <li>模擬配速結果有預留<span class="ans-tag">進站喝水</span>的時間,且可以<span class="ans-tag">每站都進</span></li>
 
                     </ol>
 
@@ -1160,12 +1164,13 @@
                             <small style="padding-left:16px;">Shout
                                 out to 貓女姊姊
                                 沒有她就沒有這個專案!!!</small>
-                            </blackquote>
+                        </blockquote>
                     </div>
+                </div>
 
 
 
-                    <!-- <ol class="align-left">
+                <!-- <ol class="align-left">
                                                 <li style="color: orange;">【配速計算機】</li>                        
                                                 <small>考慮賽道狀況(上下坡、擁擠程度)調整配速，避免<u>為了追配速把自己搞爆</u></small><br>
                                                 <small>針對不同完賽時間、不同程度的跑友，設定不同的<u>配速調整參數</u></small>
@@ -1175,7 +1180,7 @@
                                                 <li style="color: orange;">【比賽資訊蒐集】</li>
                                                 <small>路線介紹、關門時間、補給策略整理</small>
                                             </ol> -->
-                    <!-- <ul class="align-left">
+                <!-- <ul class="align-left">
                                                 <li>
                                                     <p style="color: orange;display: inline;">【好實用】</p>考慮賽道狀況(上下坡、擁擠程度)調整配速，避免<u>為了追配速把自己搞爆</u>
                                                 </li>
@@ -1195,7 +1200,7 @@
                                                     <p style="color: orange;display: inline;">【好懶人】</p>輸入的時間資料<u>僅</u>儲存在手機/電腦端，使用者<u>不用重複輸入時間</u>
                                                 </li>
                                             </ul> -->
-                </div>
+
 
             </div>
             <div id='Peru' class='tabcontent'>
@@ -1203,7 +1208,7 @@
                     <p>賽前滿心期待地做功課、設定配速，卻擔心實際執行成效不彰嗎？想要輕鬆掌握
                         <span class="feature-tag">配速</span>、
                         <span class="feature-tag">進站時機</span>、<span class="feature-tag">吃膠提醒</span>、<span
-                            class="feature-tag">關門時間</span>，你需要的是配速手環!!💪
+                            class="feature-tag">關門時間</span>，你需要的是配速手環!!💪<br>比賽時戴在手上，方便隨時確認
                     </p>
                     <div class="location-center">
                         <img src="paceband.jpg" alt="paceband" width="100%" style=" max-height: 100%;">
@@ -1302,6 +1307,30 @@
 
 
             </div>
+
+            <div id='Armsterdam' class="tabcontent">
+                <div class="location-center align-left">
+                    <blockquote>很棒的工具,請問能否加入各區起跑時間?</blockquote>
+                    <p><span class="ans-tag">Ans</span>
+                        因為台北馬採取的是鳴槍後波段式放人,目前找不到時間相關資料,所以抱歉目前無法加入...不過這是一個很棒的想法,歡迎賽後回饋,有越多資料未來計算機模擬結果會越來越精準!
+                    </p>
+                    <blockquote>身為只會吃跟拉的新手,如果加上補給內容跟廁所資訊就更棒了(會不會太貪心XD)</blockquote>
+                    <p><span class="ans-tag">Ans</span>
+                        原本官方的地圖上就有標注廁所了(可以搭配結果頁面一起查看);至於補給的話,台北馬官方應該是只有提供水站跟海綿站,會提供水跟運動飲料(私補我就不知道了XD)
+                    </p>
+                    <blockquote>我用這個工具算出來的模擬配速是前慢後快,以新手來說這樣我後面跟得上或追得回來嗎?</blockquote>
+                    <p><span class="ans-tag">Ans</span>
+                        我們提供的是一種對於新手來說「比較不容易跑爆」的配速建議,基本上是以均速完賽為原則,特定區間才做微調,所以如果會擔心後面跑不到,那可能要把目標時間降低一點點喔😅
+                    </p>
+                    <blockquote>能否提供客製化欄位/甚至自訂內容供進階跑者使用呢?</blockquote>
+                    <p><span class="ans-tag">Ans</span> 持續構思開發中,敬請期待!</p>
+                    <blockquote>如果有技術問題或想回饋意見,該怎麼聯繫開發者呢?</blockquote>
+                    <p><span class="ans-tag">Ans</span> 可以私訊<a class="small-btn" target="_blank"
+                            href="https://www.instagram.com/memoryflying/">貓女姐姐</a>或是<a class="small-btn"
+                            target="_blank" href="https://www.instagram.com/yenzichun/">小M平</a>的IG</p>
+                </div>
+            </div>
+
             <div id="Prague" class="tabcontent">
                 <div class="location-center">
                     <p class="align-left content-title">特別感謝</p>
@@ -1312,14 +1341,17 @@
                         <li>感謝 <a class="small-btn" target="_blank" href="https://tripper.tw/">阿母Erica</a>
                             ，幫忙列印測試，並提供A4橫印這個超棒超方便的建議</li>
                         <li>感謝 <a class="small-btn" target="_blank"
-                                href="https://www.instagram.com/lyeraskylark/">萊拉</a> ，提供手環樣式、自製方法建議</li>
+                                href="https://www.instagram.com/lyeraskylark/">萊拉</a>
+                            ，提供手環樣式、自製方法建議</li>
                         <li>感謝 <a class="small-btn" target="_blank" href="https://www.instagram.com/sub3jay/">Jay大</a>
                             讓我在配速手環中使用他書中金句「在終點 遇到更好的自己」</li>
                         <li>感謝跑步教練 <a class="small-btn" target="_blank"
                                 href="https://www.facebook.com/KOBErunnercoach">黃俊麒</a> 的補給教學影片</li>
                         <li>感謝 <a class="small-btn" target="_blank"
                                 href="https://www.youtube.com/channel/UCDLI-SV_sqB-hmzrvLAJCHw" class='small-btn'
-                                target="_blank">中華民國路跑協會</a> 的官方賽道預習影片 (ft.田鴻魁)</li>
+                                target="_blank">中華民國路跑協會</a> 的官方賽道預習影片
+                            <br>(ft.知名podcast節目《跑步不要聽》主持人--體育主播魁哥--田鴻魁)
+                        </li>
                         <li>當然還有，用心準備比賽的 <span>你</span> 和
                             <span>妳 </span>!!!
                         </li>
@@ -1332,7 +1364,8 @@
                 <!-- <iframe width="100%" height="400" src="https://hackmd.io/@yenping/Hyym_UEFt" frameborder="0"></iframe> -->
             </div>
             <hr style="margin: 5px 0;border:none; border-top:1px solid #ccc;">
-            <small>Copyright © 2021 小M平</small>
+            <small>Copyright © 2021 <a class="small-btn" target="_blank"
+                    href="https://www.instagram.com/yenzichun/">小M平</a></small>
 
             <!-- <small>
                 無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank"
@@ -1455,7 +1488,7 @@
             <!-- </br> -->
             <a target="_blank" href="https://icons8.com/icon/35835/running" class="small-btn"></a>
             網站圖示來源：<a target="_blank" href="https://icons8.com" class="small-btn">Icons8</a><br>
-            Copyright © 2021 小M平
+            Copyright © 2021 <a class="small-btn" target="_blank" href="https://www.instagram.com/yenzichun/">小M平</a>
         </small>
         <!-- <small>無廣告、無營利，更多細節與網站說明請看<a href="https://github.com/LilMP/pace42.195" target="_blank" class="small-btn">這裡
             </a></small>

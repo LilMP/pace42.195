@@ -795,6 +795,23 @@
             top: -10px;
         }
 
+        /* 直接設定表格顏色 */
+        #halfmid1,
+        #fullmid1,
+        #fullmid2,
+        #fullmid6,
+        #fullmid9 {
+            background-color: #49AD91;
+            color: white;
+        }
+
+        #fullmid11,
+        #halfmid8 {
+            background-color: #FF9999;
+            color: black;
+        }
+
+
 
 
         @media only screen and (max-device-width : 375px) {
@@ -1602,12 +1619,12 @@
     // append column to the HTML table
 
     // create DIV element and append to the table cell
-    function createCell(cell, text, style) { //在cell處新增div並用class style控制樣式
+    function createCell(cell, id, text, style) { //在cell處新增div並用class style控制樣式
         var div = document.createElement('div'), // create DIV element
             txt = document.createTextNode(text); // create text node
         div.appendChild(txt);
         // div.innerHTML = text;
-        div.setAttribute('id', text);            // append text node to the DIV
+        div.setAttribute('id', id);            // append text node to the DIV
         div.setAttribute('class', style);        // set DIV class attribute
         div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
         cell.appendChild(div);                   // append DIV to the table cell
@@ -1619,7 +1636,8 @@
             cellStyle
 
         // (checked == 'halfm') ? timeForHighlight = 6621 : timeForHighlight = 4421
-        (checked == 'halfm') ? timeForHighlight = 6000 : timeForHighlight = 4000
+        // (checked == 'halfm') ? timeForHighlight = 6000 : timeForHighlight = 4000
+        (checked == 'halfm') ? timeForHighlight = 9000 : timeForHighlight = 9000
 
         newTable = document.createElement('table');
         newTable.setAttribute('id', "tableToAppend")
@@ -1627,12 +1645,12 @@
         // console.log(tbl.rows.length)
         if (tbl.rows.length == 0) { // 當要在空表格新增欄位時
             newTable.insertRow(-1);
-            createCell(newTable.rows[0].insertCell(0), "\u00A0" + columnName + "\u00A0", "tHeader ");
+            createCell(newTable.rows[0].insertCell(0), "\u00A0" + columnName + "\u00A0", "\u00A0" + columnName + "\u00A0", "tHeader ");
             for (i = 1; i < arrData.length + 1; i++) {
                 if (i % 2 == 0) { cellStyle = color + " even " } else { cellStyle = color + " odd " } // 分偶數列 奇數列
                 newTable.insertRow(i);
-                if (i == arrData.length) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle); }
-                else { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle); }
+                if (i == arrData.length) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle); }
+                else { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle); }
             }
             // newTable.insertRow(arrData.length);
             // createCell(newTable.rows[arrData.length].insertCell(0), "終點", "tFooter " + color);
@@ -1641,20 +1659,20 @@
         // open loop for each row and append cell
         for (i = 0; i < tbl.rows.length; i++) { // 在現有表格新增欄位
             if (i % 2 == 0) { cellStyle = color + " even " } else { cellStyle = color + " odd " } // 分偶數列 奇數列
-            if (i == 0) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + columnName + "\u00A0", "tHeader "); }
+            if (i == 0) { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + columnName + "\u00A0", "\u00A0" + columnName + "\u00A0", "tHeader "); }
             else if (i == tbl.rows.length - 1) {
-                if (columnName == "模擬配速" || columnName == "分段") {
+                if (columnName == "模擬配速" || columnName == "分段" || columnName == "模擬配速(不進站)") {
                     // console.log(arrData[i - 1] - pace)
                     if (arrData[i - 1] - pace > timeForHighlight) {
-                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter tCellGreen" + cellStyle);
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter" + cellStyle);
                     } else if (arrData[i - 1] - pace < -timeForHighlight) {
-                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter tCellRed" + cellStyle)
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter" + cellStyle)
                     } else {
-                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter" + cellStyle)
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tFooter" + cellStyle)
                     }
 
                 } else {
-                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle);
+                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "\u00A0" + arrData[i - 1] + "\u00A0", "tFooter " + cellStyle);
                 }
             }
             // else { createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle); }
@@ -1662,15 +1680,15 @@
                 if (columnName == "模擬配速" || columnName == "分段") {
                     // console.log(arrData[i - 1] - pace)
                     if (arrData[i - 1] - pace > timeForHighlight) {
-                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell tCellGreen" + cellStyle)
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), checked + 'id' + i, "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell" + cellStyle)
                     } else if (arrData[i - 1] - pace < -timeForHighlight) {
-                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell tCellRed" + cellStyle)
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), checked + 'id' + i, "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell" + cellStyle)
                     } else {
-                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell" + cellStyle)
+                        createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), checked + 'id' + i, "\u00A0" + moment.utc(arrData[i - 1]).format("m'ss\"") + "\u00A0", "tCell" + cellStyle)
                     }
                 }
                 else {
-                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle);
+                    createCell(newTable.rows[i].insertCell(newTable.rows[i].cells.length), "\u00A0" + arrData[i - 1] + "\u00A0", "\u00A0" + arrData[i - 1] + "\u00A0", "tCell " + cellStyle);
                 }
             }
 
@@ -1970,38 +1988,38 @@
                 cp_each: [5, 0, 0, 0, 0, 0, 0, 0, -3],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
                 // cp_total: 5, //地形影響時間調整(上面加總後*2.5)
                 cp_total: 9.2, //地形影響時間調整(5*2.5-3*1.1)
-                cp_stop: 2 // 進站時間差(ie.進站補給花多久時間)
+                cp_stop: 1.5 // 進站時間差(ie.進站補給花多久時間)
 
             }, {
                 name: 'lv1',
                 cp_each: [8, 5, 0, 0, 5, 0, 5, 0, -3],
                 // cp_total: 50,
                 cp_total: 54.2,//23*2.5-3*1.1
-                cp_stop: 2.4
+                cp_stop: 2
             }, {
                 name: 'lv2',
                 cp_each: [10, 5, 0, 0, 5, 0, 5, 0, -3],
                 // cp_total: 55,
                 cp_total: 59.2,// 25*2.5-3.3
-                cp_stop: 3
+                cp_stop: 2.5
             }, {
                 name: 'lv3',
                 cp_each: [15, 10, 0, 0, 10, 0, 10, 0, -3],
                 // cp_total: 105,
                 cp_total: 109.2,// 45*2.5-3.3
-                cp_stop: 3
+                cp_stop: 2.5
             }, {
                 name: 'lv4',
                 cp_each: [20, 10, 0, 0, 10, 0, 10, 0, -3],
                 // cp_total: 117.5,
                 cp_total: 121.7,//50*2.5-3.3
-                cp_stop: 3
+                cp_stop: 4
             }, {
                 name: 'lv5',
                 cp_each: [30, 10, 0, 0, 10, 0, 10, 0, -3],
                 // cp_total: 142.5,
                 cp_total: 146.7,//60*2.5-3.3
-                cp_stop: 4
+                cp_stop: 5
             }]
 
             // define runners level            
@@ -2028,7 +2046,7 @@
                 paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 1.1 * (paceAdjust + item * 1000)).format("mm:ss"))
                 // paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m'ss\""))
                 paceAdjustSlope.push(paceAdjust + item * 1000)
-                paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
+                paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000))
             });
 
             time10km = moment.duration(moment(timeAccumulated[3], "HH:mm:ss").format("HH:mm:ss")).asMilliseconds() // 10k 累積時間轉成毫秒
@@ -2054,7 +2072,7 @@
                 name: 'lv0',
                 cp_each: [5, 0, 0, 0, 0, 2, 0, 0, 8, 0, -5, 0, 0, 0, 0, 0, 0,],// 考量地形跟擁擠的配速調整(ex:第0-2.5k每km慢5秒)
                 cp_total: 25, //地形影響時間調整(上面加總後*2.5)
-                cp_stop: 2 // 進站時間差(ie.進站補給花多久時間)
+                cp_stop: 1 // 進站時間差(ie.進站補給花多久時間)
 
             }, {
                 name: 'lv1',
@@ -2070,17 +2088,17 @@
                 name: 'lv3',
                 cp_each: [25, 20, 0, 0, 0, 6, 0, 0, 15, 0, -5, 0, 0, 0, 0, 0, 0],
                 cp_total: 152.5,
-                cp_stop: 3
+                cp_stop: 4
             }, {
                 name: 'lv4',
                 cp_each: [30, 25, 0, 0, 0, 7, 0, 0, 18, 0, -5, 0, 0, 0, 0, 0, 0],
                 cp_total: 187.5,
-                cp_stop: 3
+                cp_stop: 5
             }, {
                 name: 'lv5',
                 cp_each: [30, 25, 0, 0, 0, 8, 0, 0, 20, 0, -5, 0, 0, 0, 0, 0, 0],
                 cp_total: 195,
-                cp_stop: 4
+                cp_stop: 6
             }]
 
             // define runners level            
@@ -2103,7 +2121,7 @@
                 paceTime.push(moment.utc((i < time_compensate[lv].cp_each.length - 1) ? 2.5 * (paceAdjust + item * 1000) : 2.2 * (paceAdjust + item * 1000)).format("mm:ss"))
                 // paceAdjustSlope.push(moment.utc(paceAdjust + item * 1000).format("m'ss\""))
                 paceAdjustSlope.push(paceAdjust + item * 1000)
-                paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000).format("mm:ss"))
+                paceAdjustStop.push(moment.utc(paceAdjust + item * 1000 - time_compensate[lv].cp_stop * 1000))
             });
 
             // halfPaceTime = 1.1 * moment.duration(moment(paceAdjustSlope[8], "m'ss\"").format("HH:mm:ss")) // 20k配速*1.1km 預設已是毫秒
@@ -2128,7 +2146,8 @@
 
         document.getElementById("result").appendChild(addTable('my-tbl'))
         // console.log(document.getElementById('my-tbl'))
-        document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "模擬配速", paceAdjustSlope, ' gray ')
+        document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "模擬配速", paceAdjustStop, ' gray ')
+        // document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "模擬配速(不進站)", paceAdjustSlope, ' gray ')
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "分段時間", paceTime, ' white')
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), "累積時間", timeAccumulated, ' gray ')
         document.getElementById('my-tbl').innerHTML = appendColumn(document.getElementById('my-tbl'), '關門時間', arrCutTime, ' white ')
@@ -2145,7 +2164,8 @@
         shutBtn = document.getElementById('\u00A0關門時間\u00A0')
         shutBtn.insertAdjacentHTML('beforeend', '<div id="closeT" onmouseover="showOrHidMoreInfo(\'#shutTime\')" onmouseout="showOrHidMoreInfo(\'#shutTime\')" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="shutTime" class="small-dialog">根據官網推算而來,僅供參考</br>詳情請點上方<i class="las la-info-circle"></i>圖示</div></div>')
         shutBtn = document.getElementById('\u00A0模擬配速\u00A0')
-        shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="showOrHidMoreInfo(\'#paceTime\')" onmouseout="showOrHidMoreInfo(\'#paceTime\')" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog">醒目提示配速調整重點</br>比目標均速慢' + tHighlight + '秒以上：<span style="background:#49ad91;color:white;">以綠色顯示</span></br>比目標均速快' + tHighlight + '秒以上：<span style="background:#ff9999;color:black;">以紅色顯示</span></div></div>')
+        // shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="showOrHidMoreInfo(\'#paceTime\')" onmouseout="showOrHidMoreInfo(\'#paceTime\')" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog">醒目提示配速調整重點</br>比目標均速慢' + tHighlight + '秒以上：<span style="background:#49ad91;color:white;">以綠色顯示</span></br>比目標均速快' + tHighlight + '秒以上：<span style="background:#ff9999;color:black;">以紅色顯示</span></div></div>')
+        shutBtn.insertAdjacentHTML('beforeend', '<div onmouseover="showOrHidMoreInfo(\'#paceTime\')" onmouseout="showOrHidMoreInfo(\'#paceTime\')" class="share-btn social-media-btn"><i class="las la-question-circle"></i><div id="paceTime" class="small-dialog align-left">因應上下坡、人潮,針對配速調整的醒目提示</br><span style="background:#49ad91;color:white;">以綠色顯示</span> 可以跑得 <span style="background:#49ad91;color:white;">慢一點</span> 的區段</br><span style="background:#ff9999;color:black;">以紅色顯示</span> 可以跑得 <span style="background:#ff9999;color:black;">快一點</span> 的區段</div></div>')
 
 
         //     shareBtn.addEventListener('click', () => {
@@ -2165,7 +2185,8 @@
             // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
             summary2 += "<div id='summary2' class='summary2'><div>前10k：<b>" + moment.utc(moment(time10km)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(pace10k)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>後11.1k：<b>" + moment.utc(moment(time11_1k)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(pace11_1k)).format("m'ss\"") + "</b></div>"
-            summary2 += "<div>完賽時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;目標均速：<b>" + moment.utc(moment(finishTime / 21.1)).format("m'ss\"") + "</b></div></div>"
+            summary2 += "<div>完賽時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;目標均速：<b>" + moment.utc(moment(finishTime / 21.1)).format("m'ss\"") + "</b></div>"
+            summary2 += "<div><small style='background-color:#49AD91;color:white'>&emsp;※ 預留進站停留時間：<b>" + time_compensate[lv].cp_stop * 2.5 + "</b>秒(每站都進) ※&emsp;</small></div></div>"
             document.getElementById("result").innerHTML = summary2 + textUpdate + "<img src='https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%8D%8A%E7%A8%8B.jpg' alt='半馬路線圖(取自官網)' title='半馬路線圖(取自官網)'>";
         } else if (checked == 'fullm') {
             // summary 區塊
@@ -2175,7 +2196,8 @@
             // summary2 += "<div>均速:" + moment.utc(paceAdjust).format("m'ss\"") + "(考慮上下坡、人潮-調整後)</div>"
             summary2 += "<div id='summary2' class='summary2'><div>前半馬：<b>" + moment.utc(moment(firstHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(firstHalfPace)).format("m'ss\"") + "</b></div>"
             summary2 += "<div>後半馬：<b>" + moment.utc(moment(secondHalfTime)).format("H:mm:ss") + "</b>&emsp;均速：<b>" + moment.utc(moment(secondHalfPace)).format("m'ss\"") + "</b></div>"
-            summary2 += "<div>完賽時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;目標均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div></div>"
+            summary2 += "<div>完賽時間：<b>" + moment.utc(moment(finishTime)).format("H:mm:ss") + "</b>&emsp;目標均速：<b>" + moment.utc(moment(finishTime / 42.2)).format("m'ss\"") + "</b></div>"
+            summary2 += "<div><small style='background-color:#49AD91;color:white;'>&emsp;※ 預留進站停留時間：<b>" + time_compensate[lv].cp_stop * 2.5 + "</b>秒(每站都進) ※&emsp;</small></div></div>"
             document.getElementById("result").innerHTML = summary2 + textUpdate + "<img src='https://www.taipeicitymarathon.com/ck_imgs/%E7%AB%8B%E9%AB%94%E8%B7%AF%E7%B7%9A%E5%85%A8%E7%A8%8B(1).jpg' alt='全馬路線圖(取自官網)' title='全馬路線圖(取自官網)'>";
 
 
